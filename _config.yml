@@ -99,3 +99,4 @@ google_analytics_domain: thedevfiles.com
 
 # Facebook Like
 facebook_like: true
+facebook_layout: button_count
