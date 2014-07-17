@@ -1,0 +1,12 @@
+{% if site.categories %}
+<section>
+  <h1>Categories</h1>
+  <ul id="category_list">
+    {% for category in site.categories %}
+      <li class="category">
+        <a href="{{ root_url }}/{{ site.category_dir }}/{{ category | first }}">{{category | first}}</a>
+      </li>
+    {% endfor %}
+  </ul>
+</section>
+{% endif %}
