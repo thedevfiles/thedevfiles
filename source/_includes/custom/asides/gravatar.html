@@ -6,37 +6,26 @@
     </div>
     <div class="social-media">
         {% if site.twitter_user %}
-            <a href="https://twitter.com/{{site.twitter_user}}" title="Twitter"><i class="fa fa-twitter"></i></a>
+            <a target="_blank" href="https://twitter.com/{{site.twitter_user}}" title="Twitter"><i class="fa fa-twitter"></i></a>
         {% endif %}
         {% if site.facebook_url %}
-            <a href="#{{site.facebook_url}}" title="Facebook"><i class="fa fa-facebook"></i></a>
+            <a target="_blank" href="#{{site.facebook_url}}" title="Facebook"><i class="fa fa-facebook"></i></a>
         {% endif %}
         {% if site.googleplus_user %}
-            <a href="https://plus.google.com/{{site.googleplus_user}}" title="Google+"><i class="fa fa-google-plus"></i></a>
+            <a target="_blank" href="https://plus.google.com/{{site.googleplus_user}}" title="Google+"><i class="fa fa-google-plus"></i></a>
         {% endif %}
-        <!--
         {% if site.youtube_channel %}
-            <a href="https://www.youtube.com/channel/{{site.youtube_channel}}" title="YouTube"><i class="fa fa-youtube"></i></a>
+            <a target="_blank" href="https://www.youtube.com/channel/{{site.youtube_channel}}" title="YouTube"><i class="fa fa-youtube"></i></a>
         {% endif %}
         {% if site.linkedin_url %}
-            <a href="http://www.linkedin.com/pub/{{site.linkedin_url}}" title="LinkedIn"><i class="fa fa-linkedin"></i></a>
+            <a target="_blank" href="http://www.linkedin.com/pub/{{site.linkedin_url}}" title="LinkedIn"><i class="fa fa-linkedin"></i></a>
         {% endif %}
         {% if site.github_user %}
-            <a href="https://github.com/{{site.github_user}}" title="Github"><i class="fa fa-github"></i></a>
+            <a target="_blank" href="https://github.com/{{site.github_user}}" title="Github"><i class="fa fa-github"></i></a>
         {% endif %}
         {% if site.bitbucket_user %}
-            <a href="https://bitbucket.org/{{site.bitbucket_user}}" title="Bitbucket"><i class="fa fa-bitbucket"></i></a>
+            <a target="_blank" href="https://bitbucket.org/{{site.bitbucket_user}}" title="Bitbucket"><i class="fa fa-bitbucket"></i></a>
         {% endif %}
-        {% if site.drupal_user_id %}
-            <a href="https://www.drupal.org/user/{{site.drupal_user_id}}" title="Drupal"><i class="fa fa-drupal"></i></a>
-        {% endif %}
-        {% if site.wordpress_user %}
-            <a href="http://profiles.wordpress.org/{{site.wordpress_user}}" title="WordPress"><i class="fa fa-wordpress"></i></a>
-        {% endif %}
-        {% if site.trello_user %}
-            <a href="https://trello.com/{{site.trello_user}}" title="Trello"><i class="fa fa-trello"></i></a>
-        {% endif %}
-        -->
     </div>
 </section>
 {% endif %}

@@ -4,13 +4,7 @@
     <li><a href="{{ site.subscribe_email }}" rel="subscribe-email" title="subscribe via email">Email</a></li>
   {% endif %}
 </ul>
-{% if site.tapir_token %}
-  <form method="get" action="{{ root_url }}/search.html">
-    <fieldset role="search">
-      <input class="search" name="query" type="text" placeholder="Search..." x-webkit-speech />
-    </fieldset>
-  </form>
-{% elsif site.simple_search %}
+{% if site.simple_search %}
   <form action="{{ site.simple_search }}" method="get">
     <fieldset role="search">
       <input type="hidden" name="q" value="site:{{ site.url | shorthand_url }}" />
