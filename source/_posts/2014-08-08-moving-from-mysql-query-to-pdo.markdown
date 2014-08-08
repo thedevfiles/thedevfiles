@@ -1,7 +1,8 @@
 ---
 layout: post
 title: Moving from mysql_query to PDO
-date: 2014-07-28 20:01:33 -0700
+date: 2014-08-08 00:00:00 -0700
+description: The php mysql extension has been marked as deprecated. This article will introduce PDO as a replacement.
 comments: true
 categories: 
     - php
@@ -9,7 +10,7 @@ categories:
     - mysql
 ---
 
-The mysql extension has been marked as depricated as of php 5.5.0 and will be removed completely in a future version.
+The mysql extension has been marked as deprecated as of php 5.5.0 and will be removed completely in a future version.
 
 It is old and not very user friendly.
 
@@ -26,7 +27,7 @@ $link = mysql_connect('localhost', 'user', 'password');
 mysql_select_db('database', $link);
 ```
 
-The [mysql_connect](http://us3.php.net/manual/en/function.mysql-connect.php) function returns a MySQL link identifier if the database connection was sucessful or FALSE if the connection was not successful.  
+The [mysql_connect](http://us3.php.net/manual/en/function.mysql-connect.php) function returns a MySQL link identifier if the database connection was successful or FALSE if the connection was not successful.  
 After connecting to the database server the database must be selected before any queries can be run on it.  
 This is done with the [mysql_select_db](http://us3.php.net/manual/en/function.mysql-select-db.php) function.  
 
@@ -37,7 +38,7 @@ This is done with the [mysql_select_db](http://us3.php.net/manual/en/function.my
 $dbh = new PDO('mysql:host=localhost;dbname=database', 'user', 'password');
 ```
 
-The [PDO contructor](http://us3.php.net/manual/en/pdo.construct.php) accepts a <abbr title="Data Source Name">DSN</abbr> as the first parameter and the user and password as the second and third parameter.
+The [PDO constructor](http://us3.php.net/manual/en/pdo.construct.php) accepts a <abbr title="Data Source Name">DSN</abbr> as the first parameter and the user and password as the second and third parameter.
 
 This will create a new PDO instance if successful or throw a [PDOException](http://us3.php.net/manual/en/class.pdoexception.php) if the connection fails.  
 I will go into error handling later on.
@@ -50,7 +51,7 @@ I will go into error handling later on.
 $result = mysql_query("SELECT * FROM tablename", $link);
 ```
 The [mysql_query](http://us3.php.net/manual/en/function.mysql-query.php) function accepts the sql query as a string for the first parameter and the mysql link identifier returned from the mysql_connect function as the second parameter.  
-For a successfuly query it returns a resource for a query that would return a resultset such as a SELECT query and TRUE for a INSERT, UPDATE, or DELETE query.  
+For a successfully query it returns a resource for a query that would return a result-set such as a SELECT query and TRUE for a INSERT, UPDATE, or DELETE query.  
 It returns FALSE if the query fails.
 
 ### Running a query with PDO
@@ -60,7 +61,7 @@ $sth = $dbh->query("SELECT * FROM tablename");
 ```
 The [query](http://us3.php.net/manual/en/pdo.query.php) method on the PDO object accepts the sql query as its only parameter.  
 By default it returns an instance of [PDOStatement](http://us3.php.net/manual/en/class.pdostatement.php) if successful or FALSE if not.  
-This can be changed my modifiying the error mode for the connection.  This will be explained further in the Handling Errors section.
+This can be changed my modifying the error mode for the connection.  This will be explained further in the Handling Errors section.
 
 ## Fetching Data
 
@@ -75,7 +76,7 @@ To get the data from a query you can use the mysql_fetch_* functions.
 To return the data as an associative array use the [mysql_fetch_assoc](http://us3.php.net/manual/en/function.mysql-fetch-assoc.php) function.
 To return the data as a numeric indexed array use the [mysql_fetch_row](http://us3.php.net/manual/en/function.mysql-fetch-row.php) function.
 To return the data as an object use the [mysql_fetch_object](http://us3.php.net/manual/en/function.mysql-fetch-object.php) function.
-It will return the next row in the resultset or FALSE of there are no more rows.
+It will return the next row in the result-set or FALSE of there are no more rows.
 
 
 ### Fetching a single row with PDO
@@ -84,10 +85,10 @@ It will return the next row in the resultset or FALSE of there are no more rows.
 $sth = $dbh->query("SELECT * FROM users WHERE id = 1");
 $user = $sth->fetch(PDO::FETCH_ASSOC);
 ```
-You can use the [fetch](http://us3.php.net/manual/en/pdostatement.fetch.php) method on the [PDOStatement](http://us3.php.net/manual/en/class.pdostatement.php) onject returned from the [PDO::query](http://us3.php.net/manual/en/pdo.query.php) method.  
+You can use the [fetch](http://us3.php.net/manual/en/pdostatement.fetch.php) method on the [PDOStatement](http://us3.php.net/manual/en/class.pdostatement.php) object returned from the [PDO::query](http://us3.php.net/manual/en/pdo.query.php) method.  
 It accepts the fetch style as the first parameter.  
 To return data as an associative array pass the PDO::FETCH_ASSOC constant.  
-To return data as a numberic indexed array pass the PDO::FETCH_NUM constant.  
+To return data as a numeric indexed array pass the PDO::FETCH_NUM constant.  
 To return data as an object pass the PDO::FETCH_OBJ constant.
 
 
@@ -96,11 +97,11 @@ To return data as an object pass the PDO::FETCH_OBJ constant.
 ```php mysql_fetch_assoc http://us2.php.net/manual/en/function.mysql-fetch-assoc.php docs
 $users = array();
 $result = mysql_query("SELECT * FROM users", $link);
-while($row = mysql_fetch_assoc($result)){
+while ($row = mysql_fetch_assoc($result)) {
     $users[] = $row;
 }
 ```
-To fetch all of the rows from a resultset you will need to loop through calling mysql_fetch_* until it returns false.  
+To fetch all of the rows from a result-set you will need to loop through calling mysql_fetch_* until it returns false.  
 This will result in an multi-dimensional associative array with all the records in the users table.
 
 ### Fetching all rows with PDO::fetchAll
@@ -109,7 +110,7 @@ This will result in an multi-dimensional associative array with all the records 
 $sth = $dbh->query("SELECT * FROM users");
 $users = $sth->fetchAll(PDO::FETCH_ASSOC);
 ```
-There is no need to loop to pull an entire resultset with PDO.  
+There is no need to loop to pull an entire result-set with PDO.  
 Just use the [PDOStatement::fetchAll](http://us3.php.net/manual/en/pdostatement.fetchall.php) method passing the result style you want.
 
 ### Getting the row id of the inserted record with mysql_insert_id
@@ -332,7 +333,7 @@ try {
 Whenever you execute a query that contains any data other than string literals you need to guard yourself against [SQL Injection](http://en.wikipedia.org/wiki/SQL_injection).
 
 All data should be escaped whether it comes from a posted form, another database query, read from a file, or returned from a web service.  
-Anything that is not a hardcoded string that you typed yourself cannot be trusted and needs to be escaped.
+Anything that is not a hard-coded string that you typed yourself cannot be trusted and needs to be escaped.
 
 ### Escaping data with the mysql extension
 
@@ -360,7 +361,7 @@ However this isn't the best way of handling passing data to queries with PDO.
 ## Prepared Statements
 
 Up until now I haven't covered anything that would provide a real advantage to switching to PDO.
-Sure some of the syntax is a little shorter and easier to work with but are just differences in sytax for the same features.
+Sure some of the syntax is a little shorter and easier to work with but are just differences in syntax for the same features.
 
 Now I'll get to features that you just cannot do with the plain mysql extension.
 
@@ -368,7 +369,7 @@ Prepared statements work a little differently than just replacing placeholders w
 
 With a prepared statement the query is actually sent to the database with the placeholders.
 This query is compiled and a statement is returned.
-You then send the data over seperately and the database does handles all the escaping and replacing for you.
+You then send the data over separately and the database does handles all the escaping and replacing for you.
 This makes them much safer and less error prone than escaping the data yourself.
 
 With PDO there are two ways of providing parameters for a prepared statement.
