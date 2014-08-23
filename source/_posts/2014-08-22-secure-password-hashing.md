@@ -3,7 +3,7 @@ layout: post
 title: Secure Password Hashing with PHP
 date: 2014-08-22 00:00:00 -0700
 description: The password_hash function added in PHP 5.5 makes secure password hashing easy.
-published: false
+published: true
 categories: [php, security]
 tags: []
 ---

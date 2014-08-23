@@ -3,7 +3,7 @@ layout: post
 title: Simplifying database interactions with Doctrine DBAL
 date: 2014-08-15 00:00:00 -0700
 description: This article will introduce Doctrine DBAL for a more user friendly developer experience than straight PDO.
-published: false
+published: true
 comments: true
 categories: 
     - php
@@ -15,9 +15,9 @@ I previously wrote about [switching from the mysql extension to PDO](/2014/08/mo
 PDO introduces a number of convenient features beyond the mysql extension such as transactions, prepared statements, and more fetching options.
 However there are still a few things that are a bit painful.
 
-This article will introduce [Doctrine DBAL](http://www.doctrine-project.org/projects/dbal.html) to help aliviate some of these pain points.
+This article will introduce [Doctrine DBAL](http://www.doctrine-project.org/projects/dbal.html) to help alleviate some of these pain points.
 
-<abbr title="Doctrine database abstraction & access layer">Doctrine DBAL</abbr> is a wrapper around [PDO](http://php.net/manual/en/book.pdo.php).
+<abbr title="Doctrine database abstraction &amp; access layer">Doctrine DBAL</abbr> is a wrapper around [PDO](http://php.net/manual/en/book.pdo.php).
 It adds a few conveniences beyond straight PDO as well as a query builder.
 
 <!--more-->
@@ -153,7 +153,7 @@ $dbh->delete('users', array('id' => 1));
 
 ## Query Builder
 
-Doctrine DBAL also features a [query builder](http://docs.doctrine-project.org/projects/doctrine-dbal/en/latest/reference/query-builder.html) to help build complicated SQL queries.
+Doctrine DBAL also features a [query builderr](http://docs.doctrine-project.org/projects/doctrine-dbal/en/latest/reference/query-builder.html) to help build complicated SQL queries.
 
 ```php Query Builder http://docs.doctrine-project.org/projects/doctrine-dbal/en/latest/reference/query-builder.html
 // This will run the following query
@@ -280,5 +280,5 @@ The query builder does result in some extra overhead as it needs to compile the 
 Doctrine DBAL adds a lot of functionality for a very lightweight overhead.
 Even if you don't use the query builder it is worth it for the shorter syntax on inserts, updates, and deletes as well as the ability to prepare, execute, and fetch data in one statement.
 
-There is a lot more functionality I didn't cover so I recommend taking a look at [the documentation](http://docs.doctrine-project.org/projects/doctrine-dbal/en/latest/index.html)
+There is a lot more functionality I didn't cover so I recommend taking a look at [the documentationn](http://docs.doctrine-project.org/projects/doctrine-dbal/en/latest/index.html)
 for other pieces of functionality such as events, a schema manager, caching, sharding, and more.
