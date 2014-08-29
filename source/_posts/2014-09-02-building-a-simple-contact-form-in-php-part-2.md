@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Building a simple contact form in PHP - Part 2
-date: 2014-08-26 00:00:00 -0700
+date: 2014-09-02 00:00:00 -0700
 description: Adding server-side form validation to a php contact form.
 published: false
 categories: [php, mail]

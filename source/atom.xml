@@ -21,7 +21,15 @@ layout: nil
     <link href="{{ site.url }}{{ post.url }}"/>
     <updated>{{ post.date | date_to_xmlschema }}</updated>
     <id>{{ site.url }}{{ post.id }}</id>
-    <content type="html"><![CDATA[{{ post.content | expand_urls: site.url | cdata_escape }}]]></content>
+    {% if post.description %}
+      <summary><![CDATA[{{ post.description | cdata_escape }}]]></summary>
+    {% endif %}
+    {% if post.content contains '<!--more-->' %}
+      <content type="html"><![CDATA[{{ post.content | split:'<!--more-->' | first | expand_urls: site.url | cdata_escape }}]]></content>
+    {% else %}
+      <content type="html"><![CDATA[{{ post.content | expand_urls: site.url | cdata_escape }}]]></content>
+    {% endif %}
+
   </entry>
   {% endfor %}
 </feed>

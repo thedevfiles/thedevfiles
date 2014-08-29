@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Building a simple contact form in PHP - Part 1
-date: 2014-08-25 00:00:00 -0700
+date: 2014-09-01 00:00:00 -0700
 description: Building a simple contact form in PHP
 published: false
 categories: [php, mail]
