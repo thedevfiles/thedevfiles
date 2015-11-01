@@ -1,0 +1,68 @@
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  color: $text-color;
+  font-family: "PT Serif", Georgia, Times, "Times New Roman", serif;
+  font-size: 18px;
+}
+
+body {
+  background-color: $background-medium;
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  color: $link-color;
+  &:hover {
+    color: $link-color-hover;
+  }
+  &:visited {
+    color: $link-color-visited;
+  }
+}
+
+img {
+  height: auto;
+  max-width: 100%;
+}
+
+p {
+  line-height: 28px;
+}
+
+code {
+  font-size: .8em;
+
+  @include media($breakpoint-small) {
+    font-size: 1em;
+  }
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+  tr {
+    th, td {
+      border-bottom: solid 1px $border-dark;
+      padding: .4em;
+    }
+    th {
+      background-color: $background-light;
+    }
+  }
+}
+
+.sr-only {
+  border: 0;
+  clip: rect(0, 0, 0, 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+}

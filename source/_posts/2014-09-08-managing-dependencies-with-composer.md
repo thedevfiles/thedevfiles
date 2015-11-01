@@ -2,8 +2,12 @@
 layout: post
 title: Managing Dependencies with Composer
 date: 2014-09-08 00:00:00 -0700
-published: false
-categories: [php]
+description: Using composer to manage dependencies.
+published: true
+comments: true
+sharing: true
+categories: [User Guide]
+tags: [php]
 ---
 
 [Composer](http://getcomposer.org) is a package manager for PHP much like [gem](https://rubygems.org/) is for ruby or [npm](https://www.npmjs.org/) is for node.
@@ -15,8 +19,6 @@ It also includes an autoloader to load classes in both the installed packages as
 <!--more-->
 
 ## Installation
-
-[getcomposer.org](http://getcomposer.org)
 
 The easiest way to install composer on a Mac or Linux based OS is to run one of the following commands from a terminal.
 
@@ -75,11 +77,11 @@ There should be a `require` property with a list of your current packages.
 
 You can add any new packages by adding them to this list.
 
-```json composer.json
+```json
 {
     "require": {
-        "monolog/monolog": "1.10.0",
-        "swiftmailer/swiftmailer": "5.2.1"
+        "monolog/monolog": "~1.10.0",
+        "swiftmailer/swiftmailer": "~5.2.1"
     }
 }
 ```

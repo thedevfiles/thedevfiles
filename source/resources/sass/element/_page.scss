@@ -1,0 +1,7 @@
+.page {
+  @extend .container;
+}
+
+.page__title {
+  @extend .container__title;
+}

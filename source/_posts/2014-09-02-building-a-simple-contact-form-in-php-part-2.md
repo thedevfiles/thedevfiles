@@ -3,13 +3,20 @@ layout: post
 title: Building a simple contact form in PHP - Part 2
 date: 2014-09-02 00:00:00 -0700
 description: Adding server-side form validation to a php contact form.
-published: false
-categories: [php, mail]
+published: true
+comments: true
+sharing: true
+first: /2014/09/building-a-simple-contact-form-in-php-part-1/
+last: /2014/09/building-a-simple-contact-form-in-php-part-5/
+prev: /2014/09/building-a-simple-contact-form-in-php-part-1/
+next: /2014/09/building-a-simple-contact-form-in-php-part-3/
+categories: [Tutorial]
+tags: [php, mail]
 ---
 
-In [part 1](/2014/08/building-a-simple-contact-form-in-php-part-1) of [Building a simple contact form in PHP](/2014/08/building-a-simple-contact-form-in-php-part-1) we built a simple contact form that sends a notification when the form is posted with the values the user posted.
+In [part 1](/2014/09/building-a-simple-contact-form-in-php-part-1/) of [Building a simple contact form in PHP](/2014/09/building-a-simple-contact-form-in-php-part-1/) we built a simple contact form that sends a notification when the form is posted with the values the user posted.
 
-As we discussed at the end of [part 1](/2014/08/building-a-simple-contact-form-in-php-part-1) there are a few problems with our contact form.
+As we discussed at the end of [part 1](/2014/09/building-a-simple-contact-form-in-php-part-1/) there are a few problems with our contact form.
 
 We are going to work on solving some of those problems.
 
@@ -17,7 +24,7 @@ We are going to work on solving some of those problems.
 
 The is what the contact form looked like as we last left it.
 
-```php contact.php
+```php
 <?php
 
 // Check if the form has been posted
@@ -35,7 +42,7 @@ if (isset($_POST['name'], $_POST['email'], $_POST['message'])) {
               . "Email: " . $_POST['email'] . "\n"
               . "Message:\n" . $_POST['message'];
     // Send the email
-    mail($to, $subject, $mailbody);
+    mail($to, $subject, $mailbody, $headers);
     // Go to the thank you page
     header("location: thankyou.html");
     exit;
@@ -150,7 +157,7 @@ if (isset($_POST['name'], $_POST['email'], $_POST['message'])) {
                   . "Email: " . $_POST['email'] . "\n"
                   . "Message:\n" . $_POST['message'];
         // Send the email
-        mail($to, $subject, $mailbody);
+        mail($to, $subject, $mailbody, $headers);
         // Go to the thank you page
         header("location: thankyou.html");
         exit;
@@ -201,7 +208,7 @@ if (empty($_POST['email'])) {
 
 Our full contact.php page should now look like this.
 
-```php contact.php
+```php
 <?php
 
 $valid = true;
@@ -238,7 +245,7 @@ if (isset($_POST['name'], $_POST['email'], $_POST['message'])) {
                   . "Email: " . $_POST['email'] . "\n"
                   . "Message:\n" . $_POST['message'];
         // Send the email
-        mail($to, $subject, $mailbody);
+        mail($to, $subject, $mailbody, $headers);
         // Go to the thank you page
         header("location: thankyou.html");
         exit;
@@ -361,7 +368,7 @@ $headers = "From: website@example.com\r\n"
 
  The full `contact.php` should now look like the following.
 
-```php contact.php
+```php
 <?php
 
 $valid = true;
@@ -410,7 +417,7 @@ if (isset($_POST['name'], $_POST['email'], $_POST['message'])) {
                   . "Email: " . $contact['email'] . "\n"
                   . "Message:\n" . $contact['message'];
         // Send the email
-        mail($to, $subject, $mailbody);
+        mail($to, $subject, $mailbody, $headers);
         // Go to the thank you page
         header("location: thankyou.html");
         exit;

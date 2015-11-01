@@ -4,8 +4,10 @@ title: Secure Password Hashing with PHP
 date: 2014-08-22 00:00:00 -0700
 description: The password_hash function added in PHP 5.5 makes secure password hashing easy.
 published: true
-categories: [php, security]
-tags: []
+comments: true
+sharing: true
+categories: [User Guide]
+tags: [php, security]
 ---
 
 There is a lot of misinformation and uncertainty on the topic of password storage.

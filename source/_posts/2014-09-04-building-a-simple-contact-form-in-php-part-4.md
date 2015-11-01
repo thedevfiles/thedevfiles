@@ -2,12 +2,19 @@
 layout: post
 title: Building a simple contact form in PHP - Part 4
 date: 2014-09-04 00:00:00 -0700
-published: false
+published: true
+comments: true
+sharing: true
 description: Adding a reCAPTCHA field to a php contact form
-categories: [php, mail]
+first: /2014/09/building-a-simple-contact-form-in-php-part-1/
+last: /2014/09/building-a-simple-contact-form-in-php-part-5/
+prev: /2014/09/building-a-simple-contact-form-in-php-part-3/
+next: /2014/09/building-a-simple-contact-form-in-php-part-5/
+categories: [Tutorial]
+tags: [php, mail]
 ---
 
-In of [part 3](/2014/08/building-a-simple-contact-form-in-php-part-3) of [Building a simple contact form in PHP](/2014/08/building-a-simple-contact-form-in-php-part-1) we added client-side validation to our form.
+In of [part 3](/2014/09/building-a-simple-contact-form-in-php-part-3/) of [Building a simple contact form in PHP](/2014/09/building-a-simple-contact-form-in-php-part-1/) we added client-side validation to our form.
 
 In this part we are going to add a [CAPTCHA](http://en.wikipedia.org/wiki/Captcha) field to the form in order to reduce spam.
 
@@ -23,7 +30,7 @@ We are going to use the [reCAPTCHA](https://www.google.com/recaptcha/intro/index
 
 As we left it our contact form looked like the following.
 
-```php contact.php
+```php
 <?php
 
 $valid = true;
@@ -72,7 +79,7 @@ if (isset($_POST['name'], $_POST['email'], $_POST['message'])) {
                   . "Email: " . $contact['email'] . "\n"
                   . "Message:\n" . $contact['message'];
         // Send the email
-        mail($to, $subject, $mailbody);
+        mail($to, $subject, $mailbody, $headers);
         // Go to the thank you page
         header("location: thankyou.html");
         exit;
@@ -152,7 +159,7 @@ We are also going to use this configuration file to store the `To` and `From` ad
 
 Create a file named `config.php` in the same directory as the `contact.php` page with the following content.
 
-```php config.php
+```php
 <?php
 return array(
   "recaptcha" => array(
@@ -330,7 +337,7 @@ if (isset($_POST['recaptcha_challenge_field'],$_POST['recaptcha_response_field']
                   . "Email: " . $contact['email'] . "\n"
                   . "Message:\n" . $contact['message'];
         // Send the email
-        mail($to, $subject, $mailbody);
+        mail($to, $subject, $mailbody, $headers);
         // Go to the thank you page
         header("location: thankyou.html");
         exit;

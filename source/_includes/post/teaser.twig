@@ -1,0 +1,43 @@
+<article class="post post--teaser h-entry" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
+    <header class="post__header">
+        <h1 class="post__title p-name">
+            <a href="{{ post.url }}/" itemprop="headline">{{ post.title }}</a>
+        </h1>
+        <time class="post__date dt-published" itemprop="datePublished"
+              content="{{ post.date|date('c') }}" datetime="{{ post.date|date('c') }}">{{ post.date|date('M jS, Y') }}</time>
+    </header>
+    <div class="post__body">
+        <div class="post__body--teaser p-summary" itemprop="description">
+            {{ post.blocks.content | split('<!--more-->') | first | raw }}
+        </div>
+
+        <div class="post__readmore">
+            <a class="u-url" rel="full-article" href="{{ post.url }}/" itemprop="url">Read More &rarr;</a>
+        </div>
+
+    </div>
+    <footer class="post__footer">
+        {% if post.meta.tags %}
+            <div class="post__tags p-category">
+                <strong>Tags:</strong>
+                {% for tag in post.tags|sort %}
+                    <a
+                    href="/tag/{{ tag|url_encode(true) }}/">{{ tag }}</a>{% if not loop.last %}, {% endif %}
+                {% endfor %}
+            </div>
+        {% endif %}
+        {% if site.disqus.shortname and post.comments and site.disqus.show_comment_count %}
+        <div class="comments comments--summary">
+            <div class="comments__count">
+                <a href="{{ post.url }}/#disqus_thread"
+                   data-disqus-identifier="{{ site.url }}{{ post.url }}/">
+                    Comments
+                </a>
+            </div>
+        </div>
+        {% endif %}
+    </footer>
+    {% if post.tags %}
+        <meta itemprop="keywords" content="{{ post.tags|sort|join(', ') }}">
+    {% endif %}
+</article>

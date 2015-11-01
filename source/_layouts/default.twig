@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>
+        {% block title %}
+            {% if page.title %}
+                {{ page.title }} | {{ site.title }}
+            {% else %}
+                {{ site.title }}
+            {% endif %}
+        {% endblock %}
+    </title>
+    <meta charset="utf-8">
+    <meta name="theme-color" content="#ffffff">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% block head_meta %}
+        {% if page.description %}
+            <meta name="description" content="{{ page.description }}">
+        {% elseif site.meta.description %}
+            <meta name="description" content="{{ site.meta.description }}">
+        {% endif %}
+        {% if page.author %}
+            <meta name="author" content="{{ page.author }}">
+        {% elseif site.author %}
+            <meta name="author" content="{{ site.author }}">
+        {% endif %}
+    {% endblock %}
+    <link rel="author" href="/contact/">
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <![endif]-->
+    <link href="/assets/css/style.css" rel="stylesheet" type="text/css"/>
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet"
+          type="text/css"/>
+
+    {% include 'favicon.twig' %}
+
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.9.1/styles/solarized_dark.min.css">
+    <link rel="alternate" type="application/atom+xml" href="/atom.xml"
+          title="{{ site.title }} activity feed"/>
+    {% block head_styles %}
+    {% endblock %}
+    {% block head_scripts %}
+    {% endblock %}
+</head>
+<body>
+{% include 'header.twig' %}
+{% include 'navbar.twig' %}
+
+<div class="content-wrapper">
+    <section class="main">
+
+        {% block content_wrapper %}{% block content %}{% endblock %}{% endblock %}
+
+    </section>
+    {% include 'sidebar.twig' %}
+</div>
+{% include 'footer.twig' %}
+
+
+{% block scripts %}
+{% endblock %}
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.9.1/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+{% block disqus %}
+    {% include 'disqus.twig' %}
+{% endblock %}
+
+{% block scripts_after %}
+{% endblock %}
+{% include 'google-analytics.twig' %}
+</body>
+</html>

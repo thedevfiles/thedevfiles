@@ -1,0 +1,27 @@
+<aside class="widget widget--monthly">
+    <h4 class="widget__title">Monthly Arhives</h4>
+
+    <div class="widget__body">
+        <ul class="widget--monthly__list">
+            {% for year, data in dates_posts %}
+            <li>
+                <a class="widget--monthly__year {{ page.permalink == permalink_factory.getYear(year) ? 'current' }}" href="{{ permalink_factory.getYear(year) }}">{{ year }} ({{ data.posts|length }})</a>
+
+                {% if data.months|length %}
+                    <ul class="widget--monthly__months">
+                    {% for month, month_data in data.months %}
+                        <li>
+                            <a class="widget--monthly__month {{ page.permalink == permalink_factory.getMonth(year, month) ? 'current' }}" href="{{ permalink_factory.getMonth(year, month) }}">
+                                {{ month_data.posts|first.date|date('M') }}
+                                ({{ month_data.posts|length }})
+                            </a>
+                        </li>
+                    {% endfor %}
+                    </ul>
+                {% endif %}
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+</aside>
+

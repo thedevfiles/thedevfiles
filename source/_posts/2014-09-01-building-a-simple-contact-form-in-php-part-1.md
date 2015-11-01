@@ -3,8 +3,13 @@ layout: post
 title: Building a simple contact form in PHP - Part 1
 date: 2014-09-01 00:00:00 -0700
 description: Building a simple contact form in PHP
-published: false
-categories: [php, mail]
+published: true
+comments: true
+sharing: true
+last: /2014/09/building-a-simple-contact-form-in-php-part-5/
+next: /2014/09/building-a-simple-contact-form-in-php-part-2/
+categories: [Tutorial]
+tags: [php, mail]
 ---
 
 In this series we will be building a simple contact form in php.
@@ -17,7 +22,8 @@ It will cover sending emails and form validation.
 
 We will start with the form itself.
 
-```html contact.php
+Save the following as contact.php
+```html
 <!DOCTYPE html>
 <html>
 <head>
@@ -53,7 +59,8 @@ We will start with the form itself.
 
 We will also add a stylesheet with some basic styles for the form.
 
-```css styles.css
+Save the following as styles.css
+```css
 fieldset {
     margin:0 auto;
     width: 235px;
@@ -90,7 +97,8 @@ Feel free to add your own styles.
 We also will need a page to send the user to after they submit the form.
 This should have some sort of "Thank you for submitting" message on it.
 
-```html thankyou.html
+Save the following as thankyou.html
+```html
 <!DOCTYPE html>
 <html>
 <head>
@@ -111,7 +119,7 @@ We have a form but it doesn't do anything when the user submits it.
 
 Add the following to the top of the contact.php page above the `<!DOCTYPE html>` line.
 
-```php contact.php
+```php
 <?php
 
 // Check if the form has been posted
@@ -129,7 +137,7 @@ if (isset($_POST['name'], $_POST['email'], $_POST['message'])) {
               . "Email: " . $_POST['email'] . "\n"
               . "Message:\n" . $_POST['message'];
     // Send the email
-    mail($to, $subject, $mailbody);
+    mail($to, $subject, $mailbody, $headers);
     // Go to the thank you page
     header("location: thankyou.html");
     exit;
@@ -141,7 +149,7 @@ if (isset($_POST['name'], $_POST['email'], $_POST['message'])) {
 
 The entire page should not look like this.
 
-```php contact.php
+```php
 <?php
 
 // Check if the form has been posted
@@ -159,7 +167,7 @@ if (isset($_POST['name'], $_POST['email'], $_POST['message'])) {
               . "Email: " . $_POST['email'] . "\n"
               . "Message:\n" . $_POST['message'];
     // Send the email
-    mail($to, $subject, $mailbody);
+    mail($to, $subject, $mailbody, $headers);
     // Go to the thank you page
     header("location: thankyou.html");
     exit;
@@ -209,7 +217,7 @@ If they exist the user has submitted the form.
 if (isset($_POST['name'], $_POST['email'], $_POST['message'])) {
 ```
 
-Next we define where we would like the email to be sent and what the subject of the email should be.  
+Next we define where we would like the email to be sent and what the subject of the email should be.
 Change the `$to` variable to your own email address.
 
 ```php
@@ -243,7 +251,7 @@ Next we use the [php mail](http://us3.php.net/manual/en/book.mail.php) function 
 
 ```php
 // Send the email
-mail($to, $subject, $mailbody);
+mail($to, $subject, $mailbody, $headers);
 ```
 
 Finally we send the user to the thankyou.html page that we created.
@@ -258,13 +266,13 @@ exit;
 
 While this script would work as is for your contact form it have a number of problems with it.
 
-The biggest one is that there is no form validation.  
+The biggest one is that there is no form validation.
 A user can submit a blank form and it will send the email and redirect to the thankyou.html page anyway.
 
-The data the user is submitting is not being escaped or filtered.  
+The data the user is submitting is not being escaped or filtered.
 We only want plain text being submitted through the form but without any enforcement of that the user can submit anything including scripts that might cause security issues with certain email clients.
 
-There is nothing to help prevent spam.  
+There is nothing to help prevent spam.
 Once a spam-bot finds this script you could find your inbox full of worthless junk.
 
 In the next part I will tackle some of these issues.

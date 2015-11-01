@@ -2,12 +2,18 @@
 layout: post
 title: Building a simple contact form in PHP - Part 5
 date: 2014-09-05 00:00:00 -0700
-published: false
+published: true
+sharing: true
+comments: true
 description: Using Swift to send email notifications on contact form submissions.
-categories: [php, mail]
+first: /2014/09/building-a-simple-contact-form-in-php-part-1/
+last: /2014/09/building-a-simple-contact-form-in-php-part-5/
+prev: /2014/09/building-a-simple-contact-form-in-php-part-4/
+categories: [Tutorial]
+tags: [php, mail]
 ---
 
-In of [part 4](/2014/08/building-a-simple-contact-form-in-php-part-4) of [Building a simple contact form in PHP](/2014/08/building-a-simple-contact-form-in-php-part-1) we added a CAPCHA field to help reduce spam.
+In of [part 4](/2014/09/building-a-simple-contact-form-in-php-part-4/) of [Building a simple contact form in PHP](/2014/09/building-a-simple-contact-form-in-php-part-1/) we added a CAPCHA field to help reduce spam.
 
 In this part we are going to change the sending of the mail to use SMTP by using [Swift Mailer](http://swiftmailer.org/), a php mailing library.
 
@@ -15,7 +21,7 @@ In this part we are going to change the sending of the mail to use SMTP by using
 
 As we left it our contact form looked like this.
 
-```php contact.php
+```php
 <?php
 
 require_once(__DIR__ . '/recaptcha-php-1.11/recaptchalib.php');
@@ -84,7 +90,7 @@ if (isset($_POST['recaptcha_challenge_field'],$_POST['recaptcha_response_field']
                   . "Email: " . $contact['email'] . "\n"
                   . "Message:\n" . $contact['message'];
         // Send the email
-        mail($to, $subject, $mailbody);
+        mail($to, $subject, $mailbody, $headers);
         // Go to the thank you page
         header("location: thankyou.html");
         exit;
@@ -239,7 +245,7 @@ The `Swift_Mailer` actually does the sending of the `Swift_Message` we created u
 
 Our full `contact.php` page should now look like the following
 
-```php contact.php
+```php
 <?php
 
 require_once(__DIR__ . '/recaptcha-php-1.11/recaptchalib.php');

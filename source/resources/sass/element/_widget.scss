@@ -1,0 +1,104 @@
+.widget {
+  @extend .container;
+  .widget__title {
+    border-bottom: 1px solid $border-light;
+    font-size: 1.2em;
+    margin: 0 0 .5em;
+  }
+}
+
+.widget--about {
+  .widget__body {
+    @include outer-container(100%);
+    a {
+      color: $background-dark;
+      &:hover {
+        color: #0181eb;
+      }
+    }
+  }
+  .widget--about__gravatar {
+    float: left;
+    @include media($breakpoint-medium) {
+      @include span-columns(4);
+    }
+    img {
+      border: #fff .2em solid;
+      border-radius: .3em;
+      box-shadow: rgba(0, 0, 0, .45) 0 1px 3px;
+    }
+  }
+  .widget--about__social {
+    float: left;
+    font-size: 28px;
+    margin-left: .5em;
+    padding-top: 10px;
+    @include media($breakpoint-medium) {
+      margin-left: 0;
+      @include span-columns(8);
+    }
+    a {
+      display: inline-block;
+      height: 32px;
+      text-decoration: none;
+      white-space: normal;
+      width: 28px;
+      word-break: break-all;
+      word-wrap: break-word;
+    }
+  }
+}
+
+.widget--monthly {
+
+  .widget--monthly__list {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+
+    li {
+      list-style-type: none;
+    }
+
+  }
+
+  a {
+    border-bottom: 1px solid $border-light;
+    display: block;
+    text-decoration: none;
+    color: $text-color;
+    &:hover {
+      color: $link-color-hover;
+    }
+  }
+
+  .widget--monthly__year {
+    padding: .3em 0;
+
+    li {
+      border-bottom: 1px solid $border-light;
+    }
+
+  }
+
+  .widget--monthly__months {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .widget--monthly__month {
+    padding: .3em 0 .3em 1em;
+  }
+
+}
+
+.widget--tags {
+  a {
+    color: $text-color;
+    text-decoration: none;
+    &:hover {
+      color: $link-color-hover;
+    }
+  }
+}

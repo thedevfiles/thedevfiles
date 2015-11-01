@@ -1,0 +1,14 @@
+---
+layout: page
+title: Categories
+use:
+    - posts_categories
+---
+
+<ul class="categorylist">
+{% for category,posts in data.posts_categories|sort %}
+    <li class="category">
+        <a class="category__link" href="/category/{{ category|url_encode(true) }}/">{{ category }}</a>
+    </li>
+{% endfor %}
+</ul>

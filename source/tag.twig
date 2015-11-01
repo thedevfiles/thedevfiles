@@ -1,0 +1,14 @@
+---
+layout: page
+title: Tags
+use:
+    - posts_tags
+---
+
+<ul class="taglist">
+{% for tag,posts in data.posts_tags|sort %}
+    <li class="tag">
+        <a class="tag__link" href="/tag/{{ tag|url_encode(true) }}/">{{ tag }}</a>
+    </li>
+{% endfor %}
+</ul>

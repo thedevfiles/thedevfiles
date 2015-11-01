@@ -1,0 +1,28 @@
+
+.content-wrapper {
+  @include outer-container;
+  margin: 0 1em;
+  @include media($breakpoint-xlarge) {
+    margin: 0 auto;
+  }
+  .main {
+    @include media($breakpoint-medium) {
+      @include span-columns(8);
+    }
+    @include media($breakpoint-large) {
+      @include span-columns(9);
+    }
+  }
+  .sidebar {
+    border-top: solid 1px #aaa;
+    margin-top: 1em;
+    @include media($breakpoint-medium) {
+      @include span-columns(4);
+      border-top: none;
+      margin-top: 0;
+    }
+    @include media($breakpoint-large) {
+      @include span-columns(3);
+    }
+  }
+}

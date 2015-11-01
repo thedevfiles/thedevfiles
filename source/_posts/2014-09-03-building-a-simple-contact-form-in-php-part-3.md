@@ -3,11 +3,18 @@ layout: post
 title: Building a simple contact form in PHP - Part 3
 date: 2014-09-03 00:00:00 -0700
 description: Adding client-side form validation to a php contact form.
-published: false
-categories: [php, mail]
+published: true
+comments: true
+sharing: true
+first: /2014/09/building-a-simple-contact-form-in-php-part-1/
+last: /2014/09/building-a-simple-contact-form-in-php-part-5/
+prev: /2014/09/building-a-simple-contact-form-in-php-part-2/
+next: /2014/09/building-a-simple-contact-form-in-php-part-4/
+categories: [Tutorial]
+tags: [php, mail]
 ---
 
-As we last left it in [part 2](/2014/08/building-a-simple-contact-form-in-php-part-2) of [Building a simple contact form in PHP](/2014/08/building-a-simple-contact-form-in-php-part-1) we added server-side form validation to our contact form and input filtering to the submitted data before sending out the email.
+As we last left it in [part 2](/2014/09/building-a-simple-contact-form-in-php-part-2/) of [Building a simple contact form in PHP](/2014/09/building-a-simple-contact-form-in-php-part-1/) we added server-side form validation to our contact form and input filtering to the submitted data before sending out the email.
 
 In this part we are going to add some client-side validation to our contact form.
 
@@ -15,7 +22,7 @@ In this part we are going to add some client-side validation to our contact form
 
 This is the contact form as we left it.
 
-```php contact.php
+```php
  <?php
 
 $valid = true;
@@ -64,7 +71,7 @@ if (isset($_POST['name'], $_POST['email'], $_POST['message'])) {
                   . "Email: " . $contact['email'] . "\n"
                   . "Message:\n" . $contact['message'];
         // Send the email
-        mail($to, $subject, $mailbody);
+        mail($to, $subject, $mailbody, $headers);
         // Go to the thank you page
         header("location: thankyou.html");
         exit;
@@ -175,10 +182,10 @@ Add the following to the html below the form but before the closing `</body>` ta
 Parsley depends on [jQuery](http://jquery.com) so I am loading that as well as the Parsley library itself.
 I am loading both using a [CDN](http://en.wikipedia.org/wiki/Content_delivery_network) but you could just as easily download both libraries from their websites and include them locally.
 
-Now that the library is included the first thing we need to do is disable the html5 form validation.  
+Now that the library is included the first thing we need to do is disable the html5 form validation.
 Add a `novalidate` attribute to the `form` tag.  This will disable the built-in html5 form validation so we can have Parsley do the work.
 
-Next we need to tell Parsley that we want it to validate our form.  
+Next we need to tell Parsley that we want it to validate our form.
 Add a `data-parsley-validate` attribute to the `form` tag.
 
 The form tag should now look like the following.
@@ -236,7 +243,7 @@ Now the custom messages you provided will be displayed instead of the default `T
 
  The full `contact.php` should now look like the following.
 
-```php contact.php
+```php
 <?php
 
 $valid = true;
@@ -285,7 +292,7 @@ if (isset($_POST['name'], $_POST['email'], $_POST['message'])) {
                   . "Email: " . $contact['email'] . "\n"
                   . "Message:\n" . $contact['message'];
         // Send the email
-        mail($to, $subject, $mailbody);
+        mail($to, $subject, $mailbody, $headers);
         // Go to the thank you page
         header("location: thankyou.html");
         exit;
