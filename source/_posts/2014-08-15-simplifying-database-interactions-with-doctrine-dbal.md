@@ -6,6 +6,7 @@ description: This article will introduce Doctrine DBAL for a more user friendly 
 published: true
 comments: true
 sharing: true
+image: /images/featured/Doctrine_logo_white.png
 categories: [User Guide]
 tags:
     - php

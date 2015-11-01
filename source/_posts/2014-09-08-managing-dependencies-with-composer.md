@@ -6,6 +6,7 @@ description: Using composer to manage dependencies.
 published: true
 comments: true
 sharing: true
+image: /images/featured/logo-composer-transparent5.png
 categories: [User Guide]
 tags: [php]
 ---

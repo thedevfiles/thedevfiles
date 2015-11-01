@@ -5,6 +5,10 @@
         </h1>
         <time class="post__date dt-published" itemprop="datePublished"
               content="{{ post.date|date('c') }}" datetime="{{ post.date|date('c') }}">{{ post.date|date('M jS, Y') }}</time>
+
+        {% if post.image %}
+            <meta class="u-photo" itemprop="image" content="{{ post.image }}">
+        {% endif %}
     </header>
     <div class="post__body">
         <div class="post__body--teaser p-summary" itemprop="description">

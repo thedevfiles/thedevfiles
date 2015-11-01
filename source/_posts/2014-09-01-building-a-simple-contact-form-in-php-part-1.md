@@ -6,6 +6,7 @@ description: Building a simple contact form in PHP
 published: true
 comments: true
 sharing: true
+image: /images/featured/contact-form.png
 last: /2014/09/building-a-simple-contact-form-in-php-part-5/
 next: /2014/09/building-a-simple-contact-form-in-php-part-2/
 categories: [Tutorial]
