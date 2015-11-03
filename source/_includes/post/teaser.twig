@@ -7,7 +7,7 @@
               content="{{ post.date|date('c') }}" datetime="{{ post.date|date('c') }}">{{ post.date|date('M jS, Y') }}</time>
 
         {% if post.image %}
-            <meta class="u-photo" itemprop="image" content="{{ post.image }}">
+            <meta class="u-photo" itemprop="image" content="{{ site.url }}{{ post.image }}">
         {% endif %}
     </header>
     <div class="post__body">

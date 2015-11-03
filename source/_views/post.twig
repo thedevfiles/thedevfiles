@@ -25,7 +25,7 @@
 
             <h2 class="post__date">{{ page.date|date('M jS, Y') }}</h2>
             {% if page.image %}
-                <meta class="u-photo" itemprop="image" content="{{ page.image }}">
+                <meta class="u-photo" itemprop="image" content="{{ site.url }}{{ page.image }}">
             {% endif %}
         </header>
         <div class="post__body e-content" itemprop="articleBody">
