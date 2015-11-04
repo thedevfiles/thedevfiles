@@ -48,13 +48,15 @@
 {% include 'header.twig' %}
 {% include 'navbar.twig' %}
 
-<div class="content-wrapper">
-    <section class="main">
+<div class="middle-section">
+    <div class="content-wrapper">
+        <section class="main">
 
-        {% block content_wrapper %}{% block content %}{% endblock %}{% endblock %}
+            {% block content_wrapper %}{% block content %}{% endblock %}{% endblock %}
 
-    </section>
-    {% include 'sidebar.twig' %}
+        </section>
+        {% include 'sidebar.twig' %}
+    </div>
 </div>
 {% include 'footer.twig' %}
 

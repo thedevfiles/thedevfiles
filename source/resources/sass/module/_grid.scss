@@ -1,4 +1,6 @@
-
+.middle-section {
+  background-color: $background-medium;
+}
 .content-wrapper {
   @include outer-container;
   margin: 0 1em;
