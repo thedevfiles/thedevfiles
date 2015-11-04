@@ -5,7 +5,7 @@ date: 2014-09-04 00:00:00 -0700
 published: true
 comments: true
 sharing: true
-image: /images/featured/contact-form.png
+image: /assets/images/featured/contact-form-recaptcha.png
 description: Adding a reCAPTCHA field to a php contact form
 first: /2014/09/building-a-simple-contact-form-in-php-part-1/
 last: /2014/09/building-a-simple-contact-form-in-php-part-5/
@@ -232,7 +232,7 @@ Now we add the form field for the reCAPTCHA field.
 
 The reCAPTCHA field should show up on the form but wont do anything until we add code to check the posted value.
 
-![reCAPTCHA](/images/contact-form/part-4/reCAPTCHA.png)
+![reCAPTCHA](/assets/images/contact-form/part-4/reCAPTCHA.png)
 
 Add another check to make sure a value was posted by changing the line that checks the other posted variables to the following.
 

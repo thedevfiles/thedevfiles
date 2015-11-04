@@ -6,7 +6,7 @@ description: Building a simple contact form in PHP
 published: true
 comments: true
 sharing: true
-image: /images/featured/contact-form.png
+image: /assets/images/featured/contact-form.png
 last: /2014/09/building-a-simple-contact-form-in-php-part-5/
 next: /2014/09/building-a-simple-contact-form-in-php-part-2/
 categories: [Tutorial]
@@ -90,7 +90,7 @@ textarea {
 
 If you view the page in a browser it should look something like this.
 
-![Contact Form](/images/contact-form/part-1/contact-form.png)
+![Contact Form](/assets/images/contact-form/part-1/contact-form.png)
 
 Not the prettiest form but this isn't a design tutorial.
 Feel free to add your own styles.

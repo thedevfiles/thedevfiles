@@ -6,7 +6,7 @@ description: The password_hash function added in PHP 5.5 makes secure password h
 published: true
 comments: true
 sharing: true
-image: /images/featured/Black_Lock.png
+image: /assets/images/featured/Black_Lock.png
 categories: [User Guide]
 tags: [php, security]
 ---
