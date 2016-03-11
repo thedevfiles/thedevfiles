@@ -71,6 +71,9 @@ disqus:
 google_analytics_tracking_id: UA-35809975-1
 google_analytics_domain: thedevfiles.com
 
+# Google Tag Manager
+google_tag_manager_id: GTM-KBZCND
+
 # Facebook Like
 facebook_like: false
 facebook_layout: button_count
