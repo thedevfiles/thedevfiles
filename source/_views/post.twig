@@ -26,13 +26,21 @@
 
             <h2 class="post__date">{{ page.date|date('M jS, Y') }}</h2>
             {% if page.image %}
-                <meta class="u-photo" itemprop="image" content="{{ site.url }}{{ page.image }}">
+                <img class="u-photo hidden" itemprop="image" src="{{ site.url }}{{ page.image }}" alt="{{ page.title }}">
             {% endif %}
         </header>
         <div class="post__body e-content" itemprop="articleBody">
             {{ page.blocks.content|raw }}
         </div>
         <footer class="post__footer">
+            <div itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+                <meta itemprop="name" content="The Dev Files">
+            </div>
+            <meta itemprop="dateModified" content="{{ page.date|date('c') }}">
+            <meta itemprop="mainEntityOfPage" content="{{ site.url }}{{ page.url }}/">
+            <meta class="u-url" itemprop="url" content="{{ site.url }}{{ page.url }}/">
+
+
             <ul class="past__meta">
                 <li class="post__byline">Posted by <span class="post__author p-author h-card" itemprop="author">Jonathan Bernardi</span></li>
                 <li>
@@ -50,7 +58,7 @@
                     </li>
                 {% endif %}
             </ul>
-            <meta class="u-url" itemprop="url" content="{{ site.url }}{{ page.url }}/">
+
             {% if page.tags %}
                 <meta itemprop="keywords" content="{{ page.tags|sort|join(', ') }}">
             {% endif %}

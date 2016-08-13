@@ -10,3 +10,5 @@ s3.conf
 sculpin.phar
 /source/resources/vendor
 *.sublime-project
+*.sublime-workspace
+.idea

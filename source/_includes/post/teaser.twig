@@ -5,9 +5,13 @@
         </h1>
         <time class="post__date dt-published" itemprop="datePublished"
               content="{{ post.date|date('c') }}" datetime="{{ post.date|date('c') }}">{{ post.date|date('M jS, Y') }}</time>
+        <div itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+            <meta itemprop="name" content="The Dev Files">
+        </div>
+        <meta itemprop="dateModified" content="{{ post.date|date('c') }}">
 
         {% if post.image %}
-            <meta class="u-photo" itemprop="image" content="{{ site.url }}{{ post.image }}">
+            <img class="u-photo hidden" itemprop="image" src="{{ site.url }}{{ post.image }}" alt="{{ post.title }}">
         {% endif %}
     </header>
     <div class="post__body">

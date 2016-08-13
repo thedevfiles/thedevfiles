@@ -118,9 +118,9 @@ $sth->execute();
 $user = $sth->fetchAssoc();
 
 $sth = $dbh->prepare("UPDATE users SET name = :name, email = :email WHERE id = :id");
-$sth->bindeValue(":name", $name);
-$sth->bindeValue(":email", $email);
-$sth->bindeValue(":id", $id, PDO::PARAM_INT);
+$sth->bindValue(":name", $name);
+$sth->bindValue(":email", $email);
+$sth->bindValue(":id", $id, PDO::PARAM_INT);
 $sth->execute();
 ```
 
