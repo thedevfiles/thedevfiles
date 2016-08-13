@@ -43,6 +43,7 @@
     {% endblock %}
 </head>
 <body itemscope="http://schema.org/Blog">
+{% include 'google-tag-manager.twig' %}
 {% include 'header.twig' %}
 {% include 'navbar.twig' %}
 
@@ -72,6 +73,5 @@
 
 {% block scripts_after %}
 {% endblock %}
-{% include 'google-tag-manager.twig' %}
 </body>
 </html>
