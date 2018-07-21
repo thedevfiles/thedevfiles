@@ -33,6 +33,10 @@
             {{ page.blocks.content|raw }}
         </div>
         <footer class="post__footer">
+            <div itemprop="publisher" itemscope itemtype="http://schema.org/Person">
+                <meta itemprop="givenName" content="Jonathan Bernardi">
+                <meta itemprop="familyName" content="Bernardi">
+            </div>
             <meta itemprop="dateModified" content="{{ page.date|date('c') }}">
             <meta itemprop="mainEntityOfPage" content="{{ site.url }}{{ page.url }}">
             <meta class="u-url" itemprop="url" content="{{ site.url }}{{ page.url }}">
