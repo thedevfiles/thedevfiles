@@ -12,3 +12,4 @@ sculpin.phar
 *.sublime-project
 *.sublime-workspace
 .idea
+/vendor

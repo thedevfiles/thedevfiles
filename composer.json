@@ -1,0 +1,45 @@
+{
+    "name": "sculpin/blog-skeleton",
+    "description": "A Skeleton for a Sculpin Based Blog",
+    "type": "sculpin-skeleton",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Dragonfly Development Inc.",
+            "email": "info@dflydev.com",
+            "homepage": "http://dflydev.com"
+        },
+        {
+            "name": "Beau Simensen",
+            "email": "beau@dflydev.com",
+            "homepage": "http://beausimensen.com"
+        }
+    ],
+    "require": {
+        "sculpin/sculpin": "^2.1@dev",
+        "dflydev/embedded-composer": "^1.0@dev",
+        "kriswallsmith/assetic": "1.1.2",
+        "jbouzekri/sculpin-date-navigation-bundle": "^1.0",
+        "jbouzekri/sculpin-tag-cloud-bundle": "^1.2",
+        "mavimo/sculpin-editor-bundle": "dev-master",
+        "mavimo/sculpin-redirect-bundle": "dev-master"
+    },
+    "config": {
+        "component-dir": "source/components",
+        "components": [
+        ]
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "scripts": {
+        "post-install-cmd": [
+            "ComponentManager\\ComponentManager::postComposerInstall"
+        ]
+    },
+    "autoload": {
+        "classmap": ["component-manager.php"],
+        "psr-4": {
+            "TheDevFiles\\": "app/thedevfiles/"
+        }
+    }
+}

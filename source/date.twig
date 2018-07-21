@@ -7,7 +7,7 @@ generator: [jb_date_navigation]
 {% block title %}{% if page.month %}{{ page.date_posts|first.date|date('F') }}{% endif %} {{ page.year }} {{ page.title }} | {{ site.title }}{% endblock %}
 
 {% block pagetitle %}
-    <h1 class="page__title">{{ page.title }}: {% if page.month %}{{ page.date_posts|first.date|date('F') }}{% endif %} {{ page.year }}</h1>
+    <h1 class="page__title card__title">{{ page.title }}: {% if page.month %}{{ page.date_posts|first.date|date('F') }}{% endif %} {{ page.year }}</h1>
 {% endblock %}
 
 {% block content %}

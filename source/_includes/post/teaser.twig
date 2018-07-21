@@ -1,7 +1,7 @@
-<article class="post post--teaser h-entry" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
+<article class="post card post--teaser h-entry" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
     <header class="post__header">
-        <h2 class="post__title p-name">
-            <a href="{{ post.url }}/" itemprop="headline">{{ post.title }}</a>
+        <h2 class="post__title card__title p-name">
+            <a href="{{ post.url }}" itemprop="headline">{{ post.title }}</a>
         </h2>
         <time class="post__date dt-published" itemprop="datePublished"
               content="{{ post.date|date('c') }}" datetime="{{ post.date|date('c') }}">{{ post.date|date('M jS, Y') }}</time>
@@ -20,7 +20,7 @@
         </div>
 
         <div class="post__readmore">
-            <a class="u-url" rel="full-article" href="{{ post.url }}/" itemprop="url">Read More &rarr;</a>
+            <a class="u-url" rel="full-article" href="{{ post.url }}" itemprop="url">Read More &rarr;</a>
         </div>
 
     </div>
@@ -37,8 +37,8 @@
         {% if site.disqus.shortname and post.comments and site.disqus.show_comment_count %}
         <div class="comments comments--summary">
             <div class="comments__count">
-                <a href="{{ post.url }}/#disqus_thread"
-                   data-disqus-identifier="{{ site.url }}{{ post.url }}/">
+                <a href="{{ post.url }}#disqus_thread"
+                   data-disqus-identifier="{{ site.url }}{{ post.url }}">
                     Comments
                 </a>
             </div>

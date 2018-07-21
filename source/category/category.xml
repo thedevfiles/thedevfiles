@@ -19,7 +19,7 @@ generator: [posts_category_index]
     {% for post in page.category_posts|slice(0, 10) %}
         <entry>
             <title type="html"><![CDATA[{{ post.title }}]]></title>
-            <link href="{{ site.url }}{{ post.url }}/"/>
+            <link href="{{ site.url }}{{ post.url }}"/>
             <updated>{{ post.date|date('c') }}</updated>
             <id>{{ site.url }}{{ post.url }}</id>
             {% if post.description %}<summary><![CDATA[{{ post.description }}]]></summary>{% endif %}

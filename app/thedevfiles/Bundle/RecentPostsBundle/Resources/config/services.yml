@@ -1,0 +1,15 @@
+services:
+  thedevfiles.recentposts.data_provider:
+    class: TheDevFiles\Bundle\RecentPostsBundle\RecentPostsDataProvider
+    arguments:
+      - @sculpin_content_types.types.posts.data_provider
+      - @service_container
+    tags:
+      - { name: sculpin.data_provider, alias: thedevfiles_recent_posts }
+
+  thedevfiles.recentposts.twig_function:
+    class: TheDevFiles\Bundle\RecentPostsBundle\Twig\RecentPostsExtension
+    arguments:
+      - @service_container
+    tags:
+      - { name: twig.extension }

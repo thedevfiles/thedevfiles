@@ -1,9 +1,8 @@
-$visual-grid: false !default;
-
-$breakpoint-xlarge: min-width 1280px;
-$breakpoint-large: min-width 1150px;
-$breakpoint-medium: min-width 850px;
-$breakpoint-small: min-width 400px;
+$max-width: 1224px;
+$breakpoint-xlarge: 1280px;
+$breakpoint-large: 1150px;
+$breakpoint-medium: 850px;
+$breakpoint-small: 400px;
 
 $background-light: #f8f8f8;
 $background-medium: #d8d8d8;

@@ -1,0 +1,40 @@
+---
+layout: default
+generator: pagination
+pagination:
+    max_per_page: 10
+use:
+    - posts
+---
+<div itemprop="blogPosts">
+    {% for post in page.pagination.items %}
+        {% include 'post/teaser.twig' %}
+    {% endfor %}
+</div>
+
+<nav class="pagination pagination--home">
+    <ul>
+        <li>
+        {% if page.pagination.previous_page %}
+            <a class="pagination__prev button" href="{{ page.pagination.previous_page.url }}">&laquo; Newer Items</a>
+        {% endif %}
+        </li>
+        <li>
+            <a class="post__archive__link button" href="/archive/">
+                &mdash;
+                Blog Archive
+                &mdash;
+            </a>
+        </li>
+        <li>
+        {% if page.pagination.next_page %}
+            <a class="pagination__next button" href="{{ page.pagination.next_page.url }}">Older Items &raquo;</a>
+        {% endif %}
+        </li>
+    </ul>
+</nav>
+
+<nav class="post__archive">
+
+</nav>
+

@@ -16,7 +16,7 @@ pagination:
 {% block title %}{{ page.title }} "{{ page.category }}" | {{ site.title }}{% endblock %}
 
 {% block pagetitle %}
-    <h1 class="page__title">{{ page.title }}: "{{ page.category }}"</h1>
+    <h1 class="page__title card__title">{{ page.title }}: "{{ page.category }}"</h1>
 {% endblock %}
 
 {% block content %}
@@ -37,7 +37,7 @@ pagination:
 
     <div>
         {% if page.pagination.previous_page or page.pagination.next_page %}
-            <nav class="article clearfix">
+            <nav class="article">
                 {% if page.pagination.previous_page %}
                     <a class="previous" href="{{ page.pagination.previous_page.url }}" title="Previous Page"><span
                                 class="title">Previous Page</span></a>

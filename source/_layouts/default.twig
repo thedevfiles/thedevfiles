@@ -26,15 +26,11 @@
         {% endif %}
     {% endblock %}
     <link rel="author" href="/contact/">
-    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
-    <!--[if lt IE 9]>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>
-    <![endif]-->
     <link href="/assets/css/style.css" rel="stylesheet" type="text/css"/>
 
     {% include 'favicon.twig' %}
 
-    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.9.1/styles/solarized_dark.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/solarized-dark.min.css" integrity="sha256-90Y+fvi28WF+3jKH4tHEkoQ9WLeFKJjpvCPNOtU9ZvU=" crossorigin="anonymous" />
     <link rel="alternate" type="application/atom+xml" href="/atom.xml"
           title="{{ site.title }} activity feed"/>
     {% block head_styles %}
@@ -42,14 +38,14 @@
     {% block head_scripts %}
     {% endblock %}
 </head>
-<body itemscope="http://schema.org/Blog">
+<body itemscope itemtype="http://schema.org/Blog">
 {% include 'google-tag-manager.twig' %}
 {% include 'header.twig' %}
 {% include 'navbar.twig' %}
 
 <div class="middle-section">
-    <div class="content-wrapper">
-        <section class="main">
+    <div class="container content-wrapper">
+        <section class="main main-column">
 
             {% block content_wrapper %}{% block content %}{% endblock %}{% endblock %}
 
@@ -63,7 +59,7 @@
 {% block scripts %}
 {% endblock %}
 
-<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.9.1/highlight.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js" integrity="sha256-/BfiIkHlHoVihZdc6TFuj7MmJ0TWcWsMXkeDFwhi0zw=" crossorigin="anonymous"></script>
 <script>hljs.initHighlightingOnLoad();</script>
 
 

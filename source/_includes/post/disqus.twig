@@ -1,9 +1,9 @@
 <script type="text/javascript">
     var disqus_shortname = '{{ site.disqus.shortname }}';
     var disqus_developer = 1;
-    var disqus_identifier = '{{ site.url }}{{ page.url }}/';
+    var disqus_identifier = '{{ site.url }}{{ page.url }}';
     var disqus_title = '{{page.title}}';
-    var disqus_url = '{{ site.url }}{{ page.url }}/';
+    var disqus_url = '{{ site.url }}{{ page.url }}';
     var disqus_script = 'embed.js';
     function disqus_config() {
         this.callbacks.onNewComment = [function (comment) {
