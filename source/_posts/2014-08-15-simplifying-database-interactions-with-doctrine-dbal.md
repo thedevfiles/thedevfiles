@@ -7,6 +7,8 @@ published: true
 comments: true
 sharing: true
 image: /assets/images/featured/Doctrine_logo_white.png
+image_width: 191
+image_height: 53
 categories: [User Guide]
 tags:
     - php

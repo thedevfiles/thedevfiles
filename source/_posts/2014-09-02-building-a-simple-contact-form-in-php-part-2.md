@@ -7,6 +7,8 @@ published: true
 comments: true
 sharing: true
 image: /assets/images/featured/contact-form-validation.png
+image_width: 466
+image_height: 478
 first: /2014/09/building-a-simple-contact-form-in-php-part-1/
 last: /2014/09/building-a-simple-contact-form-in-php-part-5/
 prev: /2014/09/building-a-simple-contact-form-in-php-part-1/

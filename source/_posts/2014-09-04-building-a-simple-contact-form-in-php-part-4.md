@@ -6,6 +6,8 @@ published: true
 comments: true
 sharing: true
 image: /assets/images/featured/contact-form-recaptcha.png
+image_width: 452
+image_height: 554
 description: Adding a reCAPTCHA field to a php contact form
 first: /2014/09/building-a-simple-contact-form-in-php-part-1/
 last: /2014/09/building-a-simple-contact-form-in-php-part-5/

@@ -7,6 +7,8 @@ published: true
 comments: true
 sharing: true
 image: /assets/images/featured/contact-form-parsely.png
+image_width: 450
+image_height: 470
 first: /2014/09/building-a-simple-contact-form-in-php-part-1/
 last: /2014/09/building-a-simple-contact-form-in-php-part-5/
 prev: /2014/09/building-a-simple-contact-form-in-php-part-2/

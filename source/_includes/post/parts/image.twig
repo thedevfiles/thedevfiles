@@ -1,0 +1,7 @@
+{% if post.image %}
+    <div itemprop="image" itemscope itemtype="https://schema.org/ImageObject">
+        <meta itemprop="url" alt="{{ post.title }}" content="{{ site.url }}{{ post.image }}">
+        {% if post.image_width %}<meta itemprop="width" content="{{ post.image_width }}">{% endif %}
+        {% if post.image_height %}<meta itemprop="height" content="{{ post.image_height }}">{% endif %}
+    </div>
+{% endif %}

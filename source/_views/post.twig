@@ -22,25 +22,19 @@
     <article class="post card h-entry" itemid="{{ site.url }}{{ page.url }}" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
 
         <header class="post__header">
-            <h1 class="post__title card__title p-name" itemprop="headline">{{ page.title }}</h1>
+            <h1 class="post__title card__title p-name" itemprop="headline name">{{ page.title }}</h1>
 
             <h2 class="post__date">{{ page.date|date('M jS, Y') }}</h2>
-            {% if page.image %}
-                <img class="u-photo hidden" itemprop="image" src="{{ site.url }}{{ page.image }}" alt="{{ page.title }}">
-            {% endif %}
+            {% include 'post/parts/image.twig' with {'post' : page } %}
         </header>
         <div class="post__body e-content" itemprop="articleBody">
             {{ page.blocks.content|raw }}
         </div>
         <footer class="post__footer">
-            <div itemprop="publisher" itemscope itemtype="http://schema.org/Person">
-                <meta itemprop="givenName" content="Jonathan Bernardi">
-                <meta itemprop="familyName" content="Bernardi">
-            </div>
+            {% include 'post/parts/publisher.twig' %}
             <meta itemprop="dateModified" content="{{ page.date|date('c') }}">
             <meta itemprop="mainEntityOfPage" content="{{ site.url }}{{ page.url }}">
             <meta class="u-url" itemprop="url" content="{{ site.url }}{{ page.url }}">
-
 
             <ul class="past__meta">
                 <li class="post__byline">Posted by <span class="post__author p-author h-card" itemprop="author">Jonathan Bernardi</span></li>

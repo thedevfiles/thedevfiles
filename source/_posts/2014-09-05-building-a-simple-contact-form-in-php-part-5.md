@@ -6,6 +6,8 @@ published: true
 sharing: true
 comments: true
 image: /assets/images/featured/contact-form.png
+image_width: 470
+image_height: 420
 description: Using Swift to send email notifications on contact form submissions.
 first: /2014/09/building-a-simple-contact-form-in-php-part-1/
 last: /2014/09/building-a-simple-contact-form-in-php-part-5/

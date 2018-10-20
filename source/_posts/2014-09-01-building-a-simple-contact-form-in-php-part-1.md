@@ -7,6 +7,8 @@ published: true
 comments: true
 sharing: true
 image: /assets/images/featured/contact-form.png
+image_width: 470
+image_height: 420
 last: /2014/09/building-a-simple-contact-form-in-php-part-5/
 next: /2014/09/building-a-simple-contact-form-in-php-part-2/
 categories: [Tutorial]

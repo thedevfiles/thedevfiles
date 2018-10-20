@@ -1,4 +1,6 @@
-<form class="search" action="https://www.google.com/search" method="get" role="search">
+<form class="search" action="https://www.google.com/search" method="get" role="search" itemprop="potentialAction" itemscope itemtype="http://schema.org/SearchAction">
+    <meta itemprop="target" content="https://www.google.com/search?q={query}"/>
+    <label for="search" class="sr-only">Search</label>
     <input type="hidden" name="q" value="site:www.thedevfiles.com">
-    <input class="search__input" type="search" name="q" results="0" placeholder="Search">
+    <input id="search" class="search__input" type="search" name="q" results="0" placeholder="Search" itemprop="query-input">
 </form>

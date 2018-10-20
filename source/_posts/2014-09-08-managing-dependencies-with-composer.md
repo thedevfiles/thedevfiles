@@ -7,6 +7,8 @@ published: true
 comments: true
 sharing: true
 image: /assets/images/featured/logo-composer-transparent5.png
+image_width: 290
+image_height: 356
 categories: [User Guide]
 tags: [php]
 ---

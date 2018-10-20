@@ -1,17 +1,13 @@
 <article class="archive__post h-entry">
     <header class="post__header">
         <h2 class="post__title p-name">
-            <a class="u-url" href="{{ post.url }}" itemprop="headline">{{ post.title }}</a>
+            <a class="u-url" href="{{ post.url }}">{{ post.title }}</a>
         </h2>
-        <time class="post__date dt-published" itemprop="datePublished"
+        <time class="post__date dt-published"
               content="{{ post.date|date('c') }}" datetime="{{ post.date|date('c') }}">{{ post.date|date('M jS, Y') }}</time>
-
-        {% if post.image %}
-            <meta class="u-photo" itemprop="image" content="{{ site.url }}{{ post.image }}">
-        {% endif %}
     </header>
     <div class="post__body">
-        <div class="post__body--teaser p-summary" itemprop="description">
+        <div class="post__body--teaser p-summary">
             {{ post.description }}
         </div>
 

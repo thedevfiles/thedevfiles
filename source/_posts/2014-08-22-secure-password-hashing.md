@@ -7,6 +7,8 @@ published: true
 comments: true
 sharing: true
 image: /assets/images/featured/Black_Lock.png
+image_width: 256
+image_height: 256
 categories: [User Guide]
 tags: [php, security]
 ---

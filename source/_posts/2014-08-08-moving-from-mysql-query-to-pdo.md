@@ -6,6 +6,8 @@ description: The php mysql extension has been marked as deprecated. This article
 comments: true
 sharing: true
 image: /assets/images/featured/powered-by-mysql-125x64.png
+image_width: 125
+image_height: 64
 categories: [User Guide]
 tags:
     - php
