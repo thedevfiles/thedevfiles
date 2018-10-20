@@ -32,26 +32,10 @@
     <link rel="preload" href="https://www.google-analytics.com" as="script">
     <link rel="preload" href="https://cdnjs.cloudflare.com" as="script">
     {% include 'favicon.twig' %}
-    <noscript id="deferred-styles">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/solarized-dark.min.css" integrity="sha256-90Y+fvi28WF+3jKH4tHEkoQ9WLeFKJjpvCPNOtU9ZvU=" crossorigin="anonymous" />
-    </noscript>
     <link rel="alternate" type="application/atom+xml" href="/atom.xml"
           title="{{ site.title }} activity feed"/>
     {% block head_styles %}
     {% endblock %}
-    <script>
-        var loadDeferredStyles = function() {
-            var addStylesNode = document.getElementById("deferred-styles");
-            var replacement = document.createElement("div");
-            replacement.innerHTML = addStylesNode.textContent;
-            document.body.appendChild(replacement)
-            addStylesNode.parentElement.removeChild(addStylesNode);
-        };
-        var raf = window.requestAnimationFrame || window.mozRequestAnimationFrame ||
-            window.webkitRequestAnimationFrame || window.msRequestAnimationFrame;
-        if (raf) raf(function() { window.setTimeout(loadDeferredStyles, 0); });
-        else window.addEventListener('load', loadDeferredStyles);
-    </script>
     {% block head_scripts %}
     {% endblock %}
     {% include 'google-analytics.twig' %}
