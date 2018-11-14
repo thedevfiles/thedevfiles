@@ -1,7 +1,7 @@
 import React from "react"
 import Helmet from 'react-helmet'
 import {graphql} from "gatsby"
-git import {DiscussionEmbed} from "disqus-react"
+import {DiscussionEmbed} from "disqus-react"
 import Layout from "../components/layout"
 import PostTags from "../components/post/tags";
 import config from "../../data/config";
