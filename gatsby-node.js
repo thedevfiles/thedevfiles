@@ -58,7 +58,7 @@ exports.createPages = ({actions, createNodeId, createContentDigest, graphql}) =>
                 path: `${node.frontmatter.path}`,
                 component: blogPostTemplate,
                 context: {slug: node.frontmatter.slug},
-            })
+            });
     
             let year = node.frontmatter.year;
             let month = node.frontmatter.month;

@@ -125,6 +125,14 @@ module.exports = {
                 
             }
         },
+        'gatsby-transformer-yaml',
+        {
+            resolve: 'gatsby-source-filesystem',
+            options: {
+                path: `${__dirname}/_data/comments`,
+                name: 'comments',
+            },
+        },
         "gatsby-plugin-catch-links",
         {
             resolve: "gatsby-plugin-manifest",
@@ -137,84 +145,6 @@ module.exports = {
                 theme_color: config.themeColor,
                 display: "minimal-ui",
                 icon: `static/images/favicon/2048x2048.png`,
-                // icons: [
-                //     {
-                //         src: "/images/favicon/16x16.png",
-                //         sizes: "16x16",
-                //         type: "image/png"
-                //     },
-                //     {
-                //         src: "/images/favicon/20x20.png",
-                //         sizes: "20x20",
-                //         type: "image/png"
-                //     },
-                //     {
-                //         src: "/images/favicon/24x24.png",
-                //         sizes: "24x24",
-                //         type: "image/png"
-                //     },
-                //     {
-                //         src: "/images/favicon/32x32.png",
-                //         sizes: "32x32",
-                //         type: "image/png"
-                //     },
-                //     {
-                //         src: "/images/favicon/48x48.png",
-                //         sizes: "48x48",
-                //         type: "image/png"
-                //     },
-                //     {
-                //         src: "/images/favicon/64x64.png",
-                //         sizes: "64x64",
-                //         type: "image/png"
-                //     },
-                //     {
-                //         src: "/images/favicon/76x76.png",
-                //         sizes: "76x76",
-                //         type: "image/png"
-                //     },
-                //     {
-                //         src: "/images/favicon/120x120.png",
-                //         sizes: "120x120",
-                //         type: "image/png"
-                //     },
-                //     {
-                //         src: "/images/favicon/128x128.png",
-                //         sizes: "128x128",
-                //         type: "image/png"
-                //     },
-                //     {
-                //         src: "/images/favicon/152x152.png",
-                //         sizes: "152x152",
-                //         type: "image/png"
-                //     },
-                //     {
-                //         src: "/images/favicon/196x196.png",
-                //         sizes: "196x196",
-                //         type: "image/png"
-                //     },
-                //     {
-                //         src: "/images/favicon/256x256.png",
-                //         sizes: "256x256",
-                //         type: "image/png"
-                //     },
-                //     {
-                //         src: "/images/favicon/512x512.png",
-                //         sizes: "512x512",
-                //         type: "image/png"
-                //     },
-                //     {
-                //         src: "/images/favicon/1024x1024.png",
-                //         sizes: "1024x1024",
-                //         type: "image/png"
-                //     },
-                //     {
-                //         src: "/images/favicon/2048x2048.png",
-                //         sizes: "2048x2048",
-                //         type: "image/png"
-                //     },
-                //
-                // ]
             }
         },
         `gatsby-plugin-offline`,

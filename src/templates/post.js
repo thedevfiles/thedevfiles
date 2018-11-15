@@ -1,7 +1,6 @@
 import React from "react"
 import Helmet from 'react-helmet'
 import {graphql} from "gatsby"
-import {DiscussionEmbed} from "disqus-react"
 import Layout from "../components/layout"
 import CommentForm from "../components/comment-form"
 import PostTags from "../components/post/tags";
@@ -132,10 +131,6 @@ export default function Template({
                     <h2>Comments</h2>
                     {commentsBlock}
                     <CommentForm slug={frontmatter.slug}></CommentForm>
-                    {/*<DiscussionEmbed shortname={'thedevfiles'} config={{*/}
-                        {/*identifier: 'https://www.thedevfiles.com' + frontmatter.path + '/',*/}
-                        {/*title: frontmatter.title*/}
-                    {/*}}/>*/}
                 </section>
             </article>
         </Layout>
@@ -169,5 +164,6 @@ export const pageQuery = graphql`
         }
       }
     }
+    
   }
 `
