@@ -125,14 +125,14 @@ module.exports = {
                 
             }
         },
-        'gatsby-transformer-yaml',
-        {
-            resolve: 'gatsby-source-filesystem',
-            options: {
-                path: `${__dirname}/_data/comments`,
-                name: 'comments',
-            },
-        },
+        // 'gatsby-transformer-yaml',
+        // {
+        //     resolve: 'gatsby-source-filesystem',
+        //     options: {
+        //         path: `${__dirname}/_data/comments`,
+        //         name: 'comments',
+        //     },
+        // },
         "gatsby-plugin-catch-links",
         {
             resolve: "gatsby-plugin-manifest",
