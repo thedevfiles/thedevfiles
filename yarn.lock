@@ -5662,6 +5662,16 @@ gatsby-transformer-sharp@^2.1.7:
     probe-image-size "^4.0.0"
     sharp "^0.21.0"
 
+gatsby-transformer-yaml@^2.1.5:
+  version "2.1.5"
+  resolved "https://registry.yarnpkg.com/gatsby-transformer-yaml/-/gatsby-transformer-yaml-2.1.5.tgz#0e1ec28e69126ae8c6a3c4e58a333c1e8797d019"
+  integrity sha512-u1NbV4oHD78OWdrOf1yP08ORGN32yT5NVW0jaVXoTrJGlQHdcWK0U+psZkM0iElBj4hLWgsH4WP0IyBUazNQ6Q==
+  dependencies:
+    "@babel/runtime" "^7.0.0"
+    js-yaml "3.11.0"
+    lodash "^4.17.10"
+    unist-util-select "^1.5.0"
+
 gatsby@^2.0.0:
   version "2.0.37"
   resolved "https://registry.yarnpkg.com/gatsby/-/gatsby-2.0.37.tgz#979d7d0b22b857af6e76fd8fc4e6404aab874058"
@@ -7534,6 +7544,14 @@ js-tokens@^3.0.0, js-tokens@^3.0.2:
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/js-tokens/-/js-tokens-4.0.0.tgz#19203fb59991df98e3a287050d4647cdeaf32499"
   integrity sha512-RdJUflcE3cUzKiMqQgsCu06FPu9UdIJO0beYbPhHN4k6apgJtifcoCtT9bcxOpYBtpD2kCM6Sbzg4CausW/PKQ==
+
+js-yaml@3.11.0:
+  version "3.11.0"
+  resolved "https://registry.yarnpkg.com/js-yaml/-/js-yaml-3.11.0.tgz#597c1a8bd57152f26d622ce4117851a51f5ebaef"
+  integrity sha512-saJstZWv7oNeOyBh3+Dx1qWzhW0+e6/8eDzo7p5rDFqxntSztloLtuKu+Ejhtq82jsilwOIZYsCz+lIjthg1Hw==
+  dependencies:
+    argparse "^1.0.7"
+    esprima "^4.0.0"
 
 js-yaml@^3.10.0, js-yaml@^3.11.0, js-yaml@^3.12.0, js-yaml@^3.5.2, js-yaml@^3.9.0, js-yaml@^3.9.1:
   version "3.12.0"
