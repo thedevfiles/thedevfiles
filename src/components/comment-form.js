@@ -1,7 +1,7 @@
 import React from 'react';
 import config from "../../data/config";
 
-const CommentForm = () => (
+const CommentForm = ({ slug }) => (
         <form
             method="POST"
             action={config.staticmanPostUrl}
@@ -9,7 +9,7 @@ const CommentForm = () => (
             <input
                 name="options[slug]"
                 type="hidden"
-                value={this.props.slug}
+                value={slug}
             />
             <input name="fields[name]" type="text" placeholder="Name" required />
 
