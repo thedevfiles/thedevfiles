@@ -3,6 +3,7 @@ import Helmet from 'react-helmet'
 import {graphql} from "gatsby"
 import {DiscussionEmbed} from "disqus-react"
 import Layout from "../components/layout"
+import CommentForm from "../components/comment-form"
 import PostTags from "../components/post/tags";
 import config from "../../data/config";
 
@@ -92,6 +93,8 @@ export default function Template({
         metatags.push({property: "article:tag", content: tag});
     });
     
+    const commentsBlock = <div />
+    
     
     return (
         <Layout>
@@ -127,10 +130,12 @@ export default function Template({
                 </footer>
                 <section className="post__comments">
                     <h2>Comments</h2>
-                    <DiscussionEmbed shortname={'thedevfiles'} config={{
-                        identifier: 'https://www.thedevfiles.com' + frontmatter.path + '/',
-                        title: frontmatter.title
-                    }}/>
+                    {commentsBlock}
+                    <CommentForm slug={frontmatter.slug}></CommentForm>
+                    {/*<DiscussionEmbed shortname={'thedevfiles'} config={{*/}
+                        {/*identifier: 'https://www.thedevfiles.com' + frontmatter.path + '/',*/}
+                        {/*title: frontmatter.title*/}
+                    {/*}}/>*/}
                 </section>
             </article>
         </Layout>

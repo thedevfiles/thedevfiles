@@ -5,8 +5,9 @@ module.exports = {
     siteLogo: "", // Logo used for SEO and manifest.
     siteUrl: "https://www.thedevfiles.com", // Domain of your website without pathPrefix.
     sitemap: "/sitemap.xml", // Path to the RSS file.
-    googleAnalyticsID: "", // GA tracking ID.
-    disqusShortname: "UA-35809975-1", // Disqus shortname.
+    googleAnalyticsID: "UA-35809975-1", // GA tracking ID.
+    disqusShortname: "thedevfiles", // Disqus shortname.
+    staticmanPostUrl: 'https://thedevfiles-staticman.herokuapp.com/v2/entry/thedevfiles/thedevfiles/master/comments',
     author: "Jonathan Bernardi", // Username to display in the author segment.
     logo: {
       path: "/assets/images/favicon/48x48.png",
