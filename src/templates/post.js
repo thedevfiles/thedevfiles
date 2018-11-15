@@ -145,6 +145,7 @@ export const pageQuery = graphql`
         date
         published:date(formatString: "MMMM Do, YYYY")
         path
+        slug
         title
         tags
         description
