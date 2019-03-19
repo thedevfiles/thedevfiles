@@ -58,6 +58,7 @@ exports.createPages = ({actions, createNodeId, createContentDigest, graphql}) =>
                 path: `${node.frontmatter.path}`,
                 component: blogPostTemplate,
                 context: {slug: node.frontmatter.slug},
+                children: []
             });
     
             let year = node.frontmatter.year;
@@ -73,6 +74,7 @@ exports.createPages = ({actions, createNodeId, createContentDigest, graphql}) =>
                     path: `/${year}/`,
                     component: yearArchiveTemplate,
                     context: {year, regex: `/^${year}/`},
+                    children: []
                 })
             }
             archive[year].count++;
@@ -88,6 +90,7 @@ exports.createPages = ({actions, createNodeId, createContentDigest, graphql}) =>
                     path: `/${year}/${month}/`,
                     component: monthArchiveTemplate,
                     context: {fdate: node.frontmatter.fdate, regex: `/^${year}-${month}/`, year, month},
+                    children: []
                 })
             }
             archive[year].months[month].count++;
@@ -126,6 +129,7 @@ exports.createPages = ({actions, createNodeId, createContentDigest, graphql}) =>
                 context: {
                     tag: tag.tag
                 },
+                children: []
             })
             // Add tag cloud entry
             createNode({

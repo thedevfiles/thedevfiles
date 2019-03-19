@@ -43,7 +43,7 @@
             &:first-child {
                 list-style-type: none;
                 margin-left: 0;
-
+                
             }
         }
     }
@@ -101,7 +101,6 @@
     }
 }
 
-
 .pagination {
     ul {
         display: flex;
@@ -119,8 +118,74 @@
     }
 }
 
-
 .post__archive__link {
     text-align: center;
     font-size: 1rem;
+}
+
+.post__comments {
+}
+
+.comments {
+}
+
+.comment {
+    margin:10px 0;
+    padding:10px;
+    border: solid 1px #e0e0e0;
+    background-color: #fff;
+    border-radius: 4px;
+}
+
+.comment__message {
+
+}
+
+.comment__footer {
+}
+
+.comment__name {
+
+}
+
+.comment__date {
+}
+
+// Comment Form
+.form--comment {
+    margin: 20px 0;
+    padding:10px 0 0 0;
+    border-top: solid 1px #e0e0e0;
+}
+.form--comment fieldset {
+    border: none;
+    padding:0;
+    margin:0;
+}
+.form--comment legend {
+    font-weight: bold;
+    padding-bottom: 10px;
+}
+
+.comment-name,
+.comment-message {
+    width: 100%;
+    font-size: 16px;
+    padding:10px;
+    border-radius: 4px;
+    border: solid 1px #e0e0e0;
+    box-shadow: none;
+    outline: none;
+}
+
+.comment-name {
+
+}
+
+.comment-message {
+    margin-top: 10px;
+}
+
+.comment-submit {
+    border: none;
 }

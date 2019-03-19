@@ -2,16 +2,14 @@ import React from "react"
 import Helmet from 'react-helmet'
 import {graphql} from "gatsby"
 import Layout from "../components/layout"
-import CommentForm from "../components/comment-form"
+import CommentForm from "../components/post/comment-form"
 import PostTags from "../components/post/tags";
 import config from "../../data/config";
 
 require("prismjs/themes/prism-okaidia.css")
 
-export default function Template({
-                                     data, // this prop will be injected by the GraphQL query below.
-                                 }) {
-    const {markdownRemark} = data // data.markdownRemark holds our post data
+export default function Template({data}) {
+    const {markdownRemark, allCommentsYaml} = data // data.markdownRemark holds our post data
     const {frontmatter, html} = markdownRemark
     const postUrl = config.siteUrl + frontmatter.path + '/';
     
@@ -92,9 +90,6 @@ export default function Template({
         metatags.push({property: "article:tag", content: tag});
     });
     
-    const commentsBlock = <div />
-    
-    
     return (
         <Layout>
             <Helmet
@@ -129,8 +124,17 @@ export default function Template({
                 </footer>
                 <section className="post__comments">
                     <h2>Comments</h2>
-                    {commentsBlock}
-                    <CommentForm slug={frontmatter.slug}></CommentForm>
+                    <div className="comments">
+                        {allCommentsYaml.edges.map(({node}) => {
+                            return (
+                                <blockquote className="comment" key={node.id}>
+                                    <div className="comment__message">{node.message}</div>
+                                    <footer className="comment__footer">By <cite className="comment__name">{node.name}</cite> on <span className="comment__date">{node.date}</span></footer>
+                                </blockquote>
+                            )
+                        })}
+                    </div>
+                    <CommentForm slug={frontmatter.path}></CommentForm>
                 </section>
             </article>
         </Layout>
@@ -166,5 +170,17 @@ export const pageQuery = graphql`
       }
     }
     
+    
+    allCommentsYaml(filter: { slug: { eq: $path" } }) {
+          edges {
+            node {
+              id
+              slug
+              name
+              message
+              date
+            }
+          }
+        }
   }
 `

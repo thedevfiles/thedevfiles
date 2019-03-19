@@ -39,16 +39,15 @@
 
 .middle-section {
     background-color: $background-medium;
+}
 
-    .sidebar {
-        border-top: solid 1px #aaa;
-        margin-top: 1em;
-
-        @media(min-width: $breakpoint-medium) {
-            border-top: none;
-            margin-top: 0;
-        }
-
+.sidebar {
+    border-top: solid 1px #aaa;
+    margin-top: 1em;
+    
+    @media(min-width: $breakpoint-medium) {
+        border-top: none;
+        margin-top: 0;
     }
-
+    
 }
