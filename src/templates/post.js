@@ -125,14 +125,14 @@ export default function Template({data}) {
                 <section className="post__comments">
                     <h2>Comments</h2>
                     <div className="comments">
-                        {allCommentsYaml.edges.map(({node}) => {
-                            return (
-                                <blockquote className="comment" key={node.id}>
-                                    <div className="comment__message">{node.message}</div>
-                                    <footer className="comment__footer">By <cite className="comment__name">{node.name}</cite> on <span className="comment__date">{node.date}</span></footer>
-                                </blockquote>
-                            )
-                        })}
+                        {/*{allCommentsYaml.edges.map(({node}) => {*/}
+                            {/*return (*/}
+                                {/*<blockquote className="comment" key={node.id}>*/}
+                                    {/*<div className="comment__message">{node.message}</div>*/}
+                                    {/*<footer className="comment__footer">By <cite className="comment__name">{node.name}</cite> on <span className="comment__date">{node.date}</span></footer>*/}
+                                {/*</blockquote>*/}
+                            {/*)*/}
+                        {/*})}*/}
                     </div>
                     <CommentForm slug={frontmatter.path}></CommentForm>
                 </section>
@@ -171,16 +171,6 @@ export const pageQuery = graphql`
     }
     
     
-    allCommentsYaml(filter: { slug: { eq: $path" } }) {
-          edges {
-            node {
-              id
-              slug
-              name
-              message
-              date
-            }
-          }
-        }
+
   }
 `

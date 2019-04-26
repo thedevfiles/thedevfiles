@@ -3,6 +3,8 @@ slug: moving-from-mysql-query-to-pdo
 path: "/2014/08/moving-from-mysql-query-to-pdo"
 title: Moving from mysql_query to PDO
 date: 2014-08-08 00:00:00
+year: 2014
+month: 08
 description: The php mysql extension has been marked as deprecated. This article will introduce PDO as a replacement.
 comments: true
 sharing: true
@@ -472,7 +474,6 @@ if(!in_array($column, $allowed)){
     // throw an error and do not execute the query.
 } else {
     $sth = $dbh->prepare("SELECT * FROM users where $column = :value");
-    $sth->bindValue(':column', $column);
     $sth->bindValue(':value', $value);
     $sth->execute();
 }

@@ -3,6 +3,8 @@ slug: building-a-simple-contact-form-in-php-part-2
 path: "/2014/09/building-a-simple-contact-form-in-php-part-2"
 title: Building a simple contact form in PHP - Part 2
 date: 2014-09-02 00:00:00
+year: 2014
+month: 09
 description: Adding server-side form validation to a php contact form.
 published: true
 comments: true

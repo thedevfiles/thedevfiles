@@ -43,7 +43,7 @@
             &:first-child {
                 list-style-type: none;
                 margin-left: 0;
-                
+
             }
         }
     }
@@ -127,15 +127,17 @@
 }
 
 .comments {
+
+    .comment {
+        margin:10px 0;
+        padding:10px;
+        border: solid 1px #e0e0e0;
+        background-color: #fff;
+        border-radius: 4px;
+    }
 }
 
-.comment {
-    margin:10px 0;
-    padding:10px;
-    border: solid 1px #e0e0e0;
-    background-color: #fff;
-    border-radius: 4px;
-}
+
 
 .comment__message {
 

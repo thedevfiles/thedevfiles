@@ -14,11 +14,11 @@ const CommentForm = ({slug}) => (
                 type="hidden"
                 value={slug}
             />
-            <input className="comment-name" name="fields[name]" type="text" placeholder="Name"
+            <input className="comment-name" name="fields[name]" type="text" placeholder="Name" autocomplete="name"
                    required/>
-            
+
             <textarea className="comment-message" name="fields[message]" placeholder="Comment" rows="5" cols="60" required/>
-            
+
             <button className="comment-submit button" type="submit">Submit Comment</button>
         </fieldset>
     </form>

@@ -1,33 +1,35 @@
 import React from 'react';
 import {graphql, Link, StaticQuery} from "gatsby"
-import _ from 'lodash'
+import TagCloudBuilder from '../../helpers/tag-cloud';
 
 const TagCloud = () => (
     <StaticQuery
         query={graphql`
-          query TagCloudQuery {
-            allTagCloud {
+          query {
+            allMarkdownRemark {
                 edges {
                   node {
                     id
-                    tag
-                    weight
+                    frontmatter {
+                        tags
+                    }
                   }
                 }
               }
           }
         `}
         render={data => {
-           
+            const cloud = new TagCloudBuilder(data.allMarkdownRemark.edges);
+
             return (
                 <aside className="widget widget--tags">
                     <h4 className="widget__title">Tags</h4>
-                    
+
                     <div className="widget__body">
-                        {data.allTagCloud.edges.map(function (edge) {
+                        {cloud.cloud.map(function (tag) {
                             return (
-                                <span className={'tag size' + edge.node.weight} key={edge.node.id}>
-                                    <Link to={'/tag/' + _.kebabCase(edge.node.tag) + '/'}>{edge.node.tag}</Link>
+                                <span className={'tag size' + tag.weight} key={tag.tag}>
+                                    <Link to={'/tag/' + tag.slug + '/'}>{tag.tag}</Link>
                                 </span>
                             );
                         })}

@@ -39,10 +39,10 @@ const MonthArchive = ({pageContext, data}) => {
 export default MonthArchive
 
 export const pageQuery = graphql`
-  query($regex: String) {
+  query($year: Int, $month: String) {
     allMarkdownRemark(
       sort: { fields: [frontmatter___date], order: DESC }
-      filter: { frontmatter: { date: { regex: $regex } } }
+      filter: { frontmatter: { year: { eq: $year }, month: { eq: $month } } }
     ) {
       totalCount
       edges {
@@ -52,6 +52,7 @@ export const pageQuery = graphql`
           frontmatter {
             date
             published:date(formatString: "MMMM Do, YYYY")
+            fdate:date(formatString: "MMMM YYYY")
             path
             title
             tags

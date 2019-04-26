@@ -3,6 +3,8 @@ slug: building-a-simple-contact-form-in-php-part-5
 path: "/2014/09/building-a-simple-contact-form-in-php-part-5"
 title: Building a simple contact form in PHP - Part 5
 date: 2014-09-05 00:00:00
+year: 2014
+month: 09
 published: true
 sharing: true
 comments: true

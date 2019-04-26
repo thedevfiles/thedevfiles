@@ -3,6 +3,8 @@ slug: simplifying-database-interactions-with-doctrine-dbal
 path: "/2014/08/simplifying-database-interactions-with-doctrine-dbal"
 title: Simplifying database interactions with Doctrine DBAL
 date: 2014-08-15 00:00:00
+year: 2014
+month: 08
 description: This article will introduce Doctrine DBAL for a more user friendly developer experience than straight PDO.
 published: true
 comments: true

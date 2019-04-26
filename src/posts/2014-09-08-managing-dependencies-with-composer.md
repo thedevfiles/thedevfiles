@@ -3,6 +3,8 @@ slug: managing-dependencies-with-composer
 path: "/2014/09/managing-dependencies-with-composer"
 title: Managing Dependencies with Composer
 date: 2014-09-08 00:00:00
+year: 2014
+month: 09
 description: Using composer to manage dependencies.
 published: true
 comments: true

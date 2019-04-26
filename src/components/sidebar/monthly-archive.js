@@ -1,22 +1,20 @@
 import React from 'react';
 import {graphql, Link, StaticQuery} from "gatsby"
 import _ from 'lodash'
+import ArchiveBuilder from '../../helpers/monthly-archive';
 
 const MonthlyArchive = () => (
     <StaticQuery
         query={graphql`
-          query MonthlyArchiveQuery {
-            allYearlyArchive(sort: { order: DESC, fields: [year] }) {
+          query {
+            allMarkdownRemark(sort: {fields: [frontmatter___date], order: DESC}) {
                 edges {
                   node {
                     id
-                    year
-                    count
-                    childrenMonthlyArchive {
-                      id
-                      month
-                      display
-                      count
+                    frontmatter {
+                        year: date(formatString: "YYYY")
+                        month: date(formatString: "MM")
+                        mname: date(formatString: "MMM")
                     }
                   }
                 }
@@ -24,25 +22,26 @@ const MonthlyArchive = () => (
           }
         `}
         render={data => {
+
+            const archive = new ArchiveBuilder(data.allMarkdownRemark.edges);
+
             return (
                 <aside className="widget widget--monthly">
                     <h4 className="widget__title">Monthly Archives</h4>
-                    
+
                     <div className="widget__body">
                         <ul className="widget--monthly__list">
-                            {_.map(data.allYearlyArchive.edges, function (node) {
-                                let year = node.node;
-                                
+                            {_.map(archive.archive, function (year) {
                                 return (
-                                    <li key={year.id}>
+                                    <li key={year.year}>
                                         <Link className="widget--monthly__year"
-                                           to={year.year + '/'}>{year.year} ({year.count})</Link>
+                                           to={year.slug}>{year.year} ({year.count})</Link>
                                         <ul className="widget--monthly__months">
-                                            {_.map(year.childrenMonthlyArchive, function (month) {
+                                            {_.map(year.months, function (month) {
                                                 return (
-                                                    <li key={month.id}>
+                                                    <li key={month.month}>
                                                         <Link className="widget--monthly__month"
-                                                              to={year.year + '/' + month.month + '/'}>{month.display} ({month.count})</Link>
+                                                              to={month.slug}>{month.name} ({month.count})</Link>
                                                     </li>
                                                 );
                                             })}

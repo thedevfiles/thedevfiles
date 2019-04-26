@@ -39,10 +39,10 @@ const YearArchive = ({pageContext, data}) => {
 export default YearArchive
 
 export const pageQuery = graphql`
-  query($regex: String) {
+  query($year: Int) {
     allMarkdownRemark(
       sort: { fields: [frontmatter___date], order: DESC }
-      filter: { frontmatter: { date: { regex: $regex } } }
+      filter: { frontmatter: { year: { eq: $year } } }
     ) {
       totalCount
       edges {

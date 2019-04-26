@@ -3,6 +3,8 @@ slug: secure-password-hashing
 path: "/2014/08/secure-password-hashing"
 title: Secure Password Hashing with PHP
 date: 2014-08-22 00:00:00
+year: 2014
+month: 08
 description: The password_hash function added in PHP 5.5 makes secure password hashing easy.
 published: true
 comments: true
