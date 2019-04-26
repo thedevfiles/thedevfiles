@@ -12,7 +12,7 @@ export default function Template({data}) {
     const {markdownRemark, allCommentsYaml} = data // data.markdownRemark holds our post data
     const {frontmatter, html} = markdownRemark
     const postUrl = config.siteUrl + frontmatter.path + '/';
-    
+
     const schemaOrgJSONLD = [
         {
             "@context": "http://schema.org",
@@ -60,12 +60,12 @@ export default function Template({data}) {
                         "width": config.logo.width,
                         "height": config.logo.height,
                     }
-                    
+
                 }
             }
         }
     ];
-    
+
     let metatags = [
         {name: "description", content: frontmatter.description},
         {property: "og:type", content: 'article'},
@@ -89,7 +89,7 @@ export default function Template({data}) {
     frontmatter.tags.forEach(tag => {
         metatags.push({property: "article:tag", content: tag});
     });
-    
+
     return (
         <Layout>
             <Helmet
@@ -120,7 +120,7 @@ export default function Template({data}) {
                             <PostTags tags={frontmatter.tags}></PostTags>
                         </li>
                     </ul>
-                
+
                 </footer>
                 <section className="post__comments">
                     <h2>Comments</h2>
@@ -134,7 +134,7 @@ export default function Template({data}) {
                             {/*)*/}
                         {/*})}*/}
                     </div>
-                    <CommentForm slug={frontmatter.path}></CommentForm>
+                    <CommentForm slug={frontmatter.slug}></CommentForm>
                 </section>
             </article>
         </Layout>
