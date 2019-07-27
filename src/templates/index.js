@@ -19,7 +19,7 @@ const IndexPage = ({ data, pageContext }) => {
     const nextUrl = (index + 1).toString();
     const first = index === 1;
     const last = index === pageCount;
-    
+
     return (
         <Layout>
             <Helmet>
@@ -32,26 +32,26 @@ const IndexPage = ({ data, pageContext }) => {
                     )
                 })}
             </div>
-    
+
             <nav className="pagination pagination--home">
                 <ul>
                     <li>
                         <NavLink className="pagination__prev button" test={first} url={previousUrl} text="&laquo; Newer Items" />
                     </li>
-                    
+
                     <li>
                         <NavLink className="pagination__next button" test={last} url={nextUrl} text="Older Items &raquo;" />
                     </li>
                 </ul>
             </nav>
-    
+
             <div className="previousLink">
-            
+
             </div>
             <div className="nextLink">
-            
+
             </div>
-            
+
         </Layout>
     )
 }

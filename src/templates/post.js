@@ -2,14 +2,14 @@ import React from "react"
 import Helmet from 'react-helmet'
 import {graphql} from "gatsby"
 import Layout from "../components/layout"
-import CommentForm from "../components/post/comment-form"
+import {DiscussionEmbed} from "disqus-react"
 import PostTags from "../components/post/tags";
 import config from "../../data/config";
 
-require("prismjs/themes/prism-okaidia.css")
+require("prismjs/themes/prism-okaidia.css");
 
 export default function Template({data}) {
-    const {markdownRemark, allCommentsYaml} = data // data.markdownRemark holds our post data
+    const {markdownRemark} = data // data.markdownRemark holds our post data
     const {frontmatter, html} = markdownRemark
     const postUrl = config.siteUrl + frontmatter.path + '/';
 
@@ -123,18 +123,10 @@ export default function Template({data}) {
 
                 </footer>
                 <section className="post__comments">
-                    <h2>Comments</h2>
-                    <div className="comments">
-                        {/*{allCommentsYaml.edges.map(({node}) => {*/}
-                            {/*return (*/}
-                                {/*<blockquote className="comment" key={node.id}>*/}
-                                    {/*<div className="comment__message">{node.message}</div>*/}
-                                    {/*<footer className="comment__footer">By <cite className="comment__name">{node.name}</cite> on <span className="comment__date">{node.date}</span></footer>*/}
-                                {/*</blockquote>*/}
-                            {/*)*/}
-                        {/*})}*/}
-                    </div>
-                    <CommentForm slug={frontmatter.slug}></CommentForm>
+                    <DiscussionEmbed shortname={'thedevfiles'} config={{
+                        identifier: 'https://www.thedevfiles.com' + frontmatter.path + '/',
+                        title: frontmatter.title
+                    }}/>
                 </section>
             </article>
         </Layout>
@@ -169,8 +161,6 @@ export const pageQuery = graphql`
         }
       }
     }
-    
-    
 
   }
 `

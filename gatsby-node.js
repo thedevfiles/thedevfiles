@@ -21,6 +21,7 @@ exports.createPages = ({actions, createNodeId, createContentDigest, graphql}) =>
             excerpt(pruneLength: 500)
             frontmatter {
               path
+              slug
               title
               date
               tags
@@ -87,7 +88,7 @@ exports.createPages = ({actions, createNodeId, createContentDigest, graphql}) =>
                 createPage({
                     path: `/${year}/${month}/`,
                     component: monthArchiveTemplate,
-                    context: {year: parseInt(year), month}
+                    context: {year: parseInt(year), month, fdate: node.frontmatter.fdate}
                 })
             }
             archive[year].months[month].count++;
