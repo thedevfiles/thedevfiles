@@ -39,26 +39,32 @@ const MonthArchive = ({pageContext, data}) => {
 export default MonthArchive
 
 export const pageQuery = graphql`
-  query($year: Int, $month: String) {
-    allMarkdownRemark(
-      sort: { fields: [frontmatter___date], order: DESC }
-      filter: { frontmatter: { year: { eq: $year }, month: { eq: $month } } }
-    ) {
-      totalCount
-      edges {
-        node {
-          id
-          excerpt(pruneLength: 500)
-          frontmatter {
-            date
-            published:date(formatString: "MMMM Do, YYYY")
-            fdate:date(formatString: "MMMM YYYY")
-            path
-            title
-            tags
-          }
-        }
-      }
-    }
-  }
-`
+         query($year: Int, $month: String) {
+           allMarkdownRemark(
+             sort: { fields: [frontmatter___date], order: DESC }
+             filter: {
+               frontmatter: {
+                 published: { eq: true }
+                 year: { eq: $year }
+                 month: { eq: $month }
+               }
+             }
+           ) {
+             totalCount
+             edges {
+               node {
+                 id
+                 excerpt(pruneLength: 500)
+                 frontmatter {
+                   date
+                   published: date(formatString: "MMMM Do, YYYY")
+                   fdate: date(formatString: "MMMM YYYY")
+                   path
+                   title
+                   tags
+                 }
+               }
+             }
+           }
+         }
+       `;

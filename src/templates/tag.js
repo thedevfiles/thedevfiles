@@ -8,7 +8,7 @@ import config from "../../data/config";
 const Tags = ({pageContext, data}) => {
     const {tag} = pageContext
     const { edges } = data.allMarkdownRemark
-    
+
     return (
         <Layout>
             <Helmet
@@ -42,7 +42,7 @@ export const pageQuery = graphql`
   query($tag: String) {
     allMarkdownRemark(
       sort: { fields: [frontmatter___date], order: DESC }
-      filter: { frontmatter: { tags: { in: [$tag] } } }
+      filter: { frontmatter: { tags: { in: [$tag] }, published: {eq: true} } }
     ) {
       totalCount
       edges {

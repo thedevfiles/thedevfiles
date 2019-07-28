@@ -42,7 +42,7 @@ export const pageQuery = graphql`
   query($year: Int) {
     allMarkdownRemark(
       sort: { fields: [frontmatter___date], order: DESC }
-      filter: { frontmatter: { year: { eq: $year } } }
+      filter: { frontmatter: { year: { eq: $year }, published: {eq: true} } }
     ) {
       totalCount
       edges {

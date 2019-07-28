@@ -5,6 +5,7 @@ import Layout from "../components/layout"
 import {DiscussionEmbed} from "disqus-react"
 import LazyLoad from 'react-lazy-load'
 import PostTags from "../components/post/tags"
+import SharingLinks from "../components/post/sharing"
 import config from "../../data/config"
 
 require("prismjs/themes/prism-okaidia.css");
@@ -92,53 +93,76 @@ export default function Template({data}) {
     });
 
     return (
-        <Layout>
-            <Helmet
-                title={frontmatter.title + ' | The Dev Files'}
-                meta={metatags}
-            >
-                <link rel="canonical" href={postUrl} />
-                <script type="application/ld+json">
-                    {JSON.stringify(schemaOrgJSONLD)}
-                </script>
-            </Helmet>
-            <article className="post card h-entry">
-                <header className="post__header">
-                    <h1 className="post__title card__title p-name">{frontmatter.title}</h1>
-                    <h2 className="post__date">{frontmatter.published}</h2>
-                </header>
-                <div className="post__body e-content" dangerouslySetInnerHTML={{__html: html}}/>
-                <footer className="post__footer">
-                    <ul className="past__meta">
-                        <li className="post__byline">Posted by <span
-                            className="post__author p-author h-card"
-                        >Jonathan Bernardi</span></li>
-                        <li>
-                            <time className="post__date--footer dt-published"
-                                  dateTime={frontmatter.date}>{frontmatter.published}</time>
-                        </li>
-                        <li>
-                            <PostTags tags={frontmatter.tags}></PostTags>
-                        </li>
-                    </ul>
+      <Layout>
+        <Helmet
+          title={frontmatter.title + " | The Dev Files"}
+          meta={metatags}
+        >
+          <link rel="canonical" href={postUrl} />
+          <script type="application/ld+json">
+            {JSON.stringify(schemaOrgJSONLD)}
+          </script>
+        </Helmet>
+        <article className="post card h-entry">
+          <header className="post__header">
+            <h1 className="post__title card__title p-name">
+              {frontmatter.title}
+            </h1>
+            <h2 className="post__date">{frontmatter.published}</h2>
+          </header>
+          <div
+            className="post__body e-content"
+            dangerouslySetInnerHTML={{ __html: html }}
+          />
+          {frontmatter.sharing && (
+            <SharingLinks url={postUrl} title={frontmatter.title} />
+          )}
 
-                </footer>
-                <section className="post__comments">
-                    <LazyLoad offsetTop={400}>
-                        <DiscussionEmbed shortname={'thedevfiles'} config={{
-                            identifier: 'https://www.thedevfiles.com' + frontmatter.path + '/',
-                            title: frontmatter.title
-                        }}/>
-                    </LazyLoad>
-                </section>
-            </article>
-        </Layout>
-    )
+          <footer className="post__footer">
+            <ul className="past__meta">
+              <li className="post__byline">
+                Posted by{" "}
+                <span className="post__author p-author h-card">
+                  Jonathan Bernardi
+                </span>
+              </li>
+              <li>
+                <time
+                  className="post__date--footer dt-published"
+                  dateTime={frontmatter.date}
+                >
+                  {frontmatter.published}
+                </time>
+              </li>
+              <li>
+                <PostTags tags={frontmatter.tags} />
+              </li>
+            </ul>
+          </footer>
+          {frontmatter.comments && (
+            <section className="post__comments" id="#disqus_thread">
+              <LazyLoad offsetTop={400}>
+                <DiscussionEmbed
+                  shortname={"thedevfiles"}
+                  config={{
+                    identifier:
+                      "https://www.thedevfiles.com" +
+                      frontmatter.path +
+                      "/",
+                    title: frontmatter.title
+                  }}
+                />
+              </LazyLoad>
+            </section>
+          )}
+        </article>
+      </Layout>
+    );
 }
 
 export const pageQuery = graphql`
   query($path: String!) {
-    markdownRemark(frontmatter: { path: { eq: $path } }) {
+    markdownRemark(frontmatter: { path: { eq: $path }, published: {eq: true} }) {
       html
       frontmatter {
         date
@@ -146,6 +170,8 @@ export const pageQuery = graphql`
         path
         slug
         title
+        comments
+        sharing
         tags
         description
         image_width

@@ -3,41 +3,43 @@ import {graphql, Link, StaticQuery} from "gatsby"
 import TagCloudBuilder from '../../helpers/tag-cloud';
 
 const TagCloud = () => (
-    <StaticQuery
-        query={graphql`
-          query {
-            allMarkdownRemark {
-                edges {
-                  node {
-                    id
-                    frontmatter {
-                        tags
-                    }
-                  }
-                }
+  <StaticQuery
+    query={graphql`
+      query {
+        allMarkdownRemark(
+          filter: { frontmatter: { published: { eq: true } } }
+        ) {
+          edges {
+            node {
+              id
+              frontmatter {
+                tags
               }
+            }
           }
-        `}
-        render={data => {
-            const cloud = new TagCloudBuilder(data.allMarkdownRemark.edges);
+        }
+      }
+    `}
+    render={data => {
+      const cloud = new TagCloudBuilder(data.allMarkdownRemark.edges);
 
-            return (
-                <aside className="widget widget--tags">
-                    <h4 className="widget__title">Tags</h4>
+      return (
+        <aside className="widget widget--tags">
+          <h4 className="widget__title">Tags</h4>
 
-                    <div className="widget__body">
-                        {cloud.cloud.map(function (tag) {
-                            return (
-                                <span className={'tag size' + tag.weight} key={tag.tag}>
-                                    <Link to={'/tag/' + tag.slug + '/'}>{tag.tag}</Link>
-                                </span>
-                            );
-                        })}
-                    </div>
-                </aside>
-            )
-        }}
-    />
-)
+          <div className="widget__body">
+            {cloud.cloud.map(function(tag) {
+              return (
+                <span className={"tag size" + tag.weight} key={tag.tag}>
+                  <Link to={"/tag/" + tag.slug + "/"}>{tag.tag}</Link>
+                </span>
+              );
+            })}
+          </div>
+        </aside>
+      );
+    }}
+  />
+);
 
 export default TagCloud

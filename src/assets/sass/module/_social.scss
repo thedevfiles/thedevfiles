@@ -1,0 +1,42 @@
+
+.sharing {
+  display: flex;
+  flex-wrap: wrap;
+}
+.sharing__link {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    padding: .1em .5em;
+    margin-right: 12px;
+    margin-bottom: 8px;
+    border-radius: 4px;
+    color: #fff !important;
+    text-decoration: none !important;
+    background-color: blue;
+
+    .icon {
+        margin-right: 5px;
+    }
+    svg {
+        fill: currentColor;
+    }
+}
+.sharing__link--facebook{
+    background-color: $social-facebook;
+    &:hover {
+        background-color: lighten($social-facebook, 5%);
+    }
+}
+.sharing__link--twitter{
+    background-color: $social-twitter;
+    &:hover {
+        background-color: lighten($social-twitter, 5%);
+    }
+}
+.sharing__link--linkedin{
+    background-color: $social-linkedin;
+    &:hover {
+        background-color: lighten($social-linkedin, 5%);
+    }
+}

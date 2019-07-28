@@ -6,6 +6,7 @@ date: 2014-08-08 00:00:00
 year: 2014
 month: 08
 description: The php mysql extension has been marked as deprecated. This article will introduce PDO as a replacement.
+published: true
 comments: true
 sharing: true
 image: "../assets/images/featured/powered-by-mysql-125x64.png"
