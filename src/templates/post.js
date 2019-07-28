@@ -3,8 +3,9 @@ import Helmet from 'react-helmet'
 import {graphql} from "gatsby"
 import Layout from "../components/layout"
 import {DiscussionEmbed} from "disqus-react"
-import PostTags from "../components/post/tags";
-import config from "../../data/config";
+import LazyLoad from 'react-lazy-load'
+import PostTags from "../components/post/tags"
+import config from "../../data/config"
 
 require("prismjs/themes/prism-okaidia.css");
 
@@ -123,10 +124,12 @@ export default function Template({data}) {
 
                 </footer>
                 <section className="post__comments">
-                    <DiscussionEmbed shortname={'thedevfiles'} config={{
-                        identifier: 'https://www.thedevfiles.com' + frontmatter.path + '/',
-                        title: frontmatter.title
-                    }}/>
+                    <LazyLoad offsetTop={400}>
+                        <DiscussionEmbed shortname={'thedevfiles'} config={{
+                            identifier: 'https://www.thedevfiles.com' + frontmatter.path + '/',
+                            title: frontmatter.title
+                        }}/>
+                    </LazyLoad>
                 </section>
             </article>
         </Layout>
