@@ -17,7 +17,7 @@
             }
         }
     }
-    
+
 }
 .widget--about__gravatar {
     flex-grow: 0;
@@ -34,12 +34,13 @@
     display: flex;
     flex-wrap: wrap;
     font-size: 28px;
-    margin-left: .5em;
+    margin-left: 8px;
     padding-top: 10px;
     a {
         text-decoration: none;
         white-space: normal;
-        margin-right: 5px;
+        margin-right: 10px;
+        margin-bottom: 10px;
     }
 }
 
@@ -52,11 +53,16 @@
     a {
         border-bottom: 1px solid $border-light;
         display: block;
-        padding: 4px 0;
+        padding-bottom: 12px;
+        margin-bottom: 12px;
         text-decoration: none;
         color: $text-color;
         &:hover {
             color: $link-color-hover;
+        }
+        @media(min-width: $breakpoint-medium) {
+            padding-bottom: 8px;
+            margin-bottom: 8px;
         }
     }
 }
@@ -77,16 +83,22 @@
 
     a {
         border-bottom: 1px solid $border-light;
+        margin-bottom: 12px;
+        padding-bottom: 12px;
         display: block;
         text-decoration: none;
         color: $text-color;
         &:hover {
             color: $link-color-hover;
         }
+        @media(min-width: $breakpoint-medium) {
+            margin-bottom: 5px;
+            padding-bottom: 5px;
+        }
     }
 
     .widget--monthly__year {
-        padding: .3em 0;
+        padding-top: .3em;
 
         li {
             border-bottom: 1px solid $border-light;
@@ -101,7 +113,7 @@
     }
 
     .widget--monthly__month {
-        padding: .3em 0 .3em 1em;
+        padding-left: 1em;
     }
 
 }

@@ -6,7 +6,13 @@
         align-items: center;
     }
     .tag {
-        margin-right: 4px;
+        display: inline-block;
+        margin-right: 8px;
+        margin-bottom: 8px;
+        @media(min-width: $breakpoint-medium) {
+            margin-right: 5px;
+            margin-bottom: 0;
+        }
     }
 }
 
