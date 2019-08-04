@@ -13,9 +13,6 @@ const Tags = ({pageContext, data}) => {
         <Layout>
             <Helmet
                 title={'Tag Archive: ' + tag + ' | The Dev Files'}
-                meta={[
-                    {name: 'robots', content: 'noindex, follow'}
-                ]}
             >
                 <link rel="canonical" href={config.siteUrl + '/tag/' + tag + '/'} />
             </Helmet>
