@@ -13,9 +13,6 @@ const YearArchive = ({pageContext, data}) => {
         <Layout>
             <Helmet
                 title={year + ' Blog Archive | The Dev Files'}
-                meta={[
-                    {name: 'robots', content: 'noindex, follow'}
-                ]}
             >
                 <link rel="canonical" href={config.siteUrl + '/' + year + '/'} />
             </Helmet>
