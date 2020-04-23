@@ -24,3 +24,5 @@
   for = "*.webp"
   [headers.values]
     Cache-Control = "public, max-age=604800"
+[[plugins]]
+  package = "netlify-plugin-gatsby-cache"
