@@ -6,6 +6,7 @@ module.exports = {
     siteUrl: "https://www.thedevfiles.com", // Domain of your website without pathPrefix.
     sitemap: "/sitemap.xml", // Path to the RSS file.
     googleAnalyticsID: "UA-35809975-1", // GA tracking ID.
+    googleTagID: "GTM-KBZCND", // GA tracking ID.
     disqusShortname: "thedevfiles", // Disqus shortname.
     staticmanPostUrl: 'https://thedevfiles-staticman.herokuapp.com/v2/entry/thedevfiles/thedevfiles/master/comments',
     author: "Jonathan Bernardi", // Username to display in the author segment.
