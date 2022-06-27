@@ -24,7 +24,7 @@ const RecentPosts = () => (
     render={data => {
       return (
         <aside className="widget widget--recent">
-          <h4 className="widget__title">Recent Posts</h4>
+          <div className="widget__title">Recent Posts</div>
 
           <div className="widget__body">
             <ul className="widget--recent_posts">

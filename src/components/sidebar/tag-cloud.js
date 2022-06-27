@@ -25,7 +25,7 @@ const TagCloud = () => (
 
       return (
         <aside className="widget widget--tags">
-          <h4 className="widget__title">Tags</h4>
+          <div className="widget__title">Tags</div>
 
           <div className="widget__body">
             {cloud.cloud.map(function(tag) {

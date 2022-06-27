@@ -13,11 +13,11 @@ const About = () => (
     `}
       render={data => (
           <aside className="widget widget--about h-card">
-              <h4 className="widget__title p-name">Jonathan Bernardi</h4>
-        
+              <div className="widget__title p-name">Jonathan Bernardi</div>
+
               <div className="widget__body">
                   <div className="widget--about__gravatar">
-                      <img src={data.file.publicURL} alt="Jonathan Bernardi"/>
+                      <img src={data.file.publicURL} width="80" height="80" alt="Jonathan Bernardi"/>
                   </div>
                   <SocialLinks />
               </div>

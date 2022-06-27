@@ -29,7 +29,7 @@ const MonthlyArchive = () => (
 
       return (
         <aside className="widget widget--monthly">
-          <h4 className="widget__title">Monthly Archives</h4>
+          <div className="widget__title">Monthly Archives</div>
 
           <div className="widget__body">
             <ul className="widget--monthly__list">
