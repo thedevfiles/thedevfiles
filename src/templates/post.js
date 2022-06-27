@@ -160,36 +160,32 @@ export default function Template({data}) {
     );
 }
 
-export const pageQuery = graphql`
-  query($path: String!) {
-    markdownRemark(frontmatter: { path: { eq: $path }, published: {eq: true} }) {
-      html
-      frontmatter {
-        date
-        published:date(formatString: "MMMM Do, YYYY")
-        path
-        slug
-        title
-        comments
-        sharing
-        tags
-        description
-        image_width
-        image_height
-        image {
-          publicURL
-          childImageSharp {
-            original {
-              width
-              height
-            }
-            fluid {
-              ...GatsbyImageSharpFluid_withWebp
-            }
+export const pageQuery = graphql`query ($path: String!) {
+  markdownRemark(frontmatter: {path: {eq: $path}, published: {eq: true}}) {
+    html
+    frontmatter {
+      date
+      published: date(formatString: "MMMM Do, YYYY")
+      path
+      slug
+      title
+      comments
+      sharing
+      tags
+      description
+      image_width
+      image_height
+      image {
+        publicURL
+        childImageSharp {
+          original {
+            width
+            height
           }
+          gatsbyImageData(layout: FULL_WIDTH)
         }
       }
     }
-
   }
+}
 `

@@ -11,30 +11,30 @@ module.exports = {
     description: config.siteDescription,
     siteUrl: config.siteUrl,
     author: config.author,
-    social: config.social
+    social: config.social,
   },
   plugins: [
     {
       resolve: "gatsby-source-filesystem",
       options: {
         name: "markdown-pages",
-        path: path.join(__dirname, `src`, `posts`)
-      }
+        path: path.join(__dirname, `src`, `posts`),
+      },
     },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `images`,
-        path: path.join(__dirname, `src`, `assets`, `images`)
-      }
+        path: path.join(__dirname, `src`, `assets`, `images`),
+      },
     },
     {
       resolve: "gatsby-plugin-react-svg",
       options: {
         rule: {
-          include: path.join(__dirname, `src`, `assets`, `icons`)
-        }
-      }
+          include: path.join(__dirname, `src`, `assets`, `icons`),
+        },
+      },
     },
     {
       resolve: `gatsby-transformer-remark`,
@@ -50,8 +50,8 @@ module.exports = {
               linkImagesToOriginal: false,
               showCaptions: false,
               quality: 80,
-              withWebp: true
-            }
+              withWebp: true,
+            },
           },
           `gatsby-remark-responsive-iframe`,
           {
@@ -85,12 +85,12 @@ module.exports = {
               showLineNumbers: false,
               // If setting this to true, the parser won't handle and highlight inline
               // code used in markdown i.e. single backtick code like `this`.
-              noInlineHighlight: false
-            }
+              noInlineHighlight: false,
+            },
           },
-          "gatsby-remark-copy-linked-files"
-        ]
-      }
+          "gatsby-remark-copy-linked-files",
+        ],
+      },
     },
     // {
     //   resolve: "gatsby-plugin-google-analytics",
@@ -101,42 +101,39 @@ module.exports = {
     {
       resolve: "gatsby-plugin-google-tagmanager",
       options: {
-        id: config.googleTagID
-      }
+        id: config.googleTagID,
+      },
     },
     {
       resolve: `gatsby-plugin-sass`,
       options: {
-        implementation: require("sass")
-      }
+        implementation: require("sass"),
+      },
     },
     `gatsby-plugin-sharp`,
     `gatsby-transformer-sharp`,
     {
       resolve: `gatsby-plugin-sitemap`,
       options: {
-        output: config.sitemap,
+        resolveSiteUrl: () => config.siteUrl,
+        // output: config.sitemap,
         // Exclude specific pages or groups of pages using glob parameters
         // See: https://github.com/isaacs/minimatch
         // The example below will exclude the single `path/to/page` and all routes beginning with `category`
-        exclude: [
+        excludes: [
           `/dev-404-page`,
           `/404`,
           `/404.html`,
-          `/offline-plugin-app-shell-fallback`
+          `/offline-plugin-app-shell-fallback`,
         ],
-        serialize: ({ site, allSitePage }) =>
-          allSitePage.edges.map(edge => {
-            return {
-              url:
-                edge.node.path === "/"
-                  ? config.siteUrl
-                  : withoutTrailingSlash(config.siteUrl + edge.node.path) + "/",
-              changefreq: `daily`,
-              priority: 0.7
-            };
-          })
-      }
+        serialize: ({ path }) => {
+          return {
+            url: path,
+            changefreq: `daily`,
+            priority: 0.7,
+          };
+        },
+      },
     },
     "gatsby-plugin-catch-links",
     {
@@ -149,8 +146,8 @@ module.exports = {
         background_color: config.backgroundColor,
         theme_color: config.themeColor,
         display: "minimal-ui",
-        icon: `static/images/favicon/2048x2048.png`
-      }
+        icon: `static/images/favicon/2048x2048.png`,
+      },
     },
     `gatsby-plugin-offline`,
     {
@@ -182,7 +179,7 @@ module.exports = {
                     site.siteMetadata.siteUrl +
                     edge.node.frontmatter.path +
                     "/",
-                  custom_elements: [{ "content:encoded": edge.node.html }]
+                  custom_elements: [{ "content:encoded": edge.node.html }],
                 });
               });
             },
@@ -207,11 +204,11 @@ module.exports = {
                         }
                       `,
             output: "/rss.xml",
-            title: "The Dev Files"
-          }
-        ]
-      }
+            title: "The Dev Files",
+          },
+        ],
+      },
     },
-    `gatsby-plugin-netlify`
-  ]
+    `gatsby-plugin-netlify`,
+  ],
 };
