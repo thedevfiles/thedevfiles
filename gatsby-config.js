@@ -104,6 +104,7 @@ module.exports = {
         implementation: require("sass"),
       },
     },
+    `gatsby-plugin-image`,
     `gatsby-plugin-sharp`,
     `gatsby-transformer-sharp`,
     {
