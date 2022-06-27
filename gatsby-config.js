@@ -92,16 +92,10 @@ module.exports = {
         ],
       },
     },
-    // {
-    //   resolve: "gatsby-plugin-google-analytics",
-    //   options: {
-    //     trackingId: config.googleAnalyticsID
-    //   }
-    // },
     {
-      resolve: "gatsby-plugin-google-tagmanager",
+      resolve: "gatsby-plugin-google-gtag",
       options: {
-        id: config.googleTagID,
+        trackingIds: [config.gtagID],
       },
     },
     {
