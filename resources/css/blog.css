@@ -29,7 +29,7 @@
 .posts__post__categories {
     font-style: italic;
     margin-bottom: 1rem;
-    font-size: .9rem;
+    font-size: 1.2rem;
 }
 .posts__post__categories a {
     color: var(--link-color);
