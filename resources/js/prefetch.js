@@ -28,9 +28,6 @@
             el.addEventListener('mouseover', (e) => {
                 preload(el);
             });
-            el.addEventListener('mouseout', (e) => {
-                preload.cancel();
-            });
         });
     }
 
@@ -38,9 +35,6 @@
         document.querySelectorAll('.site-sidebar a').forEach((el) => {
             el.addEventListener('mouseover', (e) => {
                 preload(el);
-            });
-            el.addEventListener('mouseout', (e) => {
-                preload.cancel();
             });
         });
         window.prefetchInit();

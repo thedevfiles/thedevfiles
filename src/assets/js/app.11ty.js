@@ -55,7 +55,7 @@ module.exports = class {
             const result = await this.compileJs(files)
             return result
         } catch (err) {
-            console.log(err)
+            console.error(err)
             return null
         }
     }
