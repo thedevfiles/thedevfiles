@@ -1,25 +1,22 @@
 ---
+layout: blog.njk
 slug: building-a-simple-contact-form-in-php-part-5
-path: "/2014/09/building-a-simple-contact-form-in-php-part-5"
 title: Building a simple contact form in PHP - Part 5
-date: 2014-09-05 00:00:00
-year: 2014
-month: 09
+date: 2014-09-05
 published: true
 sharing: true
 comments: true
-image: "../assets/images/featured/contact-form.png"
+image: "assets/images/featured/contact-form.png"
 image_width: 470
 image_height: 420
-description: Using Swift to send email notifications on contact form submissions.
+excerpt: Using Swift to send email notifications on contact form submissions.
 first: /2014/09/building-a-simple-contact-form-in-php-part-1/
 last: /2014/09/building-a-simple-contact-form-in-php-part-5/
 prev: /2014/09/building-a-simple-contact-form-in-php-part-4/
-categories: [Tutorial]
-tags: [php, mail]
+categories: [php, mail]
 ---
 
-In of [part 4](/2014/09/building-a-simple-contact-form-in-php-part-4/) of [Building a simple contact form in PHP](/2014/09/building-a-simple-contact-form-in-php-part-1/) we added a CAPCHA field to help reduce spam.
+In [part 4](/2014/09/building-a-simple-contact-form-in-php-part-4/) of [Building a simple contact form in PHP](/2014/09/building-a-simple-contact-form-in-php-part-1/) we added a CAPCHA field to help reduce spam.
 
 In this part we are going to change the sending of the mail to use SMTP by using [Swift Mailer](http://swiftmailer.org/), a php mailing library.
 

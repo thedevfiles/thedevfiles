@@ -1,0 +1,152 @@
+/*
+$breakpoint-xlarge: 1280px;
+$breakpoint-large: 1150px;
+$breakpoint-medium: 850px;
+$breakpoint-small: 400px;
+*/
+
+:root {
+    --max-width: 1400px;
+    --font-size: 16px;
+    --text-color: #333;
+    --text-gray: #6e6e6e;
+    --link-color: #1863a1;
+    --link-color-hover: #0181eb;
+    --light-background: #f8f8f8;
+    --gray-background: #c9c9c9;
+    --dark-background: #333;
+    --content-background: #ffffff;
+    --gap: 1.5rem;
+    --border: #ccc;
+    --border-light: #ddd;
+    --social-facebook: #3C5A99;
+    --social-facebook-hover: #4365ab;
+    --social-twitter: #1DA1F2;
+    --social-twitter-hover: #35abf3;
+    --social-linkedin: #0077B5;
+    --social-linkedin-hover: #0088cf;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    color: var(--text-color);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+    font-size: var(--font-size);
+    background-color: var(--content-background);
+    margin: 0;
+    padding: 0;
+    line-height: 1.5;
+    scroll-behavior: smooth;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-weight: bold;
+    margin: 0 0 1rem 0;
+}
+
+h1 {
+    font-size: 1.5rem;
+}
+
+h2 {
+    font-size: 1.25rem;
+}
+
+h3 {
+    font-size: 1.2rem;
+}
+
+h4 {
+    font-size: 1.1rem;
+}
+
+h5 {
+    font-size: 1rem;
+}
+
+h6 {
+    font-size: 1rem;
+}
+
+@media (min-width: 768px) {
+    h1 {
+        font-size: 2rem;
+    }
+
+    h2 {
+        font-size: 1.75rem;
+    }
+
+    h3 {
+        font-size: 1.5rem;
+    }
+
+    h4 {
+        font-size: 1.25rem;
+    }
+
+    h5 {
+        font-size: 1.1rem;
+    }
+}
+
+a,
+a:visited {
+    text-decoration: none;
+    transition: color 0.5s;
+    color: var(--text-color);
+
+    &:hover {
+        color: var(--link-color-hover);
+    }
+}
+
+img {
+    height: auto;
+    max-width: 100%;
+}
+
+p {
+    margin: 0 0 1rem 0;
+}
+
+blockquote {
+    margin: 0 0 1rem 0;
+    padding: 0 1rem;
+    border-left: solid 0.25rem var(--border);
+    font-style: italic;
+    font-size: 1.2rem;
+}
+
+
+
+
+hr {
+    margin: 1rem 0;
+}
+
+table {
+    margin: 0 0 1rem 0;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th,
+td {
+    border-bottom: solid 1px var(--border);
+    padding: 0.2rem .5rem;
+}
+
+th {
+    text-align: left;
+    border-width: 2px;
+}

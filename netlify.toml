@@ -1,27 +1,128 @@
 [build]
-  publish = "public"
-  command = "npm run build"
-[build.environment]
+  publish = "_site"
+  command = "bun run build"
+  functions = "functions/"
+
+[dev]
+command = "bun run serve"
+autoLaunch = false
+
+[[plugins]]
+package = "netlify-plugin-11ty"
+[plugins.inputs]
+# eleventy-img outputDir, path relative to publish directory
+cache_img = 'assets/images/'
+cache_img_httpHeader = true
+
+# eleventy-fetch cacheDir, path relative to publish directory
+cache_assets = '../.cache/'
+cache_other = []
+
+
+[[plugins]]
+package = "netlify-plugin-purgecss"
+
+[[plugins]]
+package = "netlify-plugin-inline-source"
+
+# All inputs are optional, so you can omit this section.
+# Defaults are shown below.
+# You can also refer to the `inline-source` documentation: https://github.com/popeindustries/inline-source#usage.
+[plugins.inputs]
+# Attribute used to parse sources. All tags will be parsed if set to `false`.
+attribute = "inline"
+
+# Enable/disable compression of inlined content.
+compress = true
+
+# Maintain leading whitespace when `compress` is `false`.
+pretty = false
+
+# Disable inlining based on tag, type, and/or format.
+ignore = []
+
+# Convert `<img inline src="*.svg" />` to `<img>` and not `<svg>`.
+svgAsImage = false
+
+[[plugins]]
+package = "netlify-plugin-minify-html"
+
+# Specify which deploy contexts we'll minify HTML in.
+# Supports any Deploy Contexts available in Netlify.
+# https://docs.netlify.com/site-deploys/overview/#deploy-contexts
+[plugins.inputs]
+contexts = [
+    'production',
+    'branch-deploy',
+    'deploy-preview'
+]
+
+# Optionally, override the default options for the minification
+# https://github.com/kangax/html-minifier#options-quick-reference
+[plugins.inputs.minifierOptions]
+removeComments = true
+collapseInlineTagWhitespace = true
+
+# REDIRECT and HEADERS examples
+
+# Redirect rule example
+# For more information see:- https://www.netlify.com/docs/netlify-toml-reference/
+
+#[[redirects]]
+#  from = "/*"
+#  to = "/blog/:splat"
+
+# The default HTTP status code is 301, but you can define a different one e.g.
+# status = 302
+
+# Headers rule example
+# For more information see:- https://www.netlify.com/docs/netlify-toml-reference/
+
+#[[headers]]
+#   Define which paths this specific [[headers]] block will cover.
+#   for = "/*"
 
 [[headers]]
-  for = "*.jpg"
-  [headers.values]
-    Cache-Control = "public, max-age=604800"
+for = "/assets/images/*" # js files should be set this way
+[headers.values]
+Cache-Control = "public, max-age=604800"
+
 [[headers]]
-  for = "*.png"
-  [headers.values]
-    Cache-Control = "public, max-age=604800"
+for = "/*.webp" # js files should be set this way
+[headers.values]
+Cache-Control = "public, max-age=604800"
+
 [[headers]]
-  for = "*.gif"
-  [headers.values]
-    Cache-Control = "public, max-age=604800"
+for = "/*.png" # png files should be set this way
+[headers.values]
+Cache-Control = "public, max-age=604800"
+
 [[headers]]
-  for = "*.svg"
-  [headers.values]
-    Cache-Control = "public, max-age=604800"
+for = "/*.jpg" # jpg files should be set this way
+[headers.values]
+Cache-Control = "public, max-age=604800"
+
 [[headers]]
-  for = "*.webp"
-  [headers.values]
-    Cache-Control = "public, max-age=604800"
-[[plugins]]
-  package = "netlify-plugin-gatsby-cache"
+for = "/*.svg" # svg files should be set this way
+[headers.values]
+Cache-Control = "public, max-age=604800"
+
+[[headers]]
+for = "/*.js" # js files should be set this way
+[headers.values]
+Cache-Control = "public, max-age=604800"
+
+[[headers]]
+for = "/*.css" # css files too
+[headers.values]
+Cache-Control = "public, max-age=604800"
+
+#[headers.values]
+#   X-Frame-Options = "DENY"
+#   X-XSS-Protection = "1; mode=block"
+#   Content-Security-Policy = "frame-ancestors https://www.facebook.com"
+
+# Redirects and headers are GLOBAL for all builds – they do not get scoped to
+# contexts no matter where you define them in the file.
+# For context-specific rules, use _headers or _redirects files, which are
+# applied on a PER-DEPLOY basis.

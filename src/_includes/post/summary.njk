@@ -1,0 +1,18 @@
+<div class="posts__post">
+    <div class="posts__post__meta">
+        <time datetime="{{ post.data.date | date('iso') }}">{{ post.data.date | date('longdate') }}</time>
+    </div>
+    <div class="posts__post__title">
+        <a href="{{ post.url }}">{{ post.data.title }}</a>
+    </div>
+    <div class="posts__post__categories">
+        <strong>Tags:</strong>
+        {% for cat in post.data.categories %}
+            <a href="/category/{{ cat | slugify }}/">{{ cat }}</a>
+            {% if not loop.last %},
+            {% endif %}
+        {% endfor %}
+    </div>
+    <div class="posts__post__teaser">{{ post | teaser | safe }}</div>
+    <a class="posts__post__link" rel="full-article" href="{{ post.url }}">Read on →</a>
+</div>

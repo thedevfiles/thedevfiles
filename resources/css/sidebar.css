@@ -1,0 +1,128 @@
+.site-sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: var(--gap);
+}
+
+.sidebar__section {}
+
+.sidebar__section__title {
+    font-size: 1.2em;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: var(--dark-background);
+    margin: 0 0 .2rem 0;
+}
+
+.sidebar__section__title__monthly {
+    display: inline;
+}
+
+@media (max-width: 360px) {
+    .sidebar__section__title__monthly {
+        display: none;
+    }
+}
+
+.sidebar__section__body {
+    font-size: .9rem;
+}
+
+.site-sidebar a {
+    color: var(--text-color);
+    text-decoration: none;
+}
+
+.site-sidebar a:hover {
+    color: var(--link-color-hover);
+}
+
+.sidebar__section--recent ul,
+.sidebar__section--categories ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sidebar__section--recent li,
+.sidebar__section--categories li {
+    border-bottom: solid 1px var(--border);
+    margin: 0;
+    padding: .3rem;
+}
+
+.sidebar__section--archives {}
+
+.sidebar__section--archives ul {
+    list-style: none;
+}
+
+.sidebar__section--archives__years {
+    margin: 0;
+    padding: 0;
+}
+
+.sidebar__section--archives__months {
+    margin: 0;
+    padding: 0;
+}
+
+.sidebar__section--archives__item {
+    margin: .3rem 0 0 0;
+    padding: .3rem 0 0 0;
+    border-top: solid 1px var(--border);
+}
+
+.sidebar__section--archives__item--year:first-child {
+    border-top: none;
+}
+
+.sidebar__section--archives__item--month {
+    padding-left: 1.2rem;
+}
+
+.sidebar__section--archives__item--year a {
+    margin-left: .4rem;
+}
+
+.sidebar__section--about .sidebar__section__body {
+    display: flex;
+
+    a {
+        color: var(--background-dark);
+
+        &:hover {
+            color: #0181eb;
+        }
+    }
+
+
+}
+
+.sidebar__section--about__gravatar {
+    flex-grow: 0;
+    flex-shrink: 0;
+
+    img {
+        border: #fff .2em solid;
+        border-radius: .3em;
+        box-shadow: rgba(0, 0, 0, .45) 0 1px 3px;
+    }
+}
+
+.sidebar__section--about__social {
+    flex-grow: 1;
+    flex-shrink: 1;
+    display: flex;
+    flex-wrap: wrap;
+    font-size: 28px;
+    margin-left: 8px;
+    padding-top: 10px;
+
+    a {
+        text-decoration: none;
+        white-space: normal;
+        margin-right: 10px;
+        margin-bottom: 10px;
+    }
+}

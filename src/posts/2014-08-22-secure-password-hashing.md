@@ -1,19 +1,16 @@
 ---
+layout: blog.njk
 slug: secure-password-hashing
-path: "/2014/08/secure-password-hashing"
 title: Secure Password Hashing with PHP
-date: 2014-08-22 00:00:00
-year: 2014
-month: 08
-description: The password_hash function added in PHP 5.5 makes secure password hashing easy.
+date: 2014-08-22
+excerpt: The password_hash function added in PHP 5.5 makes secure password hashing easy.
 published: true
 comments: true
 sharing: true
-image: "../assets/images/featured/Black_Lock.png"
+image: "assets/images/featured/Black_Lock.png"
 image_width: 256
 image_height: 256
-categories: [User Guide]
-tags: [php, security]
+categories: [php, security]
 ---
 
 There is a lot of misinformation and uncertainty on the topic of password storage.
@@ -92,8 +89,6 @@ If you need help using PDO take a look at the article I wrote about [Migrating f
 Make sure to use prepared statements to prevent SQL injection.
 
 ```php
-<?php
-
 class UserModel
 {
 
@@ -170,7 +165,6 @@ class UserModel
         return $sth->execute();
     }
 }
-
 ```
 
 ### How it works

@@ -1,0 +1,39 @@
+---
+layout: main.njk
+permalink: "/category/{{ category | slugify }}/"
+noindex: true
+eleventyComputed:
+    title: "{{ category }}"
+    meta_description: "Posts in the {{ category }} category."
+pagination:
+    data: collections.categories
+    size: 1
+    alias: category
+---
+
+<div class="archive archive--category">
+    <h1 class="archive__title">Category: {{ category }}</h1>
+    <div class="archive__posts">
+        {% set lastyear = null %}
+        {% for post in collections.categories[category].posts %}
+            <div class="archive__post">
+                <div class="archive__post__group">
+                    {% if lastyear !== post.data.date | year %}
+                        {{ post.data.date | year }}
+                    {% endif %}
+                </div>
+                <div class="archive__post__date">{{ post.data.date | date('short') }}</div>
+                <div class="archive__post__content">
+                    <div class="archive__post__title">
+                        <a href="{{ post.url }}">{{ post.data.title }}</a>
+                    </div>
+                    <time datetime="{{ post.data.date | date('iso') }}" class="archive__post__fulldate">{{ post.data.date | date('longdate') }}</time>
+                    <div class="archive__post__categories">
+                        posted in {% for cat in post.data.categories %}<a href="/category/{{ cat | slugify }}/">{{ cat }}</a>{% if not loop.last %}, {% endif %}{% endfor %}
+                    </div>
+                </div>
+            </div>
+            {% set lastyear = post.data.date | year %}
+        {% endfor %}
+    </div>
+</div>

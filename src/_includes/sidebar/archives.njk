@@ -1,0 +1,19 @@
+<section class="sidebar__section sidebar__section--archives">
+    <header class="sidebar__section__title"><span class="sidebar__section__title__monthly">Monthly </span>Archives</header>
+    <nav class="sidebar__section__body">
+        <ul class="sidebar__section--archives__years">
+            {% for year in collections.posts | archive %}
+            <li class="sidebar__section--archives__item sidebar__section--archives__item--year">
+                <a href="/{{ year.year }}/">{{ year.year }} ({{ year.count }})</a>
+                <ul class="sidebar__section--archives__months">
+                    {% for month in year.months %}
+                    <li class="sidebar__section--archives__item sidebar__section--archives__item--month">
+                        <a href="/{{ year.year }}/{{ month.month }}/">{{ month.name }} ({{ month.count }})</a>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </li>
+            {% endfor %}
+        </ul>
+    </nav>
+</section>

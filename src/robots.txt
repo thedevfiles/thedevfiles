@@ -1,0 +1,3 @@
+User-agent: *
+Disallow: /build.txt
+Sitemap: https://www.thedevfiles.com/sitemap.xml

@@ -1,19 +1,16 @@
 ---
+layout: blog.njk
 slug: managing-dependencies-with-composer
-path: "/2014/09/managing-dependencies-with-composer"
 title: Managing Dependencies with Composer
-date: 2014-09-08 00:00:00
-year: 2014
-month: 09
-description: Using composer to manage dependencies.
+date: 2014-09-08
+excerpt: Using composer to manage dependencies.
 published: true
 comments: true
 sharing: true
-image: "../assets/images/featured/logo-composer-transparent5.png"
+image: "assets/images/featured/logo-composer-transparent5.png"
 image_width: 290
 image_height: 356
-categories: [User Guide]
-tags: [php]
+categories: [php]
 ---
 
 [Composer](http://getcomposer.org) is a package manager for PHP much like [gem](https://rubygems.org/) is for ruby or [npm](https://www.npmjs.org/) is for node.

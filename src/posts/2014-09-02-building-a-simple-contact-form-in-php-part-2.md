@@ -1,23 +1,20 @@
 ---
+layout: blog.njk
 slug: building-a-simple-contact-form-in-php-part-2
-path: "/2014/09/building-a-simple-contact-form-in-php-part-2"
 title: Building a simple contact form in PHP - Part 2
-date: 2014-09-02 00:00:00
-year: 2014
-month: 09
-description: Adding server-side form validation to a php contact form.
+date: 2014-09-02
+excerpt: Adding server-side form validation to a php contact form.
 published: true
 comments: true
 sharing: true
-image: "../assets/images/featured/contact-form-validation.png"
+image: "assets/images/featured/contact-form-validation.png"
 image_width: 466
 image_height: 478
 first: /2014/09/building-a-simple-contact-form-in-php-part-1/
 last: /2014/09/building-a-simple-contact-form-in-php-part-5/
 prev: /2014/09/building-a-simple-contact-form-in-php-part-1/
 next: /2014/09/building-a-simple-contact-form-in-php-part-3/
-categories: [Tutorial]
-tags: [php, mail]
+categories: [php, mail]
 ---
 
 In [part 1](/2014/09/building-a-simple-contact-form-in-php-part-1/) of [Building a simple contact form in PHP](/2014/09/building-a-simple-contact-form-in-php-part-1/) we built a simple contact form that sends a notification when the form is posted with the values the user posted.
@@ -357,7 +354,7 @@ $contact = filter_input_array(INPUT_POST, array(
 
 Now anywhere in the validation or email sending code that references `$_POST` should be changed to `$contact`
 
-![Form Validation](../assets/images/contact-form/part-2/validation.png)
+{% photo "assets/images/contact-form/part-2/validation.png", {alt: "Form Validation"} %}
 
 ### Using the posted email address as the Reply-To address
 

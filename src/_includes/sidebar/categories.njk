@@ -1,0 +1,10 @@
+<section class="sidebar__section sidebar__section--categories">
+    <header class="sidebar__section__title">Categories</header>
+    <nav class="sidebar__section__body">
+        <ul>
+            {% for category in collections.posts | getAllCategories %}
+                <li><a href="/category/{{ category.category | slugify }}/">{{ category.category }} ({{ category.count }})</a></li>
+            {% endfor %}
+        </ul>
+    </nav>
+</section>

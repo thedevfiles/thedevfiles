@@ -1,0 +1,21 @@
+---
+layout: main.njk
+head: post-paged.njk
+---
+
+<article class="post h-entry hentry">
+    <h1 class="post__title p-name entry-title">{{ title }}</h1>
+    <time class="post__date dt-published published" datetime="{{ date | date('iso') }}">{{ date | date('longdate') }}</time>
+    <div class="post__author p-author author h-card vcard">
+        <span class="p-name">{{ author }}</span>
+    </div>
+    <div class="post__categories">
+        Categories: {% for cat in categories %}<a class="p-category" rel="category tag" href="/category/{{ cat | slugify }}/">{{ cat }}</a>{% if not loop.last %} • {% endif %}{% endfor %}
+    </div>
+    <div class="post__content e-content entry-content">{{ content | safe }}</div>
+    {% include "post/sharing.njk" %}
+</article>
+
+
+{% include "post/pagination.njk" %}
+{% include "post/comments.njk" %}

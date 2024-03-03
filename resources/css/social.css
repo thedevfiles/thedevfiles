@@ -1,0 +1,49 @@
+.sharing {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.sharing__link {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    padding: .1em .5em;
+    margin-right: 12px;
+    margin-bottom: 8px;
+    border-radius: 4px;
+    color: #fff !important;
+    text-decoration: none !important;
+    background-color: blue;
+
+    .icon {
+        margin-right: 5px;
+    }
+
+    svg {
+        fill: currentColor;
+    }
+}
+
+.sharing__link--facebook {
+    background-color: var(--social-facebook);
+}
+
+.sharing__link--facebook:hover {
+    background-color: var(--social-facebook-hover);
+}
+
+.sharing__link--twitter {
+    background-color: var(--social-twitter);
+}
+
+.sharing__link--twitter:hover {
+    background-color: var(--social-twitter-hover);
+}
+
+.sharing__link--linkedin {
+    background-color: var(--social-linkedin);
+}
+
+.sharing__link--linkedin:hover {
+    background-color: var(--social-linkedin-hover);
+}

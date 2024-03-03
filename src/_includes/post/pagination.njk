@@ -1,0 +1,15 @@
+{% set previousPost = collections.posts | getPreviousCollectionItem(page) %}
+{% set nextPost = collections.posts | getNextCollectionItem(page) %}
+<div class="pagination">
+    {% if previousPost %}
+        <a class="pagination__link pagination__link--previous" href="{{ previousPost.url }}">&larr; Newer</a>
+    {%  else %}
+        <span></span>
+    {%  endif %}
+    <a class="pagination__link pagination__link--archive" href="/archives/">Blog Archives</a>
+    {% if nextPost %}
+        <a class="pagination__link pagination__link--next" href="{{ nextPost.url }}">Older &rarr;</a>
+    {%  else %}
+        <span></span>
+    {%  endif %}
+</div>

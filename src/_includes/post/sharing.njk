@@ -1,0 +1,32 @@
+<div class="sharing sharing--post post__sharing">
+  <a
+    target="_blank"
+    rel="noopener noreferrer"
+    class="sharing__link sharing__link--facebook"
+    href="https://facebook.com/sharer/sharer.php?u={{ site.url + page.url | urlencode  }}"
+    title="Share on Facebook"
+    aria-label="Share on Facebook">
+    {% svg "assets/icons/facebook-brands.svg", "Facebook", {class: "icon icon--sharing"} %}
+    <span>Share</span>
+  </a>
+  <a
+    class="sharing__link sharing__link--twitter"
+    target="_blank"
+    rel="noopener noreferrer"
+    href="https://twitter.com/intent/tweet/?text={{ title | urlencode  }}&amp;url={{ site.url + page.url | urlencode  }}"
+    title="Share on Twitter"
+    aria-label="Share on Twitter">
+    {% svg "assets/icons/twitter-brands.svg", "Facebook", {class: "icon icon--sharing"} %}
+    <span>Tweet</span>
+  </a>
+  <a
+    class="sharing__link sharing__link--linkedin"
+    target="_blank"
+    rel="noopener noreferrer"
+    href="https://www.linkedin.com/shareArticle?mini=true&amp;url={{ site.url + page.url | urlencode  }}&amp;title={{ title | urlencode  }}&amp;summary={{ excerpt | urlencode  }}&amp;source={{ site.url + page.url | urlencode  }}"
+    title="Share on LinkedIn"
+    aria-label="Share on LinkedIn">
+    {% svg "assets/icons/linkedin-brands.svg", "Facebook", {class: "icon icon--sharing"} %}
+    <span>Share</span>
+  </a>
+</div>

@@ -1,0 +1,33 @@
+---
+layout: main.njk
+permalink: "/{% if pagination.pageNumber > 0 %}page/{{ pagination.pageNumber + 1 }}/{% endif %}"
+eleventyImport:
+    collections: ["posts"]
+eleventyExcludeFromCollections: false
+meta_description: "Development blog of Jonathan Bernardi"
+head: paged.njk
+pagination:
+  data: collections.posts
+  size: 10
+  generatePageOnEmptyData: true
+---
+
+<div>
+    {% for post in pagination.items %}
+        {% include "post/summary.njk" %}
+    {% endfor %}
+</div>
+
+<div class="pagination">
+    {% if pagination.href.first !== page.url %}
+      <a class="pagination__link pagination__link--previous" href="{{ pagination.href.previous }}">&larr; Newer</a>
+    {%  else %}
+      <span></span>
+    {%  endif %}
+    <a class="pagination__link pagination__link--archive" href="/archives/">Blog Archives</a>
+    {% if pagination.href.last !== page.url %}
+      <a class="pagination__link pagination__link--next" href="{{ pagination.href.next }}">Older &rarr;</a>
+    {%  else %}
+      <span></span>
+    {%  endif %}
+  </div>

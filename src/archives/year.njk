@@ -1,0 +1,39 @@
+---
+layout: main.njk
+permalink: /{{ year.year }}/
+noindex: true
+eleventyComputed:
+    title: "{{ year.year }} Archive"
+    meta_description: "Archive for {{ year.year }}"
+pagination:
+    data: collections.years
+    size: 1
+    alias: year
+---
+
+<div class="archive archive--year">
+    <h1 class="archive__title">Archive: {{ year.year }}</h1>
+    <div class="archive__posts">
+        {% set lastmonth = null %}
+        {% for post in year.posts %}
+            <div class="archive__post">
+                <div class="archive__post__group">
+                    {% if lastmonth !== post.data.date | date('monthname') %}
+                        <a href="/{{ year.year }}/{{ post.data.date | month }}/">{{ post.data.date | date('monthname') }}</a>
+                    {% endif %}
+                </div>
+                <div class="archive__post__date">{{ post.data.date | date('short') }}</div>
+                <div class="archive__post__content">
+                    <div class="archive__post__title">
+                        <a href="{{ post.url }}">{{ post.data.title }}</a>
+                    </div>
+                    <time datetime="{{ post.data.date | date('iso') }}" class="archive__post__fulldate">{{ post.data.date | date('longdate') }}</time>
+                    <div class="archive__post__categories">
+                        posted in {% for cat in post.data.categories %}<a href="/category/{{ cat | slugify }}/">{{ cat }}</a>{% if not loop.last %}, {% endif %}{% endfor %}
+                    </div>
+                </div>
+            </div>
+            {% set lastmonth = post.data.date | date('monthname') %}
+        {%- endfor -%}
+    </div>
+</div>

@@ -1,26 +1,23 @@
 ---
+layout: blog.njk
 slug: building-a-simple-contact-form-in-php-part-4
-path: "/2014/09/building-a-simple-contact-form-in-php-part-4"
 title: Building a simple contact form in PHP - Part 4
-date: 2014-09-04 00:00:00
-year: 2014
-month: 09
+date: 2014-09-04
 published: true
 comments: true
 sharing: true
-image: "../assets/images/featured/contact-form-recaptcha.png"
+image: "assets/images/featured/contact-form-recaptcha.png"
 image_width: 452
 image_height: 554
-description: Adding a reCAPTCHA field to a php contact form
+excerpt: Adding a reCAPTCHA field to a php contact form
 first: /2014/09/building-a-simple-contact-form-in-php-part-1/
 last: /2014/09/building-a-simple-contact-form-in-php-part-5/
 prev: /2014/09/building-a-simple-contact-form-in-php-part-3/
 next: /2014/09/building-a-simple-contact-form-in-php-part-5/
-categories: [Tutorial]
-tags: [php, mail]
+categories: [php, mail]
 ---
 
-In of [part 3](/2014/09/building-a-simple-contact-form-in-php-part-3/) of [Building a simple contact form in PHP](/2014/09/building-a-simple-contact-form-in-php-part-1/) we added client-side validation to our form.
+In [part 3](/2014/09/building-a-simple-contact-form-in-php-part-3/) of [Building a simple contact form in PHP](/2014/09/building-a-simple-contact-form-in-php-part-1/) we added client-side validation to our form.
 
 In this part we are going to add a [CAPTCHA](http://en.wikipedia.org/wiki/Captcha) field to the form in order to reduce spam.
 
@@ -166,7 +163,6 @@ We are also going to use this configuration file to store the `To` and `From` ad
 Create a file named `config.php` in the same directory as the `contact.php` page with the following content.
 
 ```php
-<?php
 return array(
   "recaptcha" => array(
     "publickey" => "paste-your-pulic-key-here",
@@ -237,7 +233,7 @@ Now we add the form field for the reCAPTCHA field.
 
 The reCAPTCHA field should show up on the form but wont do anything until we add code to check the posted value.
 
-![reCAPTCHA](../assets/images/contact-form/part-4/reCAPTCHA.png)
+{% photo "assets/images/contact-form/part-4/reCAPTCHA.png", {alt: "reCAPTCHA"} %}
 
 Add another check to make sure a value was posted by changing the line that checks the other posted variables to the following.
 

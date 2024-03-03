@@ -1,19 +1,16 @@
 ---
+layout: blog.njk
 slug: simplifying-database-interactions-with-doctrine-dbal
-path: "/2014/08/simplifying-database-interactions-with-doctrine-dbal"
 title: Simplifying database interactions with Doctrine DBAL
-date: 2014-08-15 00:00:00
-year: 2014
-month: 08
-description: This article will introduce Doctrine DBAL for a more user friendly developer experience than straight PDO.
+date: 2014-08-15
+excerpt: This article will introduce Doctrine DBAL for a more user friendly developer experience than straight PDO.
 published: true
 comments: true
 sharing: true
-image: "../assets/images/featured/Doctrine_logo_white.png"
+image: "assets/images/featured/Doctrine_logo_white.png"
 image_width: 191
 image_height: 53
-categories: [User Guide]
-tags:
+categories:
     - php
     - database
     - doctrine

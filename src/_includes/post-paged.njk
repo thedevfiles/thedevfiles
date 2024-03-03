@@ -1,0 +1,9 @@
+{% set previousPost = collections.posts | getPreviousCollectionItem(page) %}
+{% set nextPost = collections.posts | getNextCollectionItem(page) %}
+
+{% if previousPost %}
+    <link rel="prev" href="{{ previousPost.url }}">
+{% endif %}
+{% if nextPost %}
+    <link rel="next" href="{{ nextPost.url }}">
+{% endif %}
