@@ -85,37 +85,37 @@ collapseInlineTagWhitespace = true
 [[headers]]
 for = "/assets/images/*" # js files should be set this way
 [headers.values]
-Cache-Control = "public, max-age=604800"
+Cache-Control = "public, max-age=31536000"
 
 [[headers]]
 for = "/*.webp" # js files should be set this way
 [headers.values]
-Cache-Control = "public, max-age=604800"
+Cache-Control = "public, max-age=31536000"
 
 [[headers]]
 for = "/*.png" # png files should be set this way
 [headers.values]
-Cache-Control = "public, max-age=604800"
+Cache-Control = "public, max-age=31536000"
 
 [[headers]]
 for = "/*.jpg" # jpg files should be set this way
 [headers.values]
-Cache-Control = "public, max-age=604800"
+Cache-Control = "public, max-age=31536000"
 
 [[headers]]
 for = "/*.svg" # svg files should be set this way
 [headers.values]
-Cache-Control = "public, max-age=604800"
+Cache-Control = "public, max-age=31536000"
 
 [[headers]]
 for = "/*.js" # js files should be set this way
 [headers.values]
-Cache-Control = "public, max-age=604800"
+Cache-Control = "public, max-age=31536000"
 
 [[headers]]
 for = "/*.css" # css files too
 [headers.values]
-Cache-Control = "public, max-age=604800"
+Cache-Control = "public, max-age=31536000"
 
 #[headers.values]
 #   X-Frame-Options = "DENY"

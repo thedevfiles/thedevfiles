@@ -57,11 +57,8 @@
     {% endif %}
     {% stylesheet "/assets/css/styles.css", true %}
     <script defer src="{{ "/assets/js/app.js" | versioned }}"></script>
-    {% include 'gtm-head.njk' %}
-    {% include 'google-analytics.njk' %}
   </head>
   <body>
-    {% include 'gtm-body.njk' %}
     <a href="#content" class="sr-only">scroll to content</a>
     <div class="site">
       {% include "header.njk" %}
