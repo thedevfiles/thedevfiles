@@ -1,5 +1,5 @@
 document.addEventListener("turbo:before-render", async (event) => {
-    if(!document.startViewTransition) return;
+    if (!document.startViewTransition) return;
     let fn = null
 
     event.preventDefault()
@@ -25,9 +25,9 @@ document.addEventListener("turbo:before-render", async (event) => {
 
 })
 
-document.addEventListener('turbo:load', function(){
+document.addEventListener('turbo:load', function () {
     window.prefetchInit();
-    if(document.getElementById('disqus_thread')){
+    if (document.getElementById('disqus_thread')) {
         lazyLoadDisqus();
     }
 })

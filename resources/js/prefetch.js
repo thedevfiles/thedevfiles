@@ -24,7 +24,7 @@
     window.prefetchInit = function () {
         if (!quicklink) return;
 
-        document.querySelectorAll('.site-content a').forEach((el) => {
+        document.querySelectorAll('a').forEach((el) => {
             el.addEventListener('mouseover', (e) => {
                 preload(el);
             });
@@ -32,11 +32,6 @@
     }
 
     document.addEventListener('DOMContentLoaded', function () {
-        document.querySelectorAll('.site-sidebar a').forEach((el) => {
-            el.addEventListener('mouseover', (e) => {
-                preload(el);
-            });
-        });
         window.prefetchInit();
     });
 })();
