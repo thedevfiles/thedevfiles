@@ -4,8 +4,6 @@ import sitemap from '@astrojs/sitemap';
 import mdx from '@astrojs/mdx';
 import serviceWorker from "astrojs-service-worker";
 
-import partytown from '@astrojs/partytown';
-
 // https://astro.build/config
 export default defineConfig({
   output: 'static',
