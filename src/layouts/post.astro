@@ -108,7 +108,7 @@ const schema = {
 };
 
 ---
-<Layout title={post.title} description={post.meta_description || post.description} meta_tags={meta} author={post.author || site.author || 'Jonathan Bernardi'} noindex={post.noindex || false}>
+<Layout title={post.title} meta_description={post.meta_description || post.description} meta_tags={meta} author={post.author || site.author || 'Jonathan Bernardi'} noindex={post.noindex || false}>
     <script slot="schema" type="application/ld+json" set:html={JSON.stringify(schema)} />
     <Fragment slot="head">
         {post.prev || prevUrl ? <link rel="prev" href={post.prev ? site.url + post.prev : prevUrl} /> : null}
