@@ -28,7 +28,8 @@
 
 .posts__post__categories {
     margin-bottom: 1rem;
-    font-size: 1.2rem;
+    margin-top: 0.5rem;
+    font-size: 1rem;
 }
 .posts__post__categories a {
     display: inline-block;
