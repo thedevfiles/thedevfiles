@@ -1,10 +1,10 @@
 [build]
   publish = "_site"
-  command = "bun run astro build"
+  command = "bun run astro build --bun"
   functions = "functions/"
 
 [dev]
-command = "bun run astro dev"
+command = "bun run astro dev --bun"
 autoLaunch = false
 
 [[plugins]]
