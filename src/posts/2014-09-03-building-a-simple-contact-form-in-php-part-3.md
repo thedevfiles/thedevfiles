@@ -1,15 +1,12 @@
 ---
-layout: blog.njk
 slug: building-a-simple-contact-form-in-php-part-3
 title: Building a simple contact form in PHP - Part 3
-date: 2014-09-03
-excerpt: Adding client-side form validation to a php contact form.
+date: "2014-09-03 00:00:00"
+description: Adding client-side form validation to a php contact form.
 published: true
 comments: true
 sharing: true
-image: "assets/images/featured/contact-form-parsely.png"
-image_width: 450
-image_height: 470
+image: "../assets/images/featured/contact-form-parsely.png"
 first: /2014/09/building-a-simple-contact-form-in-php-part-1/
 last: /2014/09/building-a-simple-contact-form-in-php-part-5/
 prev: /2014/09/building-a-simple-contact-form-in-php-part-2/
@@ -154,7 +151,7 @@ Depending on your browser you should see a message telling you to fill out a req
 
 Here is what it looks like in Google Chrome.
 
-{% photo "assets/images/contact-form/part-3/html5-validation.png", {alt: "HTML5 Validation"} %}
+![HTML5 Validation](../assets/images/contact-form/part-3/html5-validation.png)
 
 Now change the email input type from `text` to `email` so it looks like the following.
 
@@ -165,7 +162,7 @@ Now fill out the other two fields en enter something that isn't an email address
 
 Here is what I see in Google Chrome.
 
-{% photo "assets/images/contact-form/part-3/html5-email-validation.png", {alt: "HTML5 Validation"} %}
+![HTML5 Validation](../assets/images/contact-form/part-3/html5-email-validation.png)
 
 This also has the benefit of showing an email-specific keyboard on many mobile devices when the email field is filled out.
 
@@ -217,7 +214,7 @@ ul.parsley-errors-list li{
 }
 ```
 
-{% photo "assets/images/contact-form/part-3/parsely-validation.png", {alt: "HTML5 Validation"} %}
+![HTML5 Validation](../assets/images/contact-form/part-3/parsely-validation.png)
 
 ### Customizing error messages
 
@@ -242,7 +239,7 @@ It should look like the following.
 ```
 Now the custom messages you provided will be displayed instead of the default `This value is required.` message.
 
-{% photo "assets/images/contact-form/part-3/parsely-messages.png", {alt: "HTML5 Validation"} %}
+![HTML5 Validation](../assets/images/contact-form/part-3/parsely-messages.png)
 
  The full `contact.php` should now look like the following.
 

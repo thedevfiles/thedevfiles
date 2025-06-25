@@ -1,15 +1,12 @@
 ---
-layout: blog.njk
 slug: building-a-simple-contact-form-in-php-part-2
 title: Building a simple contact form in PHP - Part 2
-date: 2014-09-02
-excerpt: Adding server-side form validation to a php contact form.
+date: "2014-09-02 00:00:00"
+description: Adding server-side form validation to a php contact form.
 published: true
 comments: true
 sharing: true
-image: "assets/images/featured/contact-form-validation.png"
-image_width: 466
-image_height: 478
+image: "../assets/images/featured/contact-form-validation.png"
 first: /2014/09/building-a-simple-contact-form-in-php-part-1/
 last: /2014/09/building-a-simple-contact-form-in-php-part-5/
 prev: /2014/09/building-a-simple-contact-form-in-php-part-1/
@@ -354,7 +351,7 @@ $contact = filter_input_array(INPUT_POST, array(
 
 Now anywhere in the validation or email sending code that references `$_POST` should be changed to `$contact`
 
-{% photo "assets/images/contact-form/part-2/validation.png", {alt: "Form Validation"} %}
+![Form Validation](../assets/images/contact-form/part-2/validation.png)
 
 ### Using the posted email address as the Reply-To address
 

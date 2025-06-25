@@ -1,15 +1,12 @@
 ---
-layout: blog.njk
 slug: building-a-simple-contact-form-in-php-part-4
 title: Building a simple contact form in PHP - Part 4
-date: 2014-09-04
+date: "2014-09-04 00:00:00"
 published: true
 comments: true
 sharing: true
-image: "assets/images/featured/contact-form-recaptcha.png"
-image_width: 452
-image_height: 554
-excerpt: Adding a reCAPTCHA field to a php contact form
+image: "../assets/images/featured/contact-form-recaptcha.png"
+description: Adding a reCAPTCHA field to a php contact form
 first: /2014/09/building-a-simple-contact-form-in-php-part-1/
 last: /2014/09/building-a-simple-contact-form-in-php-part-5/
 prev: /2014/09/building-a-simple-contact-form-in-php-part-3/
@@ -163,6 +160,7 @@ We are also going to use this configuration file to store the `To` and `From` ad
 Create a file named `config.php` in the same directory as the `contact.php` page with the following content.
 
 ```php
+<?php
 return array(
   "recaptcha" => array(
     "publickey" => "paste-your-pulic-key-here",
@@ -233,7 +231,7 @@ Now we add the form field for the reCAPTCHA field.
 
 The reCAPTCHA field should show up on the form but wont do anything until we add code to check the posted value.
 
-{% photo "assets/images/contact-form/part-4/reCAPTCHA.png", {alt: "reCAPTCHA"} %}
+![reCAPTCHA](../assets/images/contact-form/part-4/reCAPTCHA.png)
 
 Add another check to make sure a value was posted by changing the line that checks the other posted variables to the following.
 

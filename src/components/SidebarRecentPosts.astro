@@ -1,0 +1,30 @@
+---
+import { getCollection } from 'astro:content';
+
+const latestPosts = await getCollection('post', ({ data }) => {
+	return import.meta.env.PROD ? data.published !== false : true;
+}).then(posts => posts.toSorted((a,b) => {
+    if ( a.data.date > b.data.date ){
+        return -1;
+    }
+    if ( a.data.date < b.data.date ){
+        return 1;
+    }
+    return 0;
+}).slice(0, 5));
+---
+<section class="sidebar__section sidebar__section--recent">
+    <header class="sidebar__section__title">Recent Posts</header>
+    <nav class="sidebar__section__body">
+        <ul>
+            {latestPosts.map(post => {
+                let date = new Date(post.data.date);
+                let year = date.getUTCFullYear().toString();
+                let month = String(date.getUTCMonth() + 1).padStart(2, '0')
+                return (
+                        <li><a href={"/" + year + "/" + month + "/" + post.id + "/"}>{post.data.title}</a></li>
+                )
+            })}
+        </ul>
+    </nav>
+</section>

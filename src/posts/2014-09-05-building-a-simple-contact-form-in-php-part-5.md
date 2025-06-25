@@ -1,15 +1,12 @@
 ---
-layout: blog.njk
 slug: building-a-simple-contact-form-in-php-part-5
 title: Building a simple contact form in PHP - Part 5
-date: 2014-09-05
+date: "2014-09-05 00:00:00"
 published: true
 sharing: true
 comments: true
-image: "assets/images/featured/contact-form.png"
-image_width: 470
-image_height: 420
-excerpt: Using Swift to send email notifications on contact form submissions.
+image: "../assets/images/featured/contact-form.png"
+description: Using Swift to send email notifications on contact form submissions.
 first: /2014/09/building-a-simple-contact-form-in-php-part-1/
 last: /2014/09/building-a-simple-contact-form-in-php-part-5/
 prev: /2014/09/building-a-simple-contact-form-in-php-part-4/

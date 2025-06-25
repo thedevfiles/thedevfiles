@@ -1,0 +1,53 @@
+---
+import Layout from "../../layouts/main.astro";
+import {getCollection} from "astro:content";
+import slugify from "slugify";
+
+const allPosts = await getCollection('post', ({data}) => {
+    return import.meta.env.PROD ? data.published !== false : true;
+})
+    .then(posts => posts.sort((a, b) => new Date(b.data.date) - new Date(a.data.date)));
+
+const categories = [];
+allPosts.forEach(post => {
+    const cats = post.data.categories || [];
+    cats.forEach(cat => {
+        const slug = slugify(cat, {
+            replacement: '-',
+            lower: true,
+            strict: true,
+            trim: true
+        });
+        let record = categories.find(c => c.slug === slug);
+        if (!record) {
+            record = {
+                slug: slug,
+                name: cat,
+                posts: []
+            };
+            categories.push(record);
+        }
+        record.posts.push(post);
+    });
+});
+categories.sort((a, b) => {
+    if (a.name < b.name) return -1;
+    if (a.name > b.name) return 1;
+    return 0;
+});
+---
+<Layout title="Categories">
+    <div class="category-list">
+        <h1 class="category__title">Categories</h1>
+        <div class="category-list__list">
+            {categories.map(category => (
+                <div class="category-list__item">
+                    <a href={`/category/${category.slug}/`}>
+                        {category.name} ({category.posts.length})
+                    </a>
+                </div>
+            ))}
+        </div>
+    </div>
+
+</Layout>

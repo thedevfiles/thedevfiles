@@ -1,0 +1,55 @@
+---
+import Layout from "../../layouts/main.astro";
+import ArchivePost from "../../components/ArchivePost.astro";
+import {getCollection} from "astro:content";
+import {DateTime} from "luxon";
+import type {GetStaticPaths} from 'astro';
+
+export const getStaticPaths = (async () => {
+    const posts = await getCollection('post', ({data}) => {
+        return import.meta.env.PROD ? data.published !== false : true;
+    }).then(posts => posts
+        .sort((a, b) => new Date(a.data.date) - new Date(b.data.date)));
+
+    let archive = [];
+    posts.forEach(post => {
+        const date = DateTime.fromISO(post.data.date, { zone: "UTC" });
+        const year = date.toFormat('yyyy').toString();
+        post.data.year = year;
+        post.data.month = date.toFormat('LL').toString();
+        post.data.monthname = date.toFormat('LLLL').toString();
+        let record = archive.find(a => a.params.year === year);
+        if (!record) {
+            record = {
+                params: {year: year},
+                props: {posts: []}
+            };
+            archive.push(record);
+        }
+        record.props.posts.push(post);
+
+        return record;
+    });
+
+    return archive;
+}) satisfies GetStaticPaths;
+
+const {posts} = Astro.props;
+const {year} = Astro.params;
+---
+<Layout title={`${year} Archive`}>
+    <div class="archive archive--year">
+        <h1 class="archive__title">Archive: {year}</h1>
+        <div class="archive__posts">
+            {posts.map((post, index) => {
+                const lastmonth = index > 0 ? posts[index - 1].data.monthname : null;
+                const month = post.data.monthname;
+                const url = `/${post.data.year}/${post.data.month}/`;
+                return (
+                        <ArchivePost post={post} last={lastmonth} current={month} groupurl={url} />
+                );
+            })}
+        </div>
+    </div>
+
+</Layout>

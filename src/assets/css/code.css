@@ -1,0 +1,6 @@
+.astro-code {
+    border-radius: 0.3rem;
+    margin: .5em 0;
+    overflow: auto;
+    padding: 1em;
+}

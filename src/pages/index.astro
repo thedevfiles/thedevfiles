@@ -1,0 +1,52 @@
+---
+import {getCollection} from 'astro:content';
+import Layout from '../layouts/main.astro';
+import MarkdownIt from 'markdown-it';
+import PostTeaser from '../components/PostTeaser.astro';
+import site from "../data/config";
+
+const pageSize = 10; // Number of posts per page
+const parser = new MarkdownIt({
+    html: true,
+    linkify: false,
+    typographer: false
+});
+
+const allPosts = await getCollection('post', ({data}) => {
+    return import.meta.env.PROD ? data.published !== false : true;
+}).then(posts => posts
+    .sort((a, b) => {
+        return new Date(b.data.date) - new Date(a.data.date);
+    })
+    .slice(0, pageSize + 1) // include one extra post for pagination
+    .map(post => {
+        if (!post.data?.excerpt) {
+            if (post.body.includes('<!--more-->')) {
+                post.data.excerpt = parser.render(post.body.split('<!--more-->')[0]);
+            } else {
+                post.data.excerpt = post.data?.description || '';
+            }
+        }
+        return post;
+    }));
+---
+
+<Layout title="The Dev Files" full_title={true}>
+    <Fragment slot="head">
+        {allPosts.length > pageSize ? <link rel="next" href={site.url + '/page/2/'} /> : null}
+    </Fragment>
+
+    <div>
+        {allPosts.slice(0, pageSize).map(post => (
+                <PostTeaser post={post}/>
+        ))}
+    </div>
+
+    <div class="pagination">
+        <span></span>
+        <a class="pagination__link pagination__link--archive" href="/archives/">Blog Archives</a>
+        {allPosts.length > pageSize ? (
+			<a class="pagination__link pagination__link--next" href="/page/2/">Older &rarr;</a>
+        ) : <span></span>}
+    </div>
+</Layout>

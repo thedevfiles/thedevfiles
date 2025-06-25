@@ -1,0 +1,23 @@
+---
+const property = import.meta.env.GOOGLE_ANALYTICS;
+---
+{property && (
+    <script type="text/partytown" is:inline src={`https://www.googletagmanager.com/gtag/js?id=${property}`}></script>
+    <script type="text/partytown" id="google-analytics" data-id={property}>
+    document.addEventListener('astro:page-load', () => {
+        if (!window.google_analytics) window.google_analytics = document.getElementById("google-analytics").getAttribute("data-id");
+        if (!window.dataLayer) window.dataLayer = window.dataLayer || [];
+        if (!window.gtag) window.gtag = function () {
+            window.dataLayer.push(arguments);
+        }
+        gtag("js", new Date());
+        gtag("consent", "default", {
+            ad_storage: "denied",
+            ad_user_data: "denied",
+            ad_personalization: "denied",
+            analytics_storage: "denied",
+            });
+        gtag("config", window.google_analytics);
+    });
+    </script>
+)}

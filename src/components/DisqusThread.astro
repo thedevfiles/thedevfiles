@@ -1,0 +1,34 @@
+---
+import site from "../data/config";
+const {url, title} = Astro.props;
+---
+
+<div id="disqus_thread" aria-live="polite" data-url={url} data-title={title}>
+    <noscript
+    >Please enable JavaScript to view the <a
+            href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a
+    ></noscript
+    >
+</div>
+
+<script is:inline data-astro-rerun>
+    (function () {
+        let thread = document.getElementById("disqus_thread");
+        if (thread) {
+            window.disqus_config = function () {
+                this.page.url = thread.getAttribute('data-url');
+                this.page.identifier = thread.getAttribute('data-url');
+                this.callbacks.onNewComment = [
+                    function (comment) {
+                        if (window.gtag && window.gtag !== undefined) {
+                            window.gtag('event', 'comment', {
+                                url: thread.getAttribute('data-url'),
+                                title: thread.getAttribute('data-title') || site.name
+                            });
+                        }
+                    },
+                ];
+            };
+        }
+    })()
+</script>

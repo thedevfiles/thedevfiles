@@ -1,0 +1,35 @@
+---
+import {getCollection, render} from 'astro:content';
+import Layout from '../../../../layouts/post.astro';
+const {post} = Astro.props;
+import slugify from 'slugify';
+import site from "../../../../data/config";
+
+export async function getStaticPaths() {
+    const blogEntries = await getCollection('post', ({data}) => {
+        return import.meta.env.PROD ? data.published !== false : true;
+    }).then(posts => posts
+        .sort((a, b) => new Date(a.data.date) - new Date(b.data.date)));
+
+    return blogEntries.map(post => {
+        let date = new Date(post.data.date);
+        return {
+            params: {
+                year: date.getUTCFullYear().toString(),
+                month: String(date.getUTCMonth() + 1).padStart(2, '0'),
+                slug: post.id ?? slugify(post.data.title, {
+                    replacement: '-',
+                    lower: true,
+                    strict: true,
+                    trim: true
+                }),
+            }, props: { post },
+        };
+    });
+}
+
+const { Content } = await render(post);
+---
+<Layout post={{...post.data, id: post.id, url: site.url + Astro.url.pathname, slug: post.data.slug}}>
+    <Content />
+</Layout>

@@ -1,0 +1,41 @@
+---
+import { DateTime } from "luxon";
+import slugify from 'slugify';
+
+const {post, last, current, groupurl} = Astro.props;
+const date = DateTime.fromISO(post.data.date, { zone: "UTC" });
+const year = date.toFormat('yyyy').toString();
+const month = date.toFormat('LL').toString();
+const url = `/${year}/${month}/${post.id}/`;
+
+const categories = (post.data.categories || []).map(cat => {
+    return {
+        name: cat,
+        slug: slugify(cat, {
+            replacement: '-',
+            lower: true,
+            strict: true,
+            trim: true
+        })
+    };
+});
+
+---
+<div class="archive__post">
+    {current ? (
+        <div class="archive__post__group">
+            {groupurl && last !== current ? <a href={groupurl} class="archive__post__group__link">{current}</a> : ''}
+            {!groupurl && last !== current ? current : ''}
+        </div>
+    ) : ''}
+    <div class="archive__post__date">{date.toFormat('LLL dd')}</div>
+    <div class="archive__post__content">
+        <div class="archive__post__title">
+            <a href={url}>{post.data.title}</a>
+        </div>
+        <time datetime={post.data.date} class="archive__post__fulldate">{date.toFormat('DDD')}</time>
+        <div class="archive__post__categories">
+            posted in {categories.map(cat => <a class="posts__post__category" href={`/category/${cat.slug}/`}>{cat.name}</a>)}
+        </div>
+    </div>
+</div>

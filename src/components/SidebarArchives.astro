@@ -1,0 +1,75 @@
+---
+import { getCollection } from 'astro:content';
+import { DateTime } from "luxon";
+
+type Archive = {
+    year: number;
+    count: number;
+    months: {
+        month: number;
+        name: string;
+        count: number;
+    }[];
+};
+
+const months = [
+    'January', 'February', 'March', 'April', 'May', 'June',
+    'July', 'August', 'September', 'October', 'November', 'December'
+];
+
+const archive = await getCollection('post', ({ data }) => {
+	return import.meta.env.PROD ? data.published !== false : true;
+}).then(posts => {
+    let archive: Archive[] = [];
+    posts.forEach(post => {
+        let date = DateTime.fromISO(post.data.date, { zone: "UTC" });
+        let year = date.toFormat('yyyy').toString();
+        let month = date.toFormat('LLLL').toString();
+        let monthNumber = date.toFormat('LL').toString();
+
+        // Find or create the year entry
+        let yearEntry = archive.find(y => y.year === year);
+        if (!yearEntry) {
+            yearEntry = { year: year, count: 0, months: [] };
+            archive.push(yearEntry);
+        }
+
+        // Increment the count for the year
+        yearEntry.count++;
+
+        // Find or create the month entry
+        let monthEntry = yearEntry.months.find(m => m.month === monthNumber);
+        if (!monthEntry) {
+            monthEntry = { month: monthNumber, name: month, count: 0 };
+            yearEntry.months.push(monthEntry);
+        }
+
+        // Increment the count for the month
+        monthEntry.count++;
+    });
+
+    archive.forEach(year => year.months.sort((a, b) => b.month - a.month));
+    archive.sort((a, b) => b.year - a.year); // Sort years descending
+
+    return archive;
+});
+---
+<section class="sidebar__section sidebar__section--archives">
+    <header class="sidebar__section__title"><span class="sidebar__section__title__monthly">Monthly </span>Archives</header>
+    <nav class="sidebar__section__body">
+        <ul class="sidebar__section--archives__years">
+            {archive.map(year => (
+                    <li class="sidebar__section--archives__item sidebar__section--archives__item--year">
+                        <a href={"/" + year.year + "/"}>{year.year} ({year.count})</a>
+                        <ul class="sidebar__section--archives__months">
+                            {year.months.map(month => (
+                                    <li class="sidebar__section--archives__item sidebar__section--archives__item--month">
+                                        <a href={"/" + year.year + "/" + month.month + "/"}>{month.name} ({month.count})</a>
+                                    </li>
+                            ))}
+                        </ul>
+                    </li>
+            ))}
+        </ul>
+    </nav>
+</section>

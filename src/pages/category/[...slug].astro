@@ -1,0 +1,49 @@
+---
+import Layout from "../../layouts/main.astro";
+import ArchivePost from "../../components/ArchivePost.astro";
+import {getCollection} from "astro:content";
+import type {GetStaticPaths} from 'astro';
+import slugify from "slugify";
+
+export const getStaticPaths = (async () => {
+    const posts = await getCollection('post', ({data}) => {
+        return import.meta.env.PROD ? data.published !== false : true;
+    }).then(posts => posts
+        .sort((a, b) => new Date(a.data.date) - new Date(b.data.date)));
+
+    let categories = [];
+    posts.forEach(post => {
+        const cats = post.data.categories || [];
+        cats.forEach(cat => {
+            const slug = slugify(cat, {
+                replacement: '-',
+                lower: true,
+                strict: true,
+                trim: true
+            });
+            let record = categories.find(c => c.params.slug === slug);
+            if (!record) {
+                record = {
+                    params: {slug: slug},
+                    props: {category: cat, posts: []}
+                };
+                categories.push(record);
+            }
+            record.props.posts.push(post);
+        });
+    });
+
+    return categories;
+}) satisfies GetStaticPaths;
+
+const {posts, category} = Astro.props;
+---
+<Layout title={`${category} Category Archive`} noindex={true}>
+    <div class="archive archive--year">
+        <h1 class="archive__title">Category: {category}</h1>
+        <div class="archive__posts">
+            {posts.map((post) => <ArchivePost post={post} />)}
+        </div>
+    </div>
+
+</Layout>

@@ -1,0 +1,43 @@
+---
+import { DateTime } from "luxon";
+import slugify from 'slugify';
+
+import type { CollectionEntry } from 'astro:content';
+interface Props {
+    post: CollectionEntry<'post'>;
+}
+const { post } = Astro.props;
+const date = DateTime.fromISO(post.data.date, { zone: "UTC" });
+const year = date.toFormat('yyyy');
+const month = date.toFormat('LL');
+const url = `/${year}/${month}/${post.id}/`;
+
+const categories = (post.data.categories || []).map(cat => {
+    return {
+        name: cat,
+        slug: slugify(cat, {
+            replacement: '-',
+            lower: true,
+            strict: true,
+            trim: true
+        })
+    };
+});
+
+---
+<div class="posts__post">
+    <div class="posts__post__meta">
+        <time datetime={post.data.date}>{date.toFormat('DDD')}</time>
+    </div>
+    <div class="posts__post__title">
+        <a href={url}>{post.data.title}</a>
+    </div>
+    <div class="posts__post__categories">
+        <strong>Categories:</strong>
+        {categories.map(cat => (
+            <a class="posts__post__category" href={`/category/${cat.slug}/`}>{cat.name}</a>
+        ))}
+    </div>
+    <div class="posts__post__teaser" set:html={post.data.excerpt} />
+    <a class="posts__post__link" rel="full-article" href={url}>Read on →</a>
+</div>

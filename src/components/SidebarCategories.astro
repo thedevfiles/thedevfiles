@@ -1,0 +1,39 @@
+---
+import { getCollection } from 'astro:content';
+
+type Category = {
+    category: string;
+    count: number;
+    slug: string;
+};
+
+const categories = await getCollection('post', ({ data }) => {
+    return import.meta.env.PROD ? data.published !== false : true;
+}).then(posts => {
+    const categoryMap = new Map();
+
+    posts.forEach(post => {
+        if (post.data.categories) {
+            post.data.categories.forEach(category => {
+                if (!categoryMap.has(category)) {
+                    categoryMap.set(category, { category, count: 0, slug: category.toLowerCase().replace(/\s+/g, '-') });
+                }
+                categoryMap.get(category).count++;
+            });
+        }
+    });
+
+    return Array.from(categoryMap.values()).sort((a, b) => a.category.localeCompare(b.category));
+});
+
+---
+<section class="sidebar__section sidebar__section--categories">
+    <header class="sidebar__section__title">Categories</header>
+    <nav class="sidebar__section__body">
+        <ul>
+            {categories.map(category => (
+                <li><a href={`/category/${category.slug}/`}>{category.category} ({category.count})</a></li>
+            ))}
+        </ul>
+    </nav>
+</section>

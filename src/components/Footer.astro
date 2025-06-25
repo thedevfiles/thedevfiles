@@ -1,0 +1,9 @@
+---
+const year = new Date().getFullYear()
+---
+<footer class="site-footer" data-turbo-permanent transition:persist>
+    Copyright © <span id="site-footer-copyright-year">{year}</span> - Jonathan Bernardi
+</footer>
+<script is:inline data-astro-rerun>
+    document.getElementById("site-footer-copyright-year").innerText = new Date().getFullYear();
+</script>

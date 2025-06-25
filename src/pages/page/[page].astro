@@ -1,0 +1,70 @@
+---
+import type {GetStaticPaths, Page} from 'astro';
+import {getCollection} from 'astro:content';
+import Layout from '../../layouts/main.astro';
+import MarkdownIt from 'markdown-it';
+import PostTeaser from '../../components/PostTeaser.astro';
+import site from "../../data/config";
+
+interface Props {
+    page: Page<CollectionEntry<'post'>>;
+}
+
+export const getStaticPaths = (async ({paginate}) => {
+    const pageSize = 10; // Number of posts per page
+    const parser = new MarkdownIt({
+        html: true,
+        linkify: false,
+        typographer: false
+    });
+    const posts = await getCollection('post', ({data}) => {
+        return import.meta.env.PROD ? data.published !== false : true;
+    }).then(posts => posts
+        .sort((a, b) => new Date(b.data.date) - new Date(a.data.date))
+        .map(post => {
+            if (!post.data?.excerpt) {
+                if (post.body.includes('<!--more-->')) {
+                    post.data.excerpt = parser.render(post.body.split('<!--more-->')[0]);
+                } else {
+                    post.data.excerpt = post.data?.description || '';
+                }
+            }
+            return post;
+        })
+    );
+
+    // Generate pages from our array of astronauts, with 2 to a page
+    return paginate(posts, {pageSize: pageSize});
+}) satisfies GetStaticPaths;
+
+
+const {page} = Astro.props as Props;
+
+if (page.currentPage === 1) {
+    return Astro.redirect('/', 301);
+}
+
+---
+
+<Layout title={`The Dev Files | Page ${page.currentPage}`} full_title={true}>
+    <Fragment slot="head">
+        {page.currentPage === 2 ? <link rel="prev" href={site.url} /> : null}
+        {page.currentPage > 2 ? <link rel="prev" href={`${site.url}${page.url.prev}/`} /> : null}
+        {page.url.next ? <link rel="next" href={`${site.url}${page.url.next}/`} /> : null}
+    </Fragment>
+    <div>
+        {page.data.map(post => (
+            <PostTeaser post={post}/>
+        ))}
+    </div>
+
+    <div class="pagination">
+        {page.currentPage > 1 ? (
+                <a class="pagination__link pagination__link--previous" href={page.currentPage > 2 ? page.url.prev + '/' : '/'}>&larr; Newer</a>
+        ) : <span></span>}
+        <a class="pagination__link pagination__link--archive" href="/archives/">Blog Archives</a>
+        {page.url.next ? (
+                <a class="pagination__link pagination__link--next" href={page.url.next + '/'}>Older &rarr;</a>
+        ) : <span></span>}
+    </div>
+</Layout>

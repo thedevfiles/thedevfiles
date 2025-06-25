@@ -1,67 +1,15 @@
 [build]
   publish = "_site"
-  command = "bun run build"
+  command = "bunx --bun astro build"
   functions = "functions/"
 
 [dev]
-command = "bun run serve"
+command = "bunx --bun astro dev"
 autoLaunch = false
-
-[[plugins]]
-package = "netlify-plugin-11ty"
-[plugins.inputs]
-# eleventy-img outputDir, path relative to publish directory
-cache_img = 'assets/images/'
-cache_img_httpHeader = true
-
-# eleventy-fetch cacheDir, path relative to publish directory
-cache_assets = '../.cache/'
-cache_other = []
-
 
 [[plugins]]
 package = "netlify-plugin-purgecss"
 
-[[plugins]]
-package = "netlify-plugin-inline-source"
-
-# All inputs are optional, so you can omit this section.
-# Defaults are shown below.
-# You can also refer to the `inline-source` documentation: https://github.com/popeindustries/inline-source#usage.
-[plugins.inputs]
-# Attribute used to parse sources. All tags will be parsed if set to `false`.
-attribute = "inline"
-
-# Enable/disable compression of inlined content.
-compress = true
-
-# Maintain leading whitespace when `compress` is `false`.
-pretty = false
-
-# Disable inlining based on tag, type, and/or format.
-ignore = []
-
-# Convert `<img inline src="*.svg" />` to `<img>` and not `<svg>`.
-svgAsImage = false
-
-[[plugins]]
-package = "netlify-plugin-minify-html"
-
-# Specify which deploy contexts we'll minify HTML in.
-# Supports any Deploy Contexts available in Netlify.
-# https://docs.netlify.com/site-deploys/overview/#deploy-contexts
-[plugins.inputs]
-contexts = [
-    'production',
-    'branch-deploy',
-    'deploy-preview'
-]
-
-# Optionally, override the default options for the minification
-# https://github.com/kangax/html-minifier#options-quick-reference
-[plugins.inputs.minifierOptions]
-removeComments = true
-collapseInlineTagWhitespace = true
 
 # REDIRECT and HEADERS examples
 
@@ -83,37 +31,37 @@ collapseInlineTagWhitespace = true
 #   for = "/*"
 
 [[headers]]
-for = "/assets/images/*" # js files should be set this way
+for = "/_astro/*"
 [headers.values]
 Cache-Control = "public, max-age=31536000"
 
 [[headers]]
-for = "/*.webp" # js files should be set this way
+for = "/*.svg"
 [headers.values]
 Cache-Control = "public, max-age=31536000"
 
 [[headers]]
-for = "/*.png" # png files should be set this way
+for = "/*.webp"
 [headers.values]
 Cache-Control = "public, max-age=31536000"
 
 [[headers]]
-for = "/*.jpg" # jpg files should be set this way
+for = "/*.png"
 [headers.values]
 Cache-Control = "public, max-age=31536000"
 
 [[headers]]
-for = "/*.svg" # svg files should be set this way
+for = "/*.jpg"
 [headers.values]
 Cache-Control = "public, max-age=31536000"
 
 [[headers]]
-for = "/*.js" # js files should be set this way
+for = "/*.js"
 [headers.values]
 Cache-Control = "public, max-age=31536000"
 
 [[headers]]
-for = "/*.css" # css files too
+for = "/*.css"
 [headers.values]
 Cache-Control = "public, max-age=31536000"
 

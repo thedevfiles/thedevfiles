@@ -1,0 +1,49 @@
+---
+import Layout from "../../../layouts/main.astro";
+import ArchivePost from "../../../components/ArchivePost.astro";
+import {getCollection} from "astro:content";
+import {DateTime} from "luxon";
+import type {GetStaticPaths} from 'astro';
+
+export const getStaticPaths = (async () => {
+    const posts = await getCollection('post', ({data}) => {
+        return import.meta.env.PROD ? data.published !== false : true;
+    }).then(posts => posts
+        .sort((a, b) => new Date(a.data.date) - new Date(b.data.date)));
+
+    let archive = [];
+    posts.forEach(post => {
+        const date = DateTime.fromISO(post.data.date, { zone: "UTC" });
+        const year = date.toFormat('yyyy').toString();
+        post.data.year = year;
+        post.data.month = date.toFormat('LL').toString();
+        post.data.monthname = date.toFormat('LLLL').toString();
+        let record = archive.find(a => a.params.year === year && a.params.month === post.data.month);
+        if (!record) {
+            record = {
+                params: {year: year, month: post.data.month},
+                props: {posts: []}
+            };
+            archive.push(record);
+        }
+        record.props.posts.push(post);
+
+        return record;
+    });
+
+    return archive;
+}) satisfies GetStaticPaths;
+
+const {posts} = Astro.props;
+const {year, month} = Astro.params;
+const monthname = DateTime.fromFormat(month, 'LL', { zone: "UTC" }).toFormat('LLLL').toString();
+---
+<Layout title={`${monthname} ${year} Archive`}>
+    <div class="archive archive--year">
+        <h1 class="archive__title">Archive: {monthname} {year}</h1>
+        <div class="archive__posts">
+            {posts.map((post) => <ArchivePost post={post} />)}
+        </div>
+    </div>
+
+</Layout>

@@ -1,15 +1,12 @@
 ---
-layout: blog.njk
 slug: building-a-simple-contact-form-in-php-part-1
 title: Building a simple contact form in PHP - Part 1
-date: 2014-09-01
-excerpt: Building a simple contact form in PHP
+date: "2014-09-01 00:00:00"
+description: Building a simple contact form in PHP
 published: true
 comments: true
 sharing: true
-image: "assets/images/featured/contact-form.png"
-image_width: 470
-image_height: 420
+image: "../assets/images/featured/contact-form.png"
 last: /2014/09/building-a-simple-contact-form-in-php-part-5/
 next: /2014/09/building-a-simple-contact-form-in-php-part-2/
 categories: [php, mail]
@@ -92,7 +89,7 @@ textarea {
 
 If you view the page in a browser it should look something like this.
 
-{% photo "assets/images/contact-form/part-1/contact-form.png", {alt: "Contact Form"} %}
+![Contact Form](../assets/images/contact-form/part-1/contact-form.png)
 
 Not the prettiest form but this isn't a design tutorial.
 Feel free to add your own styles.

@@ -1,20 +1,17 @@
 ---
-layout: blog.njk
 slug: moving-from-mysql-query-to-pdo
 title: Moving from mysql_query to PDO
-date: 2014-08-08
-excerpt: The php mysql extension has been marked as deprecated. This article will introduce PDO as a replacement.
+date: "2014-08-08 00:00:00"
+description: The php mysql extension has been marked as deprecated. This article will introduce PDO as a replacement.
 published: true
 comments: true
 sharing: true
-image: "assets/images/featured/powered-by-mysql-125x64.png"
-image_width: 125
-image_height: 64
+image: "../assets/images/featured/powered-by-mysql-125x64.png"
 categories:
-    - php
-    - database
-    - pdo
-    - mysql
+  - php
+  - database
+  - pdo
+  - mysql
 ---
 
 The mysql extension has been marked as deprecated as of php 5.5.0 and will be removed completely in a future version.

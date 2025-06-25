@@ -1,0 +1,24 @@
+---
+import Layout from "../layouts/main.astro";
+import ArchivePost from "../components/ArchivePost.astro";
+import {getCollection} from "astro:content";
+
+const allPosts = await getCollection('post', ({data}) => {
+    return import.meta.env.PROD ? data.published !== false : true;
+}).then(posts => posts.sort((a, b) => new Date(b.data.date) - new Date(a.data.date)));
+---
+<Layout title="Archives">
+    <div class="archive archive--full">
+        <div class="archive__posts">
+            {allPosts.map((post, index) => {
+                const lastyear = index > 0 ? (new Date(allPosts[index - 1].data.date)).getUTCFullYear().toString() : null;
+                const year = (new Date(post.data.date)).getUTCFullYear().toString();
+                const url = `/${year}/`;
+                return (
+                    <ArchivePost post={post} last={lastyear} current={year} groupurl={url}  />
+                );
+            })}
+        </div>
+    </div>
+
+</Layout>

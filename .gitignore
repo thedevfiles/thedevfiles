@@ -1,7 +1,28 @@
-/_site/
-node_modules
-/_tmp/
-/.netlify
-/.env
-/.idea
-/.cache
+# build output
+dist/
+_site/
+# generated types
+.astro/
+
+# dependencies
+node_modules/
+
+# logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# IDE and editor files
+.vscode/
+.idea/
+
+# environment variables
+.env
+.env.production
+
+# macOS-specific files
+.DS_Store
+
+# Local Netlify folder
+.netlify
