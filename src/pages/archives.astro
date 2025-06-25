@@ -2,12 +2,12 @@
 import Layout from "../layouts/main.astro";
 import ArchivePost from "../components/ArchivePost.astro";
 import {getCollection} from "astro:content";
-
+const meta_description = "Full archive of The Dev Files blog, featuring articles on web development, programming, and technology. Explore past posts and discover insights on coding, software engineering, and more.";
 const allPosts = await getCollection('post', ({data}) => {
     return import.meta.env.PROD ? data.published !== false : true;
 }).then(posts => posts.sort((a, b) => new Date(b.data.date) - new Date(a.data.date)));
 ---
-<Layout title="Archives">
+<Layout title="Archives" meta_description={meta_description}>
     <div class="archive archive--full">
         <div class="archive__posts">
             {allPosts.map((post, index) => {

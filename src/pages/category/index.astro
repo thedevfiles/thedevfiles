@@ -2,7 +2,7 @@
 import Layout from "../../layouts/main.astro";
 import {getCollection} from "astro:content";
 import slugify from "slugify";
-
+const meta_description = "Explore categories on The Dev Files blog, featuring articles on web development, programming, and technology. Discover insights on coding, software engineering, and more.";
 const allPosts = await getCollection('post', ({data}) => {
     return import.meta.env.PROD ? data.published !== false : true;
 })
@@ -36,7 +36,7 @@ categories.sort((a, b) => {
     return 0;
 });
 ---
-<Layout title="Categories">
+<Layout title="Categories" meta_description={meta_description}>
     <div class="category-list">
         <h1 class="category__title">Categories</h1>
         <div class="category-list__list">

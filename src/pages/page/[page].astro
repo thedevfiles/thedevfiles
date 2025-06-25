@@ -37,7 +37,7 @@ export const getStaticPaths = (async ({paginate}) => {
     return paginate(posts, {pageSize: pageSize});
 }) satisfies GetStaticPaths;
 
-
+const meta_description = "The Dev Files is a blog about web development, programming, and technology. Explore articles on coding, software engineering, and more.";
 const {page} = Astro.props as Props;
 
 if (page.currentPage === 1) {
@@ -46,7 +46,7 @@ if (page.currentPage === 1) {
 
 ---
 
-<Layout title={`The Dev Files | Page ${page.currentPage}`} full_title={true}>
+<Layout title={`The Dev Files | Page ${page.currentPage}`} full_title={true} meta_description={meta_description}>
     <Fragment slot="head">
         {page.currentPage === 2 ? <link rel="prev" href={site.url} /> : null}
         {page.currentPage > 2 ? <link rel="prev" href={`${site.url}${page.url.prev}/`} /> : null}

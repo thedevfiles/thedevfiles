@@ -37,8 +37,11 @@ export const getStaticPaths = (async () => {
 }) satisfies GetStaticPaths;
 
 const {posts, category} = Astro.props;
+
+const meta_description = `Explore the ${category} category on The Dev Files blog, featuring articles on web development, programming, and technology. Discover insights on coding, software engineering, and more.`;
+
 ---
-<Layout title={`${category} Category Archive`} noindex={true}>
+<Layout title={`${category} Category Archive`} meta_description={meta_description}>
     <div class="archive archive--year">
         <h1 class="archive__title">Category: {category}</h1>
         <div class="archive__posts">

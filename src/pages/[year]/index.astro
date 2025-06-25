@@ -36,8 +36,10 @@ export const getStaticPaths = (async () => {
 
 const {posts} = Astro.props;
 const {year} = Astro.params;
+
+const meta_description = `Explore the ${year} archive on The Dev Files blog, featuring articles on web development, programming, and technology. Discover insights on coding, software engineering, and more from ${year}.`;
 ---
-<Layout title={`${year} Archive`}>
+<Layout title={`${year} Archive`} meta_description={meta_description}>
     <div class="archive archive--year">
         <h1 class="archive__title">Archive: {year}</h1>
         <div class="archive__posts">

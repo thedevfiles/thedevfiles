@@ -9,6 +9,7 @@ const postCollection = defineCollection({
         title: z.string(),
         date: z.string().transform((str) => DateTime.fromSQL(str, { zone: "UTC" }).toISO()),
         description: z.string().optional(),
+        meta_description: z.string().optional(),
         excerpt: z.string().optional(),
         published: z.boolean().default(true),
         comments: z.boolean().default(true),
