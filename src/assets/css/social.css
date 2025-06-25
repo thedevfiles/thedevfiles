@@ -26,24 +26,40 @@
 
 .sharing__link--facebook {
     background-color: var(--social-facebook);
+    color: var(--social-facebook-text) !important;
 }
 
 .sharing__link--facebook:hover {
     background-color: var(--social-facebook-hover);
+    color: var(--social-facebook-text-hover) !important;
 }
 
 .sharing__link--twitter {
     background-color: var(--social-twitter);
+    color: var(--social-twitter-text) !important;
 }
 
 .sharing__link--twitter:hover {
     background-color: var(--social-twitter-hover);
+    color: var(--social-twitter-text-hover) !important;
+}
+
+.sharing__link--twitter-x {
+    background-color: var(--social-twitter-x);
+    color: var(--social-twitter-x-text) !important;
+}
+
+.sharing__link--twitter-x:hover {
+    background-color: var(--social-twitter-x-hover);
+    color: var(--social-twitter-x-text-hover) !important;
 }
 
 .sharing__link--linkedin {
     background-color: var(--social-linkedin);
+    color: var(--social-linkedin-text) !important;
 }
 
 .sharing__link--linkedin:hover {
     background-color: var(--social-linkedin-hover);
+    color: var(--social-linkedin-text-hover) !important;
 }

@@ -32,6 +32,12 @@ export default defineConfig({
     '/sitemap.xml': '/sitemap-index.xml',
   },
 
+  markdown: {
+    shikiConfig: {
+      theme: 'dark-plus',
+    },
+  },
+
   adapter: netlify({
     imageCDN: false,
   }),

@@ -21,11 +21,21 @@ $breakpoint-small: 400px;
     --border: #ccc;
     --border-light: #ddd;
     --social-facebook: #3C5A99;
+    --social-facebook-text: #ffffff;
     --social-facebook-hover: #4365ab;
+    --social-facebook-text-hover: #ffffff;
     --social-twitter: #1DA1F2;
+    --social-twitter-text: #ffffff;
     --social-twitter-hover: #35abf3;
+    --social-twitter-text-hover: #ffffff;
+    --social-twitter-x: #000000;
+    --social-twitter-x-text: #ffffff;
+    --social-twitter-x-hover: #333333;
+    --social-twitter-x-text-hover: #ffffff;
     --social-linkedin: #0077B5;
+    --social-linkedin-text: #ffffff;
     --social-linkedin-hover: #0088cf;
+    --social-linkedin-text-hover: #ffffff;
 }
 
 * {
