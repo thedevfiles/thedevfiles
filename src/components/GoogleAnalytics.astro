@@ -2,8 +2,8 @@
 const property = import.meta.env.GOOGLE_ANALYTICS;
 ---
 {property && (
-    <script type="text/partytown" is:inline src={`https://www.googletagmanager.com/gtag/js?id=${property}`}></script>
-    <script type="text/partytown" id="google-analytics" data-id={property}>
+    <script is:inline src={`https://www.googletagmanager.com/gtag/js?id=${property}`}></script>
+    <script id="google-analytics" data-id={property}>
     document.addEventListener('astro:page-load', () => {
         if (!window.google_analytics) window.google_analytics = document.getElementById("google-analytics").getAttribute("data-id");
         if (!window.dataLayer) window.dataLayer = window.dataLayer || [];

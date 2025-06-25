@@ -42,8 +42,5 @@ export default defineConfig({
       // Exclude specific pages from the sitemap
       return !page.endsWith('/page/1/');
     }
-  }), mdx(), serviceWorker(), partytown({
-    debug: true,
-    forward: ['dataLayer.push', 'gtag']
-  })]
+  }), mdx(), serviceWorker()]
 });
