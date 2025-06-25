@@ -90,14 +90,20 @@ const schema = {
         "description": post.description || post.excerpt,
         "datePublished": date.toISO(),
         "dateModified": date.toISO(),
+        "image": post.image ? {
+            "@type": "ImageObject",
+            "url": post.image.src,
+            "width": post.image.width,
+            "height": post.image.height
+        } : null,
         "author": {
             "@type": "Person",
-            "name": post.author || site.author || "Jonathan Bernardi",
+            "name": post.author || site.author,
         },
         "publisher": {
             "@type": "Person",
-            "name": "Jonathan Bernardi",
-            "sameAs": ["https://twitter.com/thejonbernardi", "https://www.jonbernardi.com/", "https://www.linkedin.com/pub/jonathan-bernardi/57/318/99a", "https://github.com/spekkionu"]
+            "name": site.author,
+            "sameAs": ["https://x.com/thejonbernardi", "https://www.jonbernardi.com/", "https://www.linkedin.com/pub/jonathan-bernardi/57/318/99a", "https://github.com/spekkionu"]
         },
         "mainEntityOfPage": {
             "@type": "WebPage",
