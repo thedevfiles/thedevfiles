@@ -1,7 +1,7 @@
 ---
 import site from '../data/config';
 import { ClientRouter } from "astro:transitions";
-import GoogleAnalytics from './GoogleAnalytics.astro';
+import { pwaInfo } from 'virtual:pwa-info';
 
 interface Props {
 
@@ -37,7 +37,7 @@ import '../assets/css/styles.css';
     <link href={new URL("feed.xml", Astro.site)} rel="alternate" title={site.name} type="application/rss+xml">
     <link rel="canonical" href={canonical || Astro.url}>
     {meta_description && <meta name="description" content={meta_description}>}
-    <link rel="manifest" href="/manifest.json" />
+    { pwaInfo && <Fragment set:html={pwaInfo.webManifest.linkTag} /> }
     <meta name="author" content={site.author || 'Jonathan Bernardi'}>
     {noindex ? <meta name="robots" content="noindex, follow"> : <meta name="robots" content="index, follow">}
     <meta property="og:locale" content="en_US">
