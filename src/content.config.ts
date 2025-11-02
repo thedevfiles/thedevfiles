@@ -19,7 +19,6 @@ const postCollection = defineCollection({
         next: z.string().optional(),
         first: z.string().optional(),
         last: z.string().optional(),
-        image_height: z.number().optional(),
         categories: z.array(z.string()).optional(),
     }),
 });

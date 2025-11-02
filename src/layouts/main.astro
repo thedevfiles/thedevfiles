@@ -1,37 +1,53 @@
 ---
-import Head from '../components/Head.astro'
-import Header from '../components/Header.astro'
-import Sidebar from '../components/Sidebar.astro'
-import Footer from '../components/Footer.astro'
+import Head from "../components/Head.astro";
+import Header from "../components/Header.astro";
+import Sidebar from "../components/Sidebar.astro";
+import Footer from "../components/Footer.astro";
 
 interface Props {
-
-    title?: string;
-    full_title?: boolean;
-    meta_description?: string;
-    noindex?: boolean;
-    canonical?: string;
-    meta_tags?: {name?: string; property?: string; content: string}[];
+  title?: string;
+  full_title?: boolean;
+  meta_description?: string;
+  noindex?: boolean;
+  canonical?: string;
+  meta_tags?: { name?: string; property?: string; content: string }[];
 }
 
-const {title, full_title = false, meta_description, noindex = false, canonical, meta_tags = []} = Astro.props as Props;
-
+const {
+  title,
+  full_title = false,
+  meta_description,
+  noindex = false,
+  canonical,
+  meta_tags = [],
+} = Astro.props as Props;
+import "../assets/css/styles.css";
 ---
+
 <html lang="en">
-<Head title={title} full_title={full_title} meta_description={meta_description} noindex={noindex} canonical={canonical} meta_tags={meta_tags}>
+  <Head
+    title={title}
+    full_title={full_title}
+    meta_description={meta_description}
+    noindex={noindex}
+    canonical={canonical}
+    meta_tags={meta_tags}
+  >
     <slot name="head" slot="head" />
     <slot name="schema" slot="schema" />
-</Head>
-<body>
-<a href="#content" class="sr-only">scroll to content</a>
-<div class="site">
-    <Header />
-    <div class="site-wrapper">
-        <main id="content" class="site-content" aria-label="Main content"><slot /></main>
+  </Head>
+  <body>
+    <a href="#content" class="sr-only">scroll to content</a>
+    <div class="site">
+      <Header />
+      <div class="site-wrapper">
+        <main id="content" class="site-content" aria-label="Main content">
+          <slot />
+        </main>
         <Sidebar />
+      </div>
+      <Footer />
     </div>
-    <Footer />
-</div>
-<slot name="scripts" />
-</body>
+    <slot name="scripts" />
+  </body>
 </html>
