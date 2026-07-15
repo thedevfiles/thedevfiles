@@ -3,9 +3,15 @@
   command = "bun --bun astro build"
   functions = "functions/"
 
+[build.environment]
+  BROWSERSLIST_IGNORE_OLD_DATA = "1"
+
 [dev]
 command = "bun --bun astro dev"
 autoLaunch = false
+
+[dev.environment]
+  BROWSERSLIST_IGNORE_OLD_DATA = "1"
 
 [[plugins]]
 package = "netlify-plugin-purgecss"
